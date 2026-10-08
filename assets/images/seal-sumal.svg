@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <defs>
+    <linearGradient id="sumalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2d6a4f"/>
+      <stop offset="100%" stop-color="#081c15"/>
+    </linearGradient>
+  </defs>
+  <!-- Outer Ring -->
+  <circle cx="100" cy="100" r="92" fill="#f0fdf4" stroke="url(#sumalGrad)" stroke-width="6"/>
+  <circle cx="100" cy="100" r="82" fill="none" stroke="#2d6a4f" stroke-width="1.5" stroke-dasharray="4 3"/>
+
+  <!-- Top Text Path -->
+  <path id="textArcTop" d="M 30,100 A 70,70 0 0,1 170,100" fill="none"/>
+  <text font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="800" fill="#143823" letter-spacing="2">
+    <textPath href="#textArcTop" startOffset="50%" text-anchor="middle">
+      TRASABILITATE LEGALĂ
+    </textPath>
+  </text>
+
+  <!-- Bottom Text Path -->
+  <path id="textArcBottom" d="M 170,100 A 70,70 0 0,1 30,100" fill="none"/>
+  <text font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="#2d6a4f" letter-spacing="1.5">
+    <textPath href="#textArcBottom" startOffset="50%" text-anchor="middle">
+      MINISTERUL MEDIULUI
+    </textPath>
+  </text>
+
+  <!-- Center Badge -->
+  <circle cx="100" cy="100" r="48" fill="url(#sumalGrad)"/>
+  <!-- QR / Traceability Digital Icon -->
+  <path d="M82 78 h14 v14 h-14 z M104 78 h14 v14 h-14 z M82 100 h14 v14 h-14 z" fill="#ffffff"/>
+  <circle cx="111" cy="107" r="5" fill="#f3b772"/>
+  <text x="100" y="132" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="1">
+    SUMAL 2.0
+  </text>
+  <text x="100" y="142" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" font-weight="600" fill="#a7f3d0" text-anchor="middle">
+    CONFORM
+  </text>
+</svg>

@@ -1,0 +1,1667 @@
+/* ==========================================================================
+   TIMBER SPECIALIST S.R.L. - Stiluri Panou Administrare Comenzi (admin.html)
+   Someș-Odorhei, Sălaj • CUI: 32954515
+   ========================================================================== */
+
+.admin-page-body {
+  background-color: #f4f1ea;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header Panou Admin */
+.admin-hero-bar {
+  background: linear-gradient(135deg, var(--color-brand-dark) 0%, var(--color-brand-forest) 60%, var(--color-brand-spruce) 100%);
+  color: #ffffff;
+  padding: 2.25rem 0 2.5rem;
+  border-bottom: 3px solid var(--color-timber-amber);
+  box-shadow: var(--shadow-md);
+}
+
+.admin-hero-flex {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.admin-badge-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(194, 120, 46, 0.22);
+  border: 1px solid rgba(243, 183, 114, 0.45);
+  color: var(--color-timber-honey);
+  padding: 0.3rem 0.8rem;
+  border-radius: var(--radius-full);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  margin-bottom: 0.65rem;
+}
+
+.admin-badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.28);
+  animation: pulseDot 2s infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.25); opacity: 0.75; }
+}
+
+.admin-hero-title {
+  font-size: clamp(1.55rem, 2.5vw, 2.15rem);
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.2;
+  margin-bottom: 0.4rem;
+}
+
+.admin-hero-subtitle {
+  color: #b7c9be;
+  font-size: 0.95rem;
+  max-width: 680px;
+}
+
+.admin-top-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  align-items: center;
+}
+
+.btn-admin-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.6rem 1.05rem;
+  border-radius: var(--radius-md);
+  font-size: 0.86rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+}
+
+.btn-admin-action:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+.btn-admin-primary {
+  background: var(--color-timber-amber);
+  border-color: var(--color-timber-amber);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(194, 120, 46, 0.35);
+}
+
+.btn-admin-primary:hover {
+  background: var(--color-timber-amber-hover);
+  border-color: var(--color-timber-amber-hover);
+}
+
+/* KPI Grid Statistici */
+.admin-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.15rem;
+  margin-top: -1.5rem;
+  margin-bottom: 1.75rem;
+  position: relative;
+  z-index: 5;
+}
+
+.admin-kpi-card {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.35rem;
+  border: 1.5px solid var(--color-border);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.admin-kpi-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.admin-kpi-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted);
+  margin-bottom: 0.3rem;
+}
+
+.admin-kpi-value {
+  font-size: 1.85rem;
+  font-weight: 900;
+  color: var(--color-brand-forest);
+  line-height: 1.1;
+  margin-bottom: 0.35rem;
+}
+
+.admin-kpi-meta {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  font-weight: 600;
+}
+
+.admin-kpi-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.kpi-total .admin-kpi-icon { background: #fef3c7; color: #b45309; }
+.kpi-new .admin-kpi-icon { background: #dcfce7; color: #15803d; }
+.kpi-confirmed .admin-kpi-icon { background: #dbeafe; color: #1d4ed8; }
+.kpi-canceled .admin-kpi-icon { background: #fee2e2; color: #b91c1c; }
+
+/* Panou Control Sortare, Grupare & Filtrare */
+.admin-controls-panel {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  border: 1.5px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  padding: 1.35rem;
+  margin-bottom: 1.5rem;
+}
+
+.controls-top-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1.15rem;
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 1.15rem;
+}
+
+/* Status Filter Tabs */
+.status-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.status-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.5rem 0.95rem;
+  border-radius: var(--radius-full);
+  font-size: 0.84rem;
+  font-weight: 700;
+  background: var(--color-bg-subtle);
+  border: 1.5px solid var(--color-border);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.status-tab-btn:hover {
+  border-color: var(--color-brand-green);
+  color: var(--color-brand-forest);
+}
+
+.status-tab-btn.active {
+  background: var(--color-brand-forest);
+  border-color: var(--color-brand-forest);
+  color: #ffffff;
+}
+
+.status-tab-count {
+  background: rgba(0, 0, 0, 0.08);
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  font-size: 0.74rem;
+}
+
+.status-tab-btn.active .status-tab-count {
+  background: rgba(255, 255, 255, 0.22);
+  color: #ffffff;
+}
+
+/* Căutare rapidă */
+.admin-search-wrap {
+  position: relative;
+  flex: 1;
+  min-width: 250px;
+  max-width: 380px;
+}
+
+.admin-search-wrap svg {
+  position: absolute;
+  left: 0.9rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-text-muted);
+  pointer-events: none;
+}
+
+.admin-search-input {
+  width: 100%;
+  padding: 0.6rem 2.2rem 0.6rem 2.55rem;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--color-border);
+  background: var(--color-bg-subtle);
+  font-size: 0.88rem;
+  color: var(--color-text-primary);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.admin-search-input:focus {
+  outline: none;
+  border-color: var(--color-brand-green);
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.12);
+}
+
+.admin-search-clear {
+  position: absolute;
+  right: 0.6rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  padding: 0.2rem;
+  display: none;
+}
+
+/* Rândul 2: Grupare, Sortare, Categorie, Perioadă */
+.controls-bottom-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  align-items: end;
+}
+
+.control-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.control-label {
+  font-size: 0.76rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.control-select {
+  width: 100%;
+  padding: 0.58rem 0.85rem;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--color-border);
+  background-color: #ffffff;
+  font-size: 0.87rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  cursor: pointer;
+}
+
+.control-select:focus {
+  outline: none;
+  border-color: var(--color-brand-green);
+  box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.12);
+}
+
+/* Butoane Comutare Mod Vizualizare (Carduri vs Tabel) */
+.view-mode-toggle {
+  display: inline-flex;
+  background: var(--color-bg-subtle);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 0.2rem;
+  gap: 0.2rem;
+}
+
+.view-mode-btn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.42rem 0.75rem;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.view-mode-btn.active {
+  background: #ffffff;
+  color: var(--color-brand-forest);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Secțiuni de Grup (Group Containers) */
+.order-group-section {
+  margin-bottom: 1.65rem;
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  border: 1.5px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.order-group-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 1rem 1.35rem;
+  background: linear-gradient(90deg, #f9f6f0 0%, #ffffff 100%);
+  border-bottom: 1.5px solid var(--color-border);
+  cursor: pointer;
+  user-select: none;
+  transition: background-color var(--transition-fast);
+}
+
+.order-group-header:hover {
+  background: #f3ede2;
+}
+
+.order-group-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.order-group-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  background: var(--color-brand-forest);
+  color: var(--color-timber-honey);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+
+.order-group-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--color-brand-forest);
+}
+
+.order-group-badges {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.group-pill {
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.24rem 0.7rem;
+  border-radius: var(--radius-full);
+  background: #e8e1d5;
+  color: #121f16;
+}
+
+.group-pill-value {
+  background: #ecfdf5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+}
+
+.group-collapse-icon {
+  transition: transform var(--transition-fast);
+  color: var(--color-text-muted);
+}
+
+.order-group-section.collapsed .group-collapse-icon {
+  transform: rotate(-90deg);
+}
+
+.order-group-section.collapsed .order-group-body {
+  display: none;
+}
+
+.order-group-body {
+  padding: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background: #faf8f4;
+}
+
+/* Card Comandă Individuală */
+.order-card {
+  background: #ffffff;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--color-border);
+  border-left: 5px solid var(--color-brand-green);
+  padding: 1.2rem 1.35rem;
+  box-shadow: 0 2px 6px rgba(11, 36, 22, 0.04);
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.order-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: #cbd5e1;
+}
+
+.order-card.status-noua {
+  border-left-color: #16a34a;
+  background: linear-gradient(90deg, rgba(240, 253, 244, 0.45) 0%, #ffffff 18%);
+}
+
+.order-card.status-confirmata {
+  border-left-color: #2563eb;
+}
+
+.order-card.status-livrata {
+  border-left-color: #059669;
+}
+
+.order-card.status-anulata {
+  border-left-color: #dc2626;
+  background: #fffafa;
+  opacity: 0.92;
+}
+
+/* Antet Card Comandă (Cod, Dată & Oră, Sursă, Status) */
+.order-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding-bottom: 0.85rem;
+  margin-bottom: 0.95rem;
+  border-bottom: 1px dashed var(--color-border);
+}
+
+.order-meta-left {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.order-id-badge {
+  font-family: var(--font-mono);
+  font-size: 0.84rem;
+  font-weight: 800;
+  background: var(--color-brand-forest);
+  color: #ffffff;
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+  letter-spacing: 0.02em;
+}
+
+.order-datetime-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #fef8f0;
+  border: 1px solid #f3d9b1;
+  color: #7c3f09;
+  padding: 0.25rem 0.7rem;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.order-relative-time {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  font-weight: 600;
+}
+
+.order-source-tag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #475569;
+  background: #f1f5f9;
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+}
+
+/* Status Badges */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.38rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.status-badge.status-noua {
+  background: #dcfce7;
+  color: #166534;
+  border: 1px solid #86efac;
+}
+
+.status-badge.status-confirmata {
+  background: #dbeafe;
+  color: #1e40af;
+  border: 1px solid #93c5fd;
+}
+
+.status-badge.status-livrata {
+  background: #d1fae5;
+  color: #065f46;
+  border: 1px solid #6ee7b7;
+}
+
+.status-badge.status-anulata {
+  background: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fca5a5;
+}
+
+/* Conținut Grid Card Comandă */
+.order-card-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1.3fr 1.2fr;
+  gap: 1.25rem;
+  align-items: start;
+}
+
+@media (max-width: 960px) {
+  .order-card-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+.order-col-label {
+  font-size: 0.73rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted);
+  margin-bottom: 0.3rem;
+}
+
+.order-client-name {
+  font-size: 1.06rem;
+  font-weight: 800;
+  color: var(--color-text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.order-client-phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.96rem;
+  font-weight: 800;
+  color: var(--color-timber-amber);
+  margin-bottom: 0.35rem;
+}
+
+.order-client-phone:hover {
+  text-decoration: underline;
+}
+
+.order-product-title {
+  font-size: 0.96rem;
+  font-weight: 800;
+  color: var(--color-brand-forest);
+  margin-bottom: 0.3rem;
+}
+
+.order-volume-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.35rem;
+}
+
+.order-volume-pill {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  color: #166534;
+  font-weight: 700;
+  font-size: 0.82rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+}
+
+.order-price-pill {
+  background: #fef3c7;
+  border: 1px solid #fde68a;
+  color: #92400e;
+  font-weight: 800;
+  font-size: 0.84rem;
+  padding: 0.2rem 0.65rem;
+  border-radius: 6px;
+}
+
+.order-message-box {
+  background: var(--color-bg-subtle);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 0.65rem 0.85rem;
+  font-size: 0.86rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+.order-notes-box {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: #1e40af;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 6px;
+  padding: 0.4rem 0.65rem;
+}
+
+.order-cancel-banner {
+  margin-top: 0.85rem;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  padding: 0.6rem 0.9rem;
+  color: #991b1b;
+  font-size: 0.84rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* Bara de Acțiuni a Comenzii (Buton Anulare, Confirmare, Livrare, WhatsApp) */
+.order-card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.order-actions-left,
+.order-actions-right {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.btn-order-act {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.38rem;
+  padding: 0.46rem 0.85rem;
+  border-radius: 8px;
+  font-size: 0.81rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1.5px solid transparent;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+}
+
+.btn-act-confirm {
+  background: #2563eb;
+  color: #ffffff;
+}
+.btn-act-confirm:hover {
+  background: #1d4ed8;
+}
+
+.btn-act-deliver {
+  background: #059669;
+  color: #ffffff;
+}
+.btn-act-deliver:hover {
+  background: #047857;
+}
+
+.btn-act-cancel {
+  background: #fff1f2;
+  border-color: #fda4af;
+  color: #be123c;
+}
+.btn-act-cancel:hover {
+  background: #dc2626;
+  border-color: #dc2626;
+  color: #ffffff;
+}
+
+.btn-act-restore {
+  background: #ecfdf5;
+  border-color: #6ee7b7;
+  color: #047857;
+}
+.btn-act-restore:hover {
+  background: #059669;
+  color: #ffffff;
+}
+
+.btn-act-wa {
+  background: #ecfdf5;
+  border-color: #86efac;
+  color: #15803d;
+}
+.btn-act-wa:hover {
+  background: #25D366;
+  border-color: #25D366;
+  color: #ffffff;
+}
+
+.btn-act-call {
+  background: #fef3c7;
+  border-color: #fcd34d;
+  color: #92400e;
+}
+.btn-act-call:hover {
+  background: #d97706;
+  border-color: #d97706;
+  color: #ffffff;
+}
+
+.btn-act-edit {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+  color: #334155;
+}
+.btn-act-edit:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+.btn-act-delete {
+  background: transparent;
+  border-color: #e2e8f0;
+  color: #64748b;
+}
+.btn-act-delete:hover {
+  background: #fee2e2;
+  border-color: #fca5a5;
+  color: #991b1b;
+}
+
+/* Tabel Compact pentru Vizualizare Tabelară */
+.admin-orders-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  background: #ffffff;
+}
+
+.admin-orders-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.admin-orders-table th {
+  background: #f8f5ee;
+  color: var(--color-brand-forest);
+  font-weight: 800;
+  text-align: left;
+  padding: 0.8rem 0.9rem;
+  border-bottom: 2px solid var(--color-border);
+  white-space: nowrap;
+}
+
+.admin-orders-table td {
+  padding: 0.85rem 0.9rem;
+  border-bottom: 1px solid var(--color-border);
+  vertical-align: middle;
+}
+
+.admin-orders-table tr:hover td {
+  background: #fcfaf6;
+}
+
+.admin-orders-table tr.row-anulata td {
+  background: #fff5f5;
+  color: #7f1d1d;
+}
+
+/* Modale Admin (Anulare Comandă, Adăugare / Editare Comandă) */
+.admin-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(7, 25, 15, 0.65);
+  backdrop-filter: blur(3px);
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.admin-modal-backdrop.open {
+  display: flex;
+}
+
+.admin-modal {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  width: 100%;
+  max-width: 540px;
+  border: 1.5px solid var(--color-border);
+  box-shadow: var(--shadow-xl);
+  overflow: hidden;
+  animation: modalSlideIn 0.2s ease-out;
+}
+
+@keyframes modalSlideIn {
+  from { opacity: 0; transform: translateY(12px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.admin-modal-header {
+  padding: 1.15rem 1.4rem;
+  background: var(--color-brand-forest);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.admin-modal-header.header-danger {
+  background: #991b1b;
+}
+
+.admin-modal-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.admin-modal-close {
+  background: none;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  opacity: 0.8;
+  font-size: 1.35rem;
+  line-height: 1;
+}
+
+.admin-modal-body {
+  padding: 1.4rem;
+  max-height: 78vh;
+  overflow-y: auto;
+}
+
+.admin-modal-footer {
+  padding: 1rem 1.4rem;
+  background: var(--color-bg-subtle);
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.65rem;
+}
+
+.reason-preset-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-bottom: 0.85rem;
+}
+
+.reason-chip {
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.35rem 0.7rem;
+  border-radius: var(--radius-full);
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  color: #334155;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.reason-chip:hover,
+.reason-chip.active {
+  background: #fee2e2;
+  border-color: #fca5a5;
+  color: #991b1b;
+}
+
+/* Toast Notification */
+.admin-toast-container {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 3000;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.admin-toast {
+  background: var(--color-brand-forest);
+  color: #ffffff;
+  padding: 0.85rem 1.2rem;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  border-left: 4px solid var(--color-timber-amber);
+  font-size: 0.88rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  animation: modalSlideIn 0.2s ease-out;
+}
+
+.admin-empty-state {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  border: 1.5px dashed var(--color-border);
+  padding: 3.5rem 1.5rem;
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+@media print {
+  .topbar, .header-sticky, .admin-top-actions, .admin-controls-panel, .order-card-actions, .site-footer, .mobile-bottom-bar, #btnExpandAllGroups, #btnCollapseAllGroups {
+    display: none !important;
+  }
+  .admin-page-body {
+    background: #ffffff;
+  }
+  .admin-hero-bar {
+    background: #ffffff !important;
+    color: #000000 !important;
+    padding: 0.75rem 0 !important;
+    box-shadow: none !important;
+  }
+  .admin-hero-title, .admin-hero-subtitle {
+    color: #000000 !important;
+  }
+  .admin-kpi-grid {
+    margin-top: 1rem !important;
+  }
+  .order-group-section.collapsed .order-group-body {
+    display: flex !important;
+  }
+  .order-card {
+    break-inside: avoid;
+    border: 1px solid #000;
+  }
+}
+
+/* ==========================================================================
+   Optimizare Mobil Dedicată Panou Admin (sub 768px)
+   Tabele Responsive, Controale Compacte, Formulare Scurte & Carduri Dense
+   ========================================================================== */
+@media (max-width: 768px) {
+  body.admin-page-body {
+    padding-bottom: 0.5rem !important;
+  }
+
+  body.admin-page-body .mobile-bottom-bar {
+    display: none !important;
+  }
+
+  .admin-page-body main {
+    padding-bottom: 0.75rem !important;
+  }
+
+  /* Admin Hero Bar Ultra-Compact */
+  .admin-hero-bar {
+    padding: 0.5rem 0 0.9rem;
+  }
+
+  .admin-hero-flex {
+    gap: 0.35rem;
+  }
+
+  .admin-badge-live {
+    font-size: 0.58rem;
+    padding: 0.1rem 0.42rem;
+    margin-bottom: 0.15rem;
+    gap: 0.25rem;
+  }
+
+  .admin-badge-dot {
+    width: 5px;
+    height: 5px;
+  }
+
+  .admin-hero-title {
+    font-size: 1.02rem;
+    margin-bottom: 0.1rem;
+    line-height: 1.15;
+  }
+
+  .admin-hero-subtitle {
+    font-size: 0.68rem;
+    line-height: 1.22;
+  }
+
+  .admin-top-actions {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.22rem;
+    width: 100%;
+  }
+
+  #btnAddManualOrder {
+    grid-column: span 2;
+  }
+
+  .btn-admin-action {
+    justify-content: center;
+    padding: 0.24rem 0.3rem;
+    font-size: 0.64rem;
+    min-height: 26px;
+    border-radius: 6px;
+    gap: 0.2rem;
+    white-space: nowrap;
+  }
+
+  .btn-admin-action svg {
+    width: 11px;
+    height: 11px;
+    flex-shrink: 0;
+  }
+
+  /* KPI Grid 2x2 Compact și Scund */
+  .admin-kpi-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 0.28rem;
+    margin-top: -0.6rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .admin-kpi-card {
+    padding: 0.34rem 0.45rem;
+    border-radius: var(--radius-sm);
+    gap: 0.22rem;
+    align-items: center;
+  }
+
+  .admin-kpi-label {
+    font-size: 0.55rem;
+    margin-bottom: 0.02rem;
+    line-height: 1.08;
+  }
+
+  .admin-kpi-value {
+    font-size: 1.02rem;
+    margin-bottom: 0.02rem;
+    line-height: 1.02;
+  }
+
+  .admin-kpi-meta {
+    font-size: 0.56rem;
+    line-height: 1.08;
+  }
+
+  .admin-kpi-icon {
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+  }
+
+  .admin-kpi-icon svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  /* Panou Controale Sortare, Grupare & Filtrare Compact */
+  .admin-controls-panel {
+    padding: 0.38rem 0.45rem;
+    margin-bottom: 0.4rem;
+    border-radius: var(--radius-md);
+  }
+
+  .controls-top-row {
+    gap: 0.25rem;
+    padding-bottom: 0.28rem;
+    margin-bottom: 0.28rem;
+  }
+
+  .status-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 0.2rem;
+    padding-bottom: 0.05rem;
+  }
+
+  .status-tab-btn {
+    white-space: nowrap;
+    flex: 1 1 auto;
+    justify-content: center;
+    padding: 0.16rem 0.36rem;
+    font-size: 0.6rem;
+    gap: 0.16rem;
+  }
+
+  .status-tab-count {
+    font-size: 0.54rem;
+    padding: 0.02rem 0.24rem;
+  }
+
+  .admin-search-wrap {
+    min-width: 100%;
+    max-width: 100%;
+  }
+
+  .admin-search-wrap svg {
+    left: 0.5rem;
+    width: 12px;
+    height: 12px;
+  }
+
+  .admin-search-input {
+    padding: 0.2rem 1.5rem 0.2rem 1.55rem;
+    min-height: 25px;
+    height: 25px;
+    font-size: 0.7rem !important;
+    border-radius: 5px;
+  }
+
+  .controls-bottom-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.24rem;
+  }
+
+  .control-field-group {
+    gap: 0.08rem;
+  }
+
+  .control-field-group:last-child {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0.06rem;
+  }
+
+  .control-label {
+    font-size: 0.56rem;
+    gap: 0.16rem;
+  }
+
+  .control-label svg {
+    width: 10px;
+    height: 10px;
+  }
+
+  .control-select {
+    padding: 0.15rem 0.32rem;
+    min-height: 24px;
+    height: 24px;
+    font-size: 0.66rem !important;
+    border-radius: 5px;
+  }
+
+  .view-mode-toggle {
+    padding: 0.08rem;
+    gap: 0.08rem;
+    border-radius: 5px;
+  }
+
+  .view-mode-btn {
+    padding: 0.15rem 0.42rem;
+    font-size: 0.64rem;
+    gap: 0.18rem;
+    border-radius: 4px;
+  }
+
+  .view-mode-btn svg {
+    width: 11px;
+    height: 11px;
+  }
+
+  /* Bară rezumat filtru activ */
+  #activeFilterSummary {
+    font-size: 0.64rem !important;
+    line-height: 1.12;
+  }
+
+  #btnExpandAllGroups,
+  #btnCollapseAllGroups {
+    padding: 0.14rem 0.35rem !important;
+    font-size: 0.6rem !important;
+    min-height: 20px !important;
+  }
+
+  /* Grupuri de Comenzi & Carduri de Comandă Ultra-Dense */
+  .order-group-section {
+    margin-bottom: 0.38rem;
+    border-radius: var(--radius-md);
+  }
+
+  .order-group-header {
+    padding: 0.3rem 0.45rem;
+    gap: 0.2rem;
+  }
+
+  .order-group-title-wrap {
+    gap: 0.25rem;
+  }
+
+  .order-group-icon {
+    width: 18px;
+    height: 18px;
+    font-size: 0.62rem;
+    border-radius: 4px;
+  }
+
+  .order-group-title {
+    font-size: 0.7rem;
+    line-height: 1.12;
+  }
+
+  .order-group-badges {
+    gap: 0.18rem;
+  }
+
+  .group-pill {
+    font-size: 0.56rem;
+    padding: 0.06rem 0.28rem;
+  }
+
+  .group-collapse-icon {
+    width: 13px;
+    height: 13px;
+  }
+
+  .order-group-body {
+    padding: 0.28rem;
+    gap: 0.28rem;
+  }
+
+  .order-card {
+    padding: 0.32rem 0.4rem;
+    border-left-width: 3.5px;
+    border-radius: 6px;
+  }
+
+  .order-card-top {
+    gap: 0.18rem;
+    padding-bottom: 0.16rem;
+    margin-bottom: 0.18rem;
+  }
+
+  .order-meta-left {
+    gap: 0.16rem;
+  }
+
+  .order-id-badge {
+    font-size: 0.58rem;
+    padding: 0.05rem 0.28rem;
+    border-radius: 4px;
+  }
+
+  .order-datetime-badge {
+    font-size: 0.56rem;
+    padding: 0.05rem 0.28rem;
+    gap: 0.12rem;
+    border-radius: 4px;
+  }
+
+  .order-relative-time,
+  .order-source-tag {
+    display: none;
+  }
+
+  .status-badge {
+    font-size: 0.56rem;
+    padding: 0.06rem 0.32rem;
+    gap: 0.14rem;
+  }
+
+  /* Grid 2 coloane pe mobil (inclusiv 320px-375px) pentru Client + Produs */
+  .order-card-grid {
+    grid-template-columns: 1fr 1.1fr !important;
+    gap: 0.16rem 0.32rem !important;
+  }
+
+  .order-card-grid > div:nth-child(3) {
+    grid-column: 1 / -1;
+  }
+
+  .order-card-grid > div:nth-child(3) .order-col-label {
+    display: none;
+  }
+
+  .order-col-label {
+    font-size: 0.5rem;
+    margin-bottom: 0.01rem;
+  }
+
+  .order-client-name {
+    font-size: 0.7rem;
+    margin-bottom: 0.01rem;
+    line-height: 1.1;
+  }
+
+  .order-client-phone {
+    font-size: 0.66rem;
+    margin-bottom: 0.01rem;
+    gap: 0.12rem;
+  }
+
+  .order-client-email {
+    font-size: 0.56rem !important;
+    line-height: 1.08;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .order-client-locality {
+    font-size: 0.58rem !important;
+    margin-top: 0.02rem !important;
+    line-height: 1.1;
+  }
+
+  .order-product-title {
+    font-size: 0.66rem;
+    margin-bottom: 0.03rem;
+    line-height: 1.12;
+  }
+
+  .order-product-cat {
+    display: none !important;
+  }
+
+  .order-volume-row {
+    gap: 0.12rem;
+    margin-top: 0.04rem;
+  }
+
+  .order-volume-pill,
+  .order-price-pill {
+    font-size: 0.56rem;
+    padding: 0.04rem 0.24rem;
+    border-radius: 4px;
+  }
+
+  .order-message-box {
+    padding: 0.14rem 0.28rem;
+    font-size: 0.61rem;
+    line-height: 1.15;
+    border-radius: 4px;
+  }
+
+  .order-notes-box {
+    margin-top: 0.1rem;
+    padding: 0.1rem 0.26rem;
+    font-size: 0.58rem;
+    line-height: 1.12;
+  }
+
+  .order-cancel-banner {
+    margin-top: 0.15rem;
+    padding: 0.16rem 0.28rem;
+    font-size: 0.58rem;
+    gap: 0.15rem;
+  }
+
+  /* Layout inteligent pe 2 rânduri (Rând 1: Acțiuni Status 1-3 butoane full-width; Rând 2: Utilitare Sună / WhatsApp / Editează / Șterge) */
+  .order-card-actions {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0.18rem;
+    padding-top: 0.16rem;
+    gap: 0.14rem;
+  }
+
+  .order-actions-left {
+    display: flex;
+    gap: 0.14rem;
+    width: 100%;
+  }
+
+  .order-card.status-anulata .order-actions-left {
+    display: none;
+  }
+
+  .order-actions-left .btn-order-act {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .order-actions-right {
+    display: grid;
+    grid-template-columns: 0.82fr 0.98fr 1.38fr 0.82fr;
+    gap: 0.14rem;
+    width: 100%;
+  }
+
+  .btn-order-act {
+    padding: 0.12rem 0.14rem;
+    font-size: 0.56rem;
+    border-radius: 4px;
+    gap: 0.08rem;
+    width: 100%;
+    justify-content: center;
+    min-height: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Tabel Comenzi Responsive pe Ecrane Mici (Fără Scroll Orizontal Forțat) */
+  .admin-orders-table-wrap {
+    overflow-x: visible;
+  }
+
+  .admin-orders-table,
+  .admin-orders-table tbody {
+    display: block;
+    width: 100%;
+  }
+
+  .admin-orders-table thead {
+    display: none;
+  }
+
+  .admin-orders-table tr {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.12rem 0.25rem;
+    padding: 0.28rem 0.35rem;
+    border-bottom: 1.5px solid var(--color-border);
+    background: #ffffff;
+    align-items: start;
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  .admin-orders-table td {
+    display: block;
+    min-width: 0;
+    padding: 0.02rem 0;
+    border: none;
+    font-size: 0.62rem;
+    line-height: 1.14;
+    white-space: normal !important;
+    overflow-wrap: anywhere;
+  }
+
+  .admin-orders-table td::before {
+    content: attr(data-label);
+    display: block;
+    font-size: 0.48rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--color-text-muted);
+    margin-bottom: 0.01rem;
+  }
+
+  .admin-orders-table td:nth-child(3) {
+    grid-column: span 1;
+  }
+
+  .admin-orders-table td:nth-child(5) {
+    grid-column: span 1;
+  }
+
+  .admin-orders-table td.td-product-col,
+  .admin-orders-table td.td-actions-col {
+    grid-column: 1 / -1;
+    padding-top: 0.1rem;
+    border-top: 1px dashed var(--color-border);
+  }
+
+  .admin-orders-table .table-actions-wrap {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.15rem !important;
+  }
+
+  .admin-orders-table .table-actions-wrap .btn-order-act {
+    padding: 0.12rem 0.2rem !important;
+    font-size: 0.58rem !important;
+    min-height: 20px !important;
+  }
+
+  /* Modale & Formulare Admin Scurte pe Verticală */
+  .admin-modal-backdrop {
+    padding: 0.35rem;
+    z-index: 10050;
+  }
+
+  .admin-modal {
+    max-width: 100% !important;
+    border-radius: var(--radius-md);
+  }
+
+  .admin-modal-header {
+    padding: 0.42rem 0.65rem;
+  }
+
+  .admin-modal-title {
+    font-size: 0.82rem;
+  }
+
+  .admin-modal-close {
+    font-size: 1.1rem;
+  }
+
+  .admin-modal-body {
+    padding: 0.5rem 0.65rem;
+    max-height: 85vh;
+  }
+
+  .admin-modal-body p {
+    font-size: 0.68rem !important;
+    margin-bottom: 0.35rem !important;
+    line-height: 1.24;
+  }
+
+  #editOrderForm .form-row {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.28rem !important;
+    margin-bottom: 0.28rem !important;
+  }
+
+  #editOrderForm .form-row:first-of-type .form-group:nth-child(3) {
+    grid-column: 1 / -1;
+  }
+
+  .admin-modal .form-group {
+    margin-bottom: 0.28rem !important;
+    gap: 0.08rem !important;
+  }
+
+  .admin-modal .form-label {
+    font-size: 0.63rem !important;
+    margin-bottom: 0.04rem !important;
+    line-height: 1.1;
+  }
+
+  .admin-modal .input-light {
+    padding: 0.2rem 0.4rem !important;
+    min-height: 26px !important;
+    height: 26px;
+    font-size: 0.72rem !important;
+    border-radius: 5px;
+  }
+
+  .admin-modal textarea.input-light {
+    height: auto !important;
+    min-height: 30px !important;
+    max-height: 40px;
+    padding: 0.18rem 0.4rem !important;
+    line-height: 1.2;
+  }
+
+  .reason-preset-chips {
+    gap: 0.18rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .reason-chip {
+    font-size: 0.6rem;
+    padding: 0.12rem 0.38rem;
+  }
+
+  .admin-modal-footer {
+    padding: 0.4rem 0.65rem;
+    gap: 0.3rem;
+  }
+
+  .admin-empty-state {
+    padding: 1.2rem 0.75rem;
+  }
+
+  .admin-toast-container {
+    bottom: 0.75rem;
+    right: 0.65rem;
+    left: 0.65rem;
+    z-index: 10100;
+  }
+
+  .admin-toast {
+    padding: 0.45rem 0.65rem;
+    font-size: 0.72rem;
+  }
+}
+
+

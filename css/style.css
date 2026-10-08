@@ -1,0 +1,2381 @@
+/* ==========================================================================
+   TIMBER SPECIALIST S.R.L. - Design System & Stiluri Principale
+   Producție Cherestea, Grinzi & Prelucrare Lemn • Someș-Odorhei, Sălaj
+   CUI: 32954515 • J31/440/2016
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  /* Paletă Cromatică Forest & Timber */
+  --color-brand-dark: #07190f;
+  --color-brand-forest: #0d2a1a;
+  --color-brand-spruce: #143e26;
+  --color-brand-green: #2d6a4f;
+  --color-brand-green-light: #40916c;
+  --color-brand-green-bg: #f0fdf4;
+
+  /* Accente de Cherestea & Stejar (Amber / Wood) */
+  --color-timber-amber: #c2782e;
+  --color-timber-amber-hover: #a35f1e;
+  --color-timber-amber-light: #fef8f0;
+  --color-timber-gold: #df9142;
+  --color-timber-honey: #f3b772;
+
+  /* WhatsApp & Conversie */
+  --color-whatsapp: #25D366;
+  --color-whatsapp-hover: #128C7E;
+  --color-whatsapp-bg: #ecfdf5;
+
+  /* Neutre Calde & Fundaluri Texturate */
+  --color-bg-main: #ffffff;
+  --color-bg-subtle: #fcfaf6;
+  --color-bg-alt: #f5f0e6;
+  --color-surface: #ffffff;
+  --color-border: #e8e1d5;
+  --color-border-hover: #d5cbba;
+
+  /* Tipografie */
+  --color-text-primary: #121f16;
+  --color-text-secondary: #3b4d41;
+  --color-text-muted: #64756b;
+  --color-text-inverse: #ffffff;
+
+  /* Fonturi */
+  --font-main: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Dimensiuni și Spațiere */
+  --max-width: 1260px;
+  --header-height: 80px;
+  --topbar-height: 42px;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-full: 9999px;
+
+  /* Umbre Tehnice */
+  --shadow-sm: 0 1px 3px 0 rgba(11, 36, 22, 0.06);
+  --shadow-md: 0 4px 10px -2px rgba(11, 36, 22, 0.08), 0 2px 4px -2px rgba(11, 36, 22, 0.04);
+  --shadow-lg: 0 12px 24px -4px rgba(11, 36, 22, 0.1), 0 4px 8px -4px rgba(11, 36, 22, 0.05);
+  --shadow-xl: 0 24px 42px -6px rgba(11, 36, 22, 0.14), 0 10px 16px -8px rgba(11, 36, 22, 0.08);
+  --shadow-amber: 0 10px 25px -4px rgba(194, 120, 46, 0.38);
+  --shadow-whatsapp: 0 10px 25px -5px rgba(37, 211, 102, 0.35);
+
+  /* Tranziții */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Reset & Setări Globale */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-height) + 14px);
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--color-bg-main);
+  color: var(--color-text-primary);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  max-width: 100vw;
+  overflow-wrap: break-word;
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast);
+}
+
+button, input, textarea, select, a {
+  font: inherit;
+  color: inherit;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Utilitare Layout */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.section-padding {
+  padding-top: 3.75rem;
+  padding-bottom: 3.75rem;
+}
+
+.bg-subtle {
+  background-color: var(--color-bg-subtle);
+}
+
+.bg-main {
+  background-color: var(--color-bg-main);
+}
+
+.bg-alt {
+  background-color: var(--color-bg-alt);
+}
+
+.bg-dark {
+  background-color: var(--color-brand-forest);
+  color: var(--color-text-inverse);
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Topbar Informativ & Legal */
+.topbar {
+  background-color: var(--color-brand-dark);
+  color: #a3b8aa;
+  font-size: 0.8125rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.topbar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.topbar-items {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.topbar-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.topbar-item svg {
+  width: 15px;
+  height: 15px;
+  color: var(--color-timber-honey);
+  flex-shrink: 0;
+}
+
+.topbar-item a:hover {
+  color: #ffffff;
+}
+
+.topbar-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background-color: rgba(45, 106, 79, 0.35);
+  border: 1px solid rgba(64, 145, 108, 0.4);
+  padding: 0.2rem 0.65rem;
+  border-radius: var(--radius-full);
+  color: #d1fae5;
+  font-weight: 600;
+  font-size: 0.775rem;
+}
+
+/* Header Sticky cu Logo & Meniu Principal */
+.header-sticky {
+  position: sticky;
+  top: 0;
+  z-index: 10002;
+  background-color: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border);
+  transition: box-shadow var(--transition-normal), background-color var(--transition-normal);
+}
+
+.header-scrolled {
+  box-shadow: var(--shadow-md);
+}
+
+.navbar {
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.brand-logo img {
+  height: 38px;
+  width: auto;
+  max-width: 175px;
+}
+
+/* Navigație Principală */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  list-style: none;
+}
+
+.nav-link {
+  font-size: 0.825rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  padding: 0.4rem 0.1rem;
+  position: relative;
+  white-space: nowrap;
+}
+
+.nav-link:hover {
+  color: var(--color-brand-spruce);
+}
+
+.nav-link.active {
+  color: var(--color-brand-forest);
+  font-weight: 700;
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2.5px;
+  background-color: var(--color-timber-amber);
+  border-radius: var(--radius-full);
+}
+
+/* Butoane & Acțiuni Nav */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.nav-actions .btn-sm {
+  padding: 0.45rem 0.85rem;
+  font-size: 0.8rem;
+}
+
+/* Badge Contact Vânzări pe un Singur Rând */
+.header-phone-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.65rem;
+  background-color: var(--color-timber-amber-light);
+  border: 1.5px solid rgba(194, 120, 46, 0.35);
+  border-radius: var(--radius-full);
+  white-space: nowrap !important;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.header-phone-badge:hover {
+  background-color: #fef3c7;
+  border-color: var(--color-timber-amber);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(194, 120, 46, 0.18);
+}
+
+.header-phone-icon {
+  width: 26px;
+  height: 26px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-timber-amber);
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.header-phone-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  white-space: nowrap !important;
+}
+
+.header-phone-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2px;
+  color: var(--color-brand-forest);
+  white-space: nowrap !important;
+}
+
+@media (max-width: 1460px) {
+  .header-phone-label {
+    display: none;
+  }
+}
+
+.header-phone-number {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--color-timber-amber);
+  letter-spacing: -0.1px;
+  white-space: nowrap !important;
+}
+
+/* Backward compatibility for phone-quicklink */
+.phone-quicklink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap !important;
+}
+
+.phone-quicklink-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-full);
+  background: var(--color-timber-amber-light);
+  border: 1px solid rgba(194, 120, 46, 0.25);
+  color: var(--color-timber-amber);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.phone-quicklink-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  white-space: nowrap !important;
+}
+
+.phone-quicklink-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-brand-forest);
+  white-space: nowrap !important;
+}
+
+.phone-quicklink-number {
+  font-size: 0.925rem;
+  font-weight: 800;
+  color: var(--color-timber-amber);
+  white-space: nowrap !important;
+}
+
+/* Butoane Globale */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  padding: 0.85rem 1.65rem;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  text-align: center;
+  white-space: normal;
+  line-height: 1.35;
+  box-sizing: border-box;
+}
+
+.btn-primary {
+  background-color: var(--color-timber-amber);
+  color: #ffffff;
+  box-shadow: var(--shadow-amber);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-timber-amber-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px -4px rgba(194, 120, 46, 0.45);
+}
+
+.btn-secondary {
+  background-color: var(--color-brand-forest);
+  color: #ffffff;
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-brand-spruce);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--color-brand-forest);
+  border-color: var(--color-brand-forest);
+}
+
+.btn-outline:hover {
+  background-color: var(--color-brand-forest);
+  color: #ffffff;
+}
+
+.btn-outline-white {
+  background-color: transparent;
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.btn-outline-white:hover {
+  background-color: #ffffff;
+  color: var(--color-brand-forest);
+}
+
+.btn-whatsapp {
+  background-color: var(--color-whatsapp);
+  color: #ffffff;
+  box-shadow: var(--shadow-whatsapp);
+}
+
+.btn-whatsapp:hover {
+  background-color: var(--color-whatsapp-hover);
+  transform: translateY(-2px);
+}
+
+.btn-sm {
+  padding: 0.55rem 1.15rem;
+  font-size: 0.85rem;
+  border-radius: var(--radius-sm);
+}
+
+.btn-lg {
+  padding: 1.05rem 2.2rem;
+  font-size: 1.05rem;
+  border-radius: var(--radius-md);
+}
+
+/* Buton Meniu Mobil */
+.mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--color-brand-forest);
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+/* ==========================================================================
+   Hero Section
+   ========================================================================== */
+.hero-section {
+  position: relative;
+  background: linear-gradient(145deg, #fbf9f4 0%, #f4efe2 50%, #ece5d6 100%);
+  padding: 3.25rem 0 3.75rem;
+  overflow: hidden;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: center;
+  gap: 3rem;
+}
+
+.hero-content {
+  max-width: 650px;
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(45, 106, 79, 0.12);
+  border: 1px solid rgba(45, 106, 79, 0.25);
+  padding: 0.35rem 0.95rem;
+  border-radius: var(--radius-full);
+  color: var(--color-brand-green);
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 900;
+  line-height: 1.14;
+  color: var(--color-brand-forest);
+  margin-bottom: 1rem;
+  letter-spacing: -0.8px;
+}
+
+.hero-title span.accent {
+  color: var(--color-timber-amber);
+  position: relative;
+}
+
+.hero-subtitle {
+  font-size: 1.06rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+/* Caseta Ofertă & Preț Hero */
+.hero-price-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+  background: #ffffff;
+  border: 2px solid #d49b35;
+  padding: 1.1rem 1.5rem;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  width: 100%;
+}
+
+.hero-price-thumb {
+  display: none;
+}
+
+.hero-price-main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+}
+
+.hero-price-toprow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.hero-price-toprow .hero-price-tag {
+  display: none;
+}
+
+.hero-price-subline {
+  display: none;
+}
+
+.hero-price-label {
+  font-size: 0.785rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #78350f;
+  letter-spacing: 0.8px;
+}
+
+.hero-price-digits {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  font-size: 2.25rem;
+  font-weight: 900;
+  color: #0d2a1a;
+  line-height: 1.1;
+}
+
+.hero-price-unit {
+  font-size: 1.05rem;
+  color: #d97706;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.hero-price-extra {
+  border-left: 2px solid #e8e1d5;
+  padding-left: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.3rem;
+}
+
+.hero-price-tag {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  background: #ecfdf5;
+  color: #065f46;
+  font-size: 0.825rem;
+  font-weight: 700;
+  padding: 0.22rem 0.65rem;
+  border-radius: 4px;
+}
+
+.hero-price-stock {
+  font-size: 0.85rem;
+  color: #475569;
+  font-weight: 600;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-bottom: 1.75rem;
+}
+
+.hero-trust {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(18, 31, 22, 0.1);
+}
+
+.hero-trust-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.hero-trust-item svg {
+  width: 18px;
+  height: 18px;
+  color: var(--color-brand-green);
+  flex-shrink: 0;
+}
+
+.hero-media {
+  position: relative;
+}
+
+.hero-media-wrapper {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+}
+
+/* ==========================================================================
+   Statistici Rapide (Metrics Counter Strip)
+   ========================================================================== */
+.stats-strip {
+  background-color: var(--color-brand-forest);
+  color: #ffffff;
+  padding: 1.65rem 0;
+  position: relative;
+  z-index: 10;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.25rem;
+  align-items: stretch;
+  text-align: center;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.15rem 0.5rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stat-item:last-child {
+  border-right: none;
+}
+
+.stat-number {
+  font-size: clamp(1.45rem, 1.9vw, 1.95rem);
+  font-weight: 900;
+  line-height: 1.12;
+  min-height: 2.15rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  color: var(--color-timber-honey);
+  margin-bottom: 0.25rem;
+  letter-spacing: -0.5px;
+}
+
+.stat-label {
+  font-size: 0.88rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: #d1e2d7;
+}
+
+/* ==========================================================================
+   Titluri & Secțiuni Generale
+   ========================================================================== */
+.section-header {
+  max-width: 760px;
+  margin: 0 auto 2.25rem;
+  text-align: center;
+}
+
+.section-tag {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.1px;
+  color: var(--color-timber-amber);
+  background-color: var(--color-timber-amber-light);
+  border: 1px solid rgba(194, 120, 46, 0.2);
+  padding: 0.3rem 0.85rem;
+  border-radius: var(--radius-full);
+  margin-bottom: 0.65rem;
+}
+
+.section-title {
+  font-size: 2.15rem;
+  font-weight: 900;
+  line-height: 1.22;
+  color: var(--color-brand-forest);
+  margin-bottom: 0.65rem;
+  letter-spacing: -0.5px;
+}
+
+.section-subtitle {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   Grilă Produse & Servicii
+   ========================================================================== */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.cards-grid.cards-grid-4 {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+.service-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-top: 3px solid var(--color-timber-amber);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem 1.35rem;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-timber-amber);
+  box-shadow: var(--shadow-lg);
+}
+
+.service-icon-box {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-md);
+  background-color: var(--color-timber-amber-light);
+  border: 1px solid rgba(194, 120, 46, 0.25);
+  color: var(--color-timber-amber);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.85rem;
+  flex-shrink: 0;
+}
+
+.service-icon-box svg {
+  width: 21px;
+  height: 21px;
+}
+
+.service-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  min-height: 1.85rem;
+}
+
+#produse .service-card-header {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 0.55rem;
+}
+
+.service-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 0.5rem;
+}
+
+.service-card-top .service-icon-box {
+  margin-bottom: 0;
+}
+
+.service-card-header.auth-card-header {
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 0.6rem;
+}
+
+.service-card-header.auth-card-header .service-icon-box {
+  margin-bottom: 0;
+  width: 38px;
+  height: 38px;
+}
+
+.service-card-title {
+  font-size: 1.16rem;
+  font-weight: 800;
+  color: var(--color-brand-forest);
+  margin-bottom: 0;
+  line-height: 1.25;
+}
+
+.service-card-price {
+  font-weight: 800;
+  color: #b45309;
+  background: #fef8f0;
+  border: 1px solid rgba(217, 119, 6, 0.25);
+  padding: 0.18rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+  line-height: 1.3;
+}
+
+.service-card-badge {
+  font-weight: 700;
+  font-size: 0.78rem;
+  padding: 0.18rem 0.6rem;
+  border-radius: 6px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  line-height: 1.3;
+}
+
+.service-card-desc {
+  font-size: 0.88rem;
+  color: var(--color-text-secondary);
+  line-height: 1.55;
+  margin-bottom: 0.95rem;
+  flex-grow: 1;
+}
+
+.service-card-list {
+  list-style: none;
+  margin-bottom: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-size: 0.84rem;
+  color: var(--color-text-secondary);
+}
+
+.service-card-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.45rem;
+  line-height: 1.42;
+}
+
+.service-card-list li svg {
+  width: 15px;
+  height: 15px;
+  color: var(--color-brand-green);
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+.service-card-footer {
+  margin-top: auto;
+  padding-top: 0.95rem;
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.service-card-actions {
+  display: grid;
+  grid-template-columns: 1.18fr 0.82fr;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.service-card-actions .btn {
+  white-space: nowrap;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+.service-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-timber-amber);
+}
+
+/* ==========================================================================
+   Casete Detaliate Servicii & Produse (servicii.html)
+   ========================================================================== */
+.service-detail-box {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 2.75rem;
+  background: #ffffff;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-normal);
+}
+
+.service-detail-box:hover {
+  border-color: rgba(194, 120, 46, 0.4);
+  box-shadow: var(--shadow-md);
+}
+
+.service-detail-grid {
+  display: grid;
+  grid-template-columns: 1.12fr 0.88fr;
+  gap: 2.75rem;
+  align-items: stretch;
+}
+
+.service-detail-main {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.service-spec-bullets {
+  list-style: none;
+  margin: 0 0 1.25rem 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.55rem;
+  color: #1e293b;
+  line-height: 1.4;
+  font-size: 0.88rem;
+}
+
+.service-spec-bullets li {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: #f8fafc;
+  border: 1px solid #e5e0d5;
+  border-radius: 8px;
+  padding: 0.5rem 0.7rem;
+}
+
+.service-spec-bullets li::before {
+  content: '✓';
+  color: var(--color-brand-green);
+  font-weight: 900;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.service-detail-cta {
+  margin-top: auto;
+  padding-top: 1.5rem;
+}
+
+.service-detail-aside {
+  background: var(--color-bg-subtle);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.service-detail-aside-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #0d2a1a;
+  margin-bottom: 0.85rem;
+  line-height: 1.3;
+}
+
+.service-detail-aside-desc {
+  font-size: 0.9rem;
+  color: #4a5568;
+  line-height: 1.6;
+  margin-bottom: 1.15rem;
+}
+
+.service-detail-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  font-size: 0.9rem;
+  color: #3b4d41;
+  margin-bottom: 1.25rem;
+  border-top: 1px solid rgba(232, 225, 213, 0.85);
+}
+
+.service-detail-list li {
+  display: grid;
+  grid-template-columns: 170px 1fr;
+  gap: 0.85rem;
+  align-items: baseline;
+  line-height: 1.55;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(232, 225, 213, 0.85);
+}
+
+.service-detail-list li strong {
+  color: #0d2a1a;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.service-detail-list li svg {
+  width: 16px;
+  height: 16px;
+  color: var(--color-brand-green);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.service-detail-callout {
+  padding: 1rem 1.15rem;
+  border-radius: 4px 10px 10px 4px;
+  border: 1px solid transparent;
+  border-left-width: 4px;
+  border-left-style: solid;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  margin-top: auto;
+  width: 100%;
+}
+
+.service-link:hover {
+  color: var(--color-timber-amber-hover);
+  transform: translateX(3px);
+}
+
+/* ==========================================================================
+   Calculator Interactiv: Taburi Paleți Lemn Foc & Grinzi Cer/Gorun
+   ========================================================================== */
+.calc-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1.75rem;
+  background: #0d2a1a;
+  padding: 0.4rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 6px 18px rgba(13, 42, 26, 0.14);
+  width: fit-content;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  z-index: 2;
+}
+
+.calc-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.7rem 1.3rem;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  background: rgba(255, 255, 255, 0.05);
+  color: #d1fae5;
+  font-family: var(--font-main);
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+}
+
+.calc-tab-btn:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.calc-tab-btn.active {
+  background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 14px rgba(217, 119, 6, 0.4);
+}
+
+.calc-tab-btn svg {
+  flex-shrink: 0;
+}
+
+.calc-tab-text-mobile {
+  display: none;
+}
+
+.calc-tab-panel {
+  display: none;
+  animation: calcFadeIn 0.3s ease forwards;
+}
+
+.calc-tab-panel.active {
+  display: block;
+}
+
+.calc-panel-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+#panelPaleti .calc-panel-header::after,
+#panelGrinzi .calc-panel-header::after,
+#panelPodele .calc-panel-header::after {
+  content: '950 LEI / palet (~2.5 MC)';
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #f3b772;
+  background: rgba(243, 183, 114, 0.14);
+  border: 1px solid rgba(243, 183, 114, 0.35);
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-bottom: 0.35rem;
+}
+
+#panelGrinzi .calc-panel-header::after {
+  content: '10×10 – 25×25 cm';
+}
+
+#panelPodele .calc-panel-header::after {
+  content: 'Grosime 20–40 mm';
+  color: #86efac;
+  background: rgba(134, 239, 172, 0.14);
+  border-color: rgba(134, 239, 172, 0.35);
+}
+
+.calc-panel-title {
+  font-size: 2.1rem;
+  font-weight: 900;
+  margin: 0.35rem 0 0;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+.calc-panel-desc {
+  color: #d1fae5;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+@keyframes calcFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.calc-wrapper {
+  background: linear-gradient(135deg, #0b2416 0%, #143e26 100%);
+  border-radius: var(--radius-xl);
+  padding: 3.5rem;
+  color: #ffffff;
+  box-shadow: var(--shadow-xl);
+  position: relative;
+  overflow: hidden;
+}
+
+.calc-wrapper::after {
+  content: '';
+  position: absolute;
+  right: -50px;
+  bottom: -50px;
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(223, 145, 66, 0.18) 0%, rgba(223, 145, 66, 0) 70%);
+  border-radius: var(--radius-full);
+  pointer-events: none;
+}
+
+.calc-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.calc-grid > * {
+  min-width: 0;
+}
+
+.calc-inputs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+  align-items: start;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  min-width: 0;
+}
+
+.form-group-full {
+  grid-column: span 2;
+}
+
+.form-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #d1fae5;
+  line-height: 1.35;
+}
+
+.form-control {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  min-height: 48px;
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1rem;
+  color: #ffffff;
+  font-size: 0.95rem;
+  transition: all var(--transition-fast);
+}
+
+.form-control:focus {
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: var(--color-timber-honey);
+  box-shadow: 0 0 0 3px rgba(243, 183, 114, 0.25);
+}
+
+select.form-control {
+  background-color: #133321;
+  color: #ffffff;
+  color-scheme: dark;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+select.form-control:focus {
+  background-color: #173d28;
+}
+
+select.form-control option,
+.form-control option {
+  background-color: #133321;
+  color: #ffffff;
+}
+
+/* Touch Stepper Controls (- / +) */
+.calc-stepper {
+  display: flex;
+  align-items: stretch;
+  height: 48px;
+  min-height: 48px;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.calc-stepper:focus-within {
+  border-color: var(--color-timber-honey);
+  box-shadow: 0 0 0 3px rgba(243, 183, 114, 0.25);
+}
+
+.calc-stepper .form-control {
+  border: none !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  text-align: center;
+  font-weight: 800;
+  font-size: 1.1rem;
+  padding: 0.65rem 0.5rem;
+  box-shadow: none !important;
+  -moz-appearance: textfield;
+}
+
+.calc-stepper .form-control::-webkit-outer-spin-button,
+.calc-stepper .form-control::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.stepper-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  min-height: 46px;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #f3b772;
+  font-size: 1.35rem;
+  font-weight: 800;
+  line-height: 1;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color var(--transition-fast), color var(--transition-fast), transform 0.1s ease;
+}
+
+.stepper-btn:hover {
+  background: rgba(217, 119, 6, 0.35);
+  color: #ffffff;
+}
+
+.stepper-btn:active {
+  background: var(--color-timber-amber);
+  color: #ffffff;
+  transform: scale(0.95);
+}
+
+.calc-result-box {
+  background-color: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: var(--radius-lg);
+  padding: 2.25rem;
+  text-align: center;
+  backdrop-filter: blur(8px);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.calc-result-box.calc-updated {
+  border-color: rgba(243, 183, 114, 0.65);
+}
+
+.calc-result-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.calc-result-eyebrow {
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  color: #a7f3d0;
+  font-weight: 700;
+}
+
+.calc-val-big {
+  font-size: 3.4rem;
+  font-weight: 900;
+  color: var(--color-timber-honey);
+  line-height: 1;
+  margin: 0.55rem 0 0.35rem;
+}
+
+.calc-val-currency {
+  font-size: 1.65rem;
+  font-weight: 800;
+}
+
+.calc-val-unit {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #a7f3d0;
+}
+
+.calc-result-actions {
+  margin-top: 1.65rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.calc-metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.85rem;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.calc-metric-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.15rem;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 0.5rem;
+}
+
+.calc-metric-label {
+  font-size: 0.75rem;
+  color: #a3b8aa;
+  line-height: 1.3;
+}
+
+.calc-metric-val {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.3;
+}
+
+/* Selector Rapid Valori (Paleți / Bucăți / MP) */
+.quick-mp-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin-top: 0.45rem;
+}
+
+.quick-mp-label {
+  font-size: 0.75rem;
+  color: #a3b8aa;
+  font-weight: 600;
+  margin-left: 0.15rem;
+}
+
+.quick-mp-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: var(--radius-full);
+  color: #d1fae5;
+  font-size: 0.785rem;
+  font-weight: 700;
+  padding: 0.3rem 0.75rem;
+  min-height: 32px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.quick-mp-btn:hover,
+.quick-mp-btn.active {
+  background: var(--color-timber-amber);
+  color: #ffffff;
+  border-color: var(--color-timber-amber);
+  transform: translateY(-1px);
+}
+
+/* Grilă Despre Noi */
+.about-main-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 3.5rem;
+  align-items: start;
+}
+
+.fiscal-spec-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  font-size: 0.925rem;
+}
+
+.fiscal-spec-list li {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  align-items: baseline;
+  border-bottom: 1px solid var(--color-border);
+  padding: 0.7rem 0;
+}
+
+.fiscal-spec-list li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.fiscal-spec-list li span {
+  color: #64756b;
+}
+
+.fiscal-spec-list li strong {
+  text-align: right;
+}
+
+/* Grilă Beneficii Calculator */
+.calc-benefits-grid {
+  margin-top: 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.calc-benefit-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+  color: #d1fae5;
+  line-height: 1.4;
+}
+
+/* Card Notificare SUMAL */
+.sumal-notice-card {
+  max-width: 960px;
+  margin: 0 auto 2.5rem;
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  border: 1.5px solid #86efac;
+  border-left: 5px solid #16a34a;
+  border-radius: var(--radius-lg);
+  padding: 1.5rem 1.75rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.sumal-notice-inner {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.sumal-notice-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #0d2a1a;
+  margin-bottom: 0.25rem;
+  line-height: 1.25;
+}
+
+.sumal-notice-desc {
+  font-size: 0.9rem;
+  color: #166534;
+  font-weight: 600;
+  margin-bottom: 0;
+  line-height: 1.45;
+}
+
+/* ==========================================================================
+   Tabel Tehnic Esențe Lemn
+   ========================================================================== */
+.table-container {
+  overflow-x: auto;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  background-color: #ffffff;
+}
+
+.tech-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.925rem;
+}
+
+.tech-table th {
+  background-color: var(--color-bg-alt);
+  color: var(--color-brand-forest);
+  font-weight: 800;
+  padding: 1.1rem 1.25rem;
+  border-bottom: 2px solid var(--color-border);
+}
+
+.tech-table td {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+}
+
+.tech-table tr:hover td {
+  background-color: var(--color-bg-subtle);
+}
+
+/* ==========================================================================
+   De ce Timber Specialist (Features Grid)
+   ========================================================================== */
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.75rem;
+}
+
+.why-card {
+  background-color: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  transition: all var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.why-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-brand-green);
+  box-shadow: var(--shadow-md);
+}
+
+.why-icon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 1.25rem;
+  border-radius: var(--radius-full);
+  background-color: var(--color-brand-green-bg);
+  color: var(--color-brand-green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.why-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.why-card h3 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--color-brand-forest);
+  margin-bottom: 0.6rem;
+  min-height: 3.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.3;
+}
+
+.why-card p {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  flex-grow: 1;
+}
+
+/* ==========================================================================
+   Portofoliu & Catalog Produse cu Filtre
+   ========================================================================== */
+.filter-tabs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-bottom: 3rem;
+}
+
+.filter-btn {
+  background-color: var(--color-bg-subtle);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+  font-weight: 700;
+  font-size: 0.875rem;
+  padding: 0.6rem 1.35rem;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.filter-btn:hover {
+  background-color: var(--color-bg-alt);
+  color: var(--color-brand-forest);
+}
+
+.filter-btn.active {
+  background-color: var(--color-brand-forest);
+  color: #ffffff;
+  border-color: var(--color-brand-forest);
+  box-shadow: var(--shadow-sm);
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.project-card {
+  background-color: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--color-timber-amber);
+  box-shadow: var(--shadow-lg);
+}
+
+.project-media {
+  height: 210px;
+  background-color: var(--color-bg-alt);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background-color: rgba(7, 25, 15, 0.85);
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-full);
+  backdrop-filter: blur(4px);
+}
+
+.project-content {
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.project-title {
+  font-size: 1.22rem;
+  font-weight: 800;
+  color: var(--color-brand-forest);
+  margin-bottom: 0.55rem;
+  min-height: 3.1rem;
+  display: flex;
+  align-items: flex-start;
+  line-height: 1.3;
+}
+
+.project-scope {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+  flex-grow: 1;
+}
+
+.project-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border);
+  margin-top: auto;
+  white-space: nowrap;
+}
+
+.project-meta span:last-child {
+  text-align: right;
+}
+
+/* ==========================================================================
+   Insigne Calitate & Parteneri (Logos Bar)
+   ========================================================================== */
+.seals-bar {
+  background-color: #ffffff;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  padding: 3rem 0;
+}
+
+.seals-grid {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+}
+
+.seal-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  max-width: 260px;
+}
+
+.seal-img {
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+}
+
+.seal-item-text h4 {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--color-brand-forest);
+}
+
+.seal-item-text p {
+  font-size: 0.785rem;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+}
+
+/* ==========================================================================
+   FAQ Accordion
+   ========================================================================== */
+.faq-list {
+  max-width: 820px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.faq-item {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: #ffffff;
+  overflow: hidden;
+  transition: border-color var(--transition-fast);
+}
+
+.faq-item.active {
+  border-color: var(--color-timber-amber);
+}
+
+.faq-question {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 1.35rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--color-brand-forest);
+  cursor: pointer;
+  gap: 1rem;
+}
+
+.faq-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-bg-alt);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform var(--transition-normal);
+}
+
+.faq-item.active .faq-icon {
+  transform: rotate(180deg);
+  background-color: var(--color-timber-amber);
+  color: #ffffff;
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--transition-normal);
+}
+
+.faq-answer-inner {
+  padding: 0 1.5rem 1.5rem;
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+
+/* ==========================================================================
+   Formular Contact & Cerere Ofertă (Lead Form)
+   ========================================================================== */
+.contact-section-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 3rem;
+  align-items: stretch;
+}
+
+.contact-info-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.25rem;
+  background-color: var(--color-bg-subtle);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: 2.75rem;
+  height: 100%;
+}
+
+.contact-info-panel .section-tag {
+  align-self: flex-start;
+}
+
+.contact-card-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  transition: all var(--transition-fast);
+}
+
+.contact-card-item:hover {
+  border-color: var(--color-timber-amber);
+  box-shadow: var(--shadow-sm);
+}
+
+.contact-card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background-color: var(--color-timber-amber-light);
+  color: var(--color-timber-amber);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.contact-card-title {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--color-text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.contact-card-val {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--color-brand-forest);
+}
+
+.contact-card-sub {
+  font-size: 0.82rem;
+  color: #64756b;
+  margin-top: 0.18rem;
+  line-height: 1.3;
+}
+
+.quote-box {
+  background-color: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: 2.75rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.form-alert {
+  display: none;
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+  align-items: end;
+}
+
+.form-row.form-row-product {
+  grid-template-columns: 1.35fr 0.65fr;
+}
+
+.form-row .form-label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.input-light {
+  width: 100%;
+  background-color: #ffffff;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 0.85rem 1rem;
+  font-size: 0.95rem;
+  color: var(--color-text-primary);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.input-light:focus {
+  outline: none;
+  border-color: var(--color-timber-amber);
+  box-shadow: 0 0 0 3px rgba(194, 120, 46, 0.2);
+}
+
+select.input-light {
+  color-scheme: light;
+}
+
+select.input-light option,
+.input-light option {
+  background-color: #ffffff;
+  color: #0d2a1a;
+}
+
+/* ==========================================================================
+   CTA Banner Card (Contrast Cald Stejar înainte de Footer)
+   ========================================================================== */
+.cta-banner-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+  border: 2px solid #f59e0b;
+  border-left: 6px solid #d97706;
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 2.25rem;
+  box-shadow: var(--shadow-md);
+}
+
+.cta-banner-text h2 {
+  font-size: 1.55rem;
+  font-weight: 900;
+  color: var(--color-brand-forest);
+  margin-bottom: 0.25rem;
+  line-height: 1.2;
+}
+
+.cta-banner-text p {
+  font-size: 0.95rem;
+  color: #78350f;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+.cta-banner-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.site-footer {
+  background-color: var(--color-brand-dark);
+  color: #94a89b;
+  padding-top: 3.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1.4fr;
+  gap: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.footer-col-about {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.footer-fiscal-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.35rem;
+}
+
+.fiscal-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  color: #d1fae5;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.fiscal-badge .fiscal-label {
+  color: #9cb3a4;
+  font-weight: 600;
+}
+
+.footer-col h4 {
+  color: #ffffff;
+  font-size: 1.05rem;
+  font-weight: 800;
+  margin-bottom: 1.25rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.footer-col h4::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 32px;
+  height: 2px;
+  background-color: var(--color-timber-amber);
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  font-size: 0.925rem;
+}
+
+.footer-links a:hover {
+  color: #ffffff;
+  transform: translateX(3px);
+}
+
+.footer-contact-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  font-size: 0.9rem;
+}
+
+.footer-contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.footer-contact-item svg {
+  width: 18px;
+  height: 18px;
+  color: var(--color-timber-honey);
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
+.footer-bottom {
+  padding: 1.75rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.825rem;
+  color: #728a7b;
+}
+
+.footer-bottom-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-bottom-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.footer-bottom-links a:hover {
+  color: #ffffff;
+}
+
+/* Floating Action Button WhatsApp */
+.floating-whatsapp {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 999;
+  width: 60px;
+  height: 60px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-whatsapp);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-whatsapp);
+  transition: transform var(--transition-fast), background-color var(--transition-fast);
+}
+
+.floating-whatsapp:hover {
+  background-color: var(--color-whatsapp-hover);
+  transform: scale(1.1);
+}
+
+.floating-whatsapp svg {
+  width: 34px;
+  height: 34px;
+}
+
+/* ==========================================================================
+   Mobile Bottom Bar & Navigation Drawer Enhancements
+   ========================================================================== */
+.calc-anchor-target {
+  display: block;
+  height: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.mobile-bottom-bar {
+  display: none;
+}
+
+.mobile-drawer-cta {
+  display: none;
+}
+
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 28, 18, 0.68);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 10000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-normal);
+}
+
+.nav-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+body.drawer-open {
+  overflow: hidden !important;
+}
+
+body.drawer-open .header-sticky {
+  z-index: 10002;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  background-color: #ffffff;
+}
+
+body.drawer-open .mobile-bottom-bar {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.input-prefilled-flash {
+  border-color: var(--color-timber-amber) !important;
+  background-color: #fffbeb !important;
+  box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.28) !important;
+  transition: all 0.25s ease !important;
+}
+
+.sumal-notice-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.65rem;
+}
+
+.sumal-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.22rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  background: #ffffff;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+}
+
+.sumal-pill-green {
+  background: #166534;
+  color: #ffffff;
+  border-color: #166534;
+}
+
+

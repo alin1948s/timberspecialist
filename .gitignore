@@ -1,0 +1,14 @@
+# Date ale comenzilor conțin informații personale și rămân doar pe serverul privat.
+/data/orders.json
+/.env
+/.env.*
+!/.env.example
+
+# Fișiere de verificare locală, nefolosite în README
+/screenshots/footer-desktop.png
+/screenshots/try.png
+
+# Fișiere locale ale sistemului și editorului
+Thumbs.db
+.DS_Store
+.vscode/

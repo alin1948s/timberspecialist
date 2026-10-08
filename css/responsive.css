@@ -1,0 +1,2001 @@
+/* ==========================================================================
+   TIMBER SPECIALIST S.R.L. - Responsive Breakpoints & Mobile Adaptability
+   ========================================================================== */
+
+/* Ecrane mari / Laptops medii (sub 1200px) */
+@media (max-width: 1200px) {
+  .hero-title {
+    font-size: 2.75rem;
+  }
+
+  .navbar {
+    gap: 0.4rem;
+  }
+
+  .brand-logo img {
+    height: 32px;
+    max-width: 135px;
+  }
+
+  .nav-menu {
+    gap: 0.35rem;
+  }
+
+  .nav-link {
+    font-size: 0.75rem;
+    padding: 0.35rem 0.05rem;
+  }
+
+  .nav-actions {
+    gap: 0.35rem;
+  }
+
+  .header-phone-badge {
+    padding: 0.3rem 0.55rem;
+    gap: 0.3rem;
+  }
+
+  .header-phone-icon {
+    width: 22px;
+    height: 22px;
+  }
+
+  .header-phone-number {
+    font-size: 0.78rem;
+  }
+
+  .nav-actions .btn-sm {
+    padding: 0.35rem 0.55rem;
+    font-size: 0.74rem;
+  }
+
+  /* Compact header phone badge on medium laptop screens */
+  .header-phone-label {
+    display: none;
+  }
+
+  .hero-price-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .hero-price-extra {
+    border-left: none;
+    padding-left: 0;
+    border-top: 1px solid #e8e1d5;
+    padding-top: 0.75rem;
+    width: 100%;
+  }
+
+  .service-detail-box {
+    padding: 2rem;
+  }
+
+  .service-detail-grid {
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 2rem;
+  }
+
+  .service-detail-aside {
+    padding: 1.5rem;
+  }
+
+  .service-detail-list li {
+    grid-template-columns: 140px 1fr;
+    gap: 0.75rem;
+  }
+
+  .service-detail-list li strong {
+    white-space: normal;
+  }
+
+  .cards-grid,
+  .cards-grid.cards-grid-4,
+  .portfolio-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .why-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-grid {
+    grid-template-columns: 1.2fr 1fr 1fr 1.2fr;
+    gap: 2rem;
+  }
+}
+
+/* Tablete Landscape & Portret (sub 1024px) */
+@media (max-width: 1024px) {
+  :root {
+    --header-height: 68px;
+  }
+
+  .topbar-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .topbar-items {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  /* Navigație Mobilă Tip Drawer Off-Canvas */
+  .header-sticky {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background-color: #ffffff;
+  }
+
+  .mobile-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: var(--radius-md);
+    background: rgba(13, 42, 26, 0.05);
+    z-index: 1001;
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: min(320px, 86vw);
+    height: 100vh;
+    height: 100dvh;
+    background-color: var(--color-surface);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 4.75rem 1.5rem calc(2.25rem + env(safe-area-inset-bottom, 0px));
+    gap: 0.35rem;
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.25);
+    transform: translateX(105%);
+    visibility: hidden;
+    pointer-events: none;
+    transition: transform var(--transition-normal), visibility var(--transition-normal);
+    z-index: 1000;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
+    overscroll-behavior: contain;
+  }
+
+  .nav-menu.open {
+    transform: translateX(0);
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .nav-menu > li {
+    width: 100%;
+  }
+
+  .nav-link {
+    font-size: 1.02rem;
+    width: 100%;
+    border-bottom: 1px solid var(--color-border);
+    padding: 0.7rem 0;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
+  .mobile-drawer-cta {
+    display: flex !important;
+    flex-direction: column;
+    gap: 0.55rem;
+    width: 100%;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .nav-actions .btn-sm {
+    display: none;
+  }
+
+  /* Hero Section */
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    text-align: center;
+  }
+
+  .hero-content {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .hero-trust {
+    justify-content: center;
+  }
+
+  .hero-media {
+    max-width: 540px;
+    margin: 0 auto;
+  }
+
+  /* Statistici */
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+
+  .stat-item:nth-child(2n) {
+    border-right: none;
+  }
+
+  .stat-item:nth-child(1),
+  .stat-item:nth-child(2) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 1rem;
+  }
+
+  /* Calculator: Reordonare inteligentă (Inputs -> Result Box -> Benefits) */
+  .calc-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.15rem;
+  }
+
+  .calc-col-inputs {
+    display: contents;
+  }
+
+  .calc-panel-header {
+    order: 1;
+    width: 100%;
+  }
+
+  .calc-inputs-grid {
+    order: 2;
+    width: 100%;
+    margin-top: 0;
+  }
+
+  .calc-col-result {
+    order: 3;
+    width: 100%;
+  }
+
+  .calc-benefits-grid {
+    order: 4;
+    width: 100%;
+    margin-top: 0;
+  }
+
+  .calc-wrapper {
+    padding: 2.5rem 1.75rem;
+  }
+
+  /* Contact & Formular */
+  .contact-section-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  /* Servicii Detail Box & About Grid */
+  .service-detail-grid,
+  .about-main-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  /* Footer */
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+}
+
+/* ==========================================================================
+   Telefoane Mobile (sub 768px) - Optimizare Compactă & Densă (Fără Scroll Excesiv)
+   ========================================================================== */
+@media (max-width: 768px) {
+  :root {
+    --header-height: 50px;
+  }
+
+  html {
+    scroll-padding-top: 56px;
+  }
+
+  /* Spațiu sigur la baza paginii pentru Mobile Bottom Bar compact */
+  body {
+    padding-bottom: calc(52px + env(safe-area-inset-bottom, 0px)) !important;
+    font-size: 0.85rem;
+    line-height: 1.42;
+  }
+
+  /* Ascunde Topbar pe mobil pentru a economisi spațiu util */
+  .topbar,
+  .site-topbar {
+    display: none !important;
+  }
+
+  .container {
+    padding-left: 1.05rem;
+    padding-right: 1.05rem;
+  }
+
+  /* Înălțime secțiuni echilibrată și aerisită pe mobil */
+  .section-padding,
+  section.section-padding[style] {
+    padding-top: 1.65rem !important;
+    padding-bottom: 1.65rem !important;
+  }
+
+  .section-padding > .container[style*="gap"] {
+    gap: 1rem !important;
+  }
+
+  .section-header,
+  .section-header[style] {
+    margin-bottom: 1rem !important;
+  }
+
+  #produse .section-header {
+    text-align: left;
+    margin-bottom: 0.9rem !important;
+  }
+
+  .section-tag {
+    font-size: 0.66rem;
+    padding: 0.22rem 0.65rem;
+    margin-bottom: 0.32rem;
+    letter-spacing: 0.6px;
+  }
+
+  /* Titluri Secțiuni & Scala automată pentru titlurile cu font-size inline */
+  .section-title,
+  main h1.section-title,
+  main h2.section-title {
+    font-size: clamp(1.26rem, 4.9vw, 1.48rem) !important;
+    line-height: 1.2 !important;
+    margin-bottom: 0.25rem !important;
+  }
+
+  main h2[style*="font-size"] {
+    font-size: clamp(1.16rem, 4.5vw, 1.36rem) !important;
+    line-height: 1.2 !important;
+    margin-top: 0.1rem !important;
+    margin-bottom: 0.35rem !important;
+  }
+
+  .section-subtitle,
+  main p[style*="max-width"] {
+    font-size: 0.78rem !important;
+    line-height: 1.38 !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  /* Ascunde subtitlurile redundante de secțiune pe mobil pentru un aspect e-commerce curat */
+  #produse .section-subtitle,
+  .bg-alt:not(:first-of-type) .section-subtitle,
+  .calc-panel-desc {
+    display: none !important;
+  }
+
+  .bg-dark.section-padding div[style*="gap"] {
+    gap: 0.45rem !important;
+  }
+
+  /* Header & Logo Mobil Curat și Aliniat */
+  .header-sticky {
+    padding: 0.2rem 0;
+  }
+
+  .navbar {
+    height: 54px;
+    gap: 0.5rem;
+  }
+
+  .brand-logo img {
+    height: 32px;
+    width: auto;
+    max-width: 162px;
+  }
+
+  .nav-actions {
+    margin-left: auto;
+  }
+
+  .header-phone-badge {
+    padding: 0.28rem 0.65rem;
+    gap: 0.35rem;
+    background-color: #f6f1e7;
+    border: 1px solid #dfd5c1;
+  }
+
+  .header-phone-label {
+    display: none !important;
+  }
+
+  .header-phone-text {
+    display: inline-flex !important;
+  }
+
+  .header-phone-number {
+    font-size: 0.76rem;
+    color: #0d2a1a;
+    font-weight: 800;
+  }
+
+  .header-phone-icon {
+    width: 22px;
+    height: 22px;
+  }
+
+  .header-phone-icon svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .mobile-toggle {
+    width: 38px;
+    height: 38px;
+    padding: 0.25rem;
+  }
+
+  /* Meniu Mobil Drawer Compact */
+  .nav-menu {
+    padding: 3.5rem 1.1rem calc(1.25rem + env(safe-area-inset-bottom, 0px));
+    gap: 0.15rem;
+  }
+
+  .nav-link {
+    font-size: 0.88rem;
+    padding: 0.45rem 0;
+    min-height: 36px;
+  }
+
+  /* CTA în interiorul meniului mobil (Drawer) */
+  .mobile-drawer-cta {
+    margin-top: 0.65rem;
+    padding-top: 0.65rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  /* Câmpuri de formular compacte */
+  input,
+  select,
+  textarea,
+  .form-control,
+  .input-light {
+    font-size: 0.82rem !important;
+  }
+
+  /* Butoane pe Mobil */
+  .btn {
+    min-height: 38px;
+    padding: 0.45rem 0.85rem;
+    font-size: 0.79rem;
+    border-radius: 9px;
+    gap: 0.38rem;
+  }
+
+  .btn-sm {
+    min-height: 34px;
+    padding: 0.34rem 0.65rem;
+    font-size: 0.74rem;
+  }
+
+  .btn-lg {
+    min-height: 42px;
+    padding: 0.5rem 0.95rem;
+    font-size: 0.82rem;
+  }
+
+  /* Hero Section Aerisit, Editorial & Profesional pe Mobil */
+  .hero-section {
+    padding: 1.15rem 0 1.5rem !important;
+  }
+
+  .hero-grid {
+    gap: 0.6rem;
+    text-align: left;
+  }
+
+  .hero-content {
+    text-align: left;
+  }
+
+  .hero-tag {
+    font-size: 0.67rem;
+    padding: 0.24rem 0.68rem;
+    margin-bottom: 0.55rem;
+    text-align: left;
+    line-height: 1.25;
+    background: rgba(13, 42, 26, 0.06);
+    color: #0d2a1a;
+    border: 1px solid rgba(13, 42, 26, 0.14);
+  }
+
+  .hero-tag svg {
+    width: 14px;
+    height: 14px;
+    color: #143e26;
+  }
+
+  .hero-title {
+    font-size: clamp(1.4rem, 5.6vw, 1.65rem);
+    line-height: 1.18;
+    margin-bottom: 0.85rem;
+    letter-spacing: -0.02em;
+  }
+
+  /* Pe mobil ascundem paragraful lung, bifele redundante și imaginea separată de jos deoarece poza paletului + specificațiile sunt integrate în cardul de ofertă */
+  .hero-subtitle,
+  .hero-trust,
+  .hero-media,
+  .hero-media-caption {
+    display: none !important;
+  }
+
+  .hero-price-card {
+    display: grid !important;
+    grid-template-columns: 74px 1fr;
+    align-items: center;
+    text-align: left;
+    padding: 0.85rem 0.9rem;
+    width: 100%;
+    gap: 0.8rem;
+    margin-bottom: 0.85rem;
+    border-radius: 16px;
+    border: 1.5px solid #e0c592;
+    background: #ffffff;
+    box-shadow: 0 10px 26px -8px rgba(13, 42, 26, 0.1);
+  }
+
+  .hero-price-thumb {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 74px;
+    height: 74px;
+    background: #fbf8f1;
+    border: 1px solid #e8e1d5;
+    border-radius: 12px;
+    padding: 4px;
+    flex-shrink: 0;
+  }
+
+  .hero-price-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .hero-price-main {
+    align-items: flex-start;
+    gap: 0.14rem;
+    min-width: 0;
+    width: 100%;
+  }
+
+  .hero-price-toprow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 0.35rem;
+  }
+
+  .hero-price-toprow .hero-price-tag {
+    display: inline-flex !important;
+    font-size: 0.62rem;
+    padding: 0.1rem 0.45rem;
+    border-radius: 5px;
+    white-space: nowrap;
+  }
+
+  .hero-price-label {
+    font-size: 0.62rem;
+    letter-spacing: 0.35px;
+    white-space: nowrap;
+  }
+
+  .hero-price-digits {
+    font-size: clamp(1.32rem, 5.2vw, 1.5rem);
+    justify-content: flex-start;
+    line-height: 1.12;
+  }
+
+  .hero-price-unit {
+    font-size: 0.72rem;
+    font-weight: 700;
+    display: inline-block;
+    margin-top: 0;
+  }
+
+  .hero-price-subline {
+    display: block !important;
+    font-size: 0.66rem;
+    color: #475569;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-top: 0.08rem;
+    white-space: normal;
+    overflow: visible;
+    max-width: 100%;
+  }
+
+  .hero-price-extra {
+    display: none !important;
+  }
+
+  .hero-actions {
+    display: grid;
+    grid-template-columns: 1.12fr 0.88fr;
+    width: 100%;
+    gap: 0.55rem;
+    margin-bottom: 0;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    min-height: 44px;
+    padding: 0.45rem 0.65rem;
+    font-size: 0.8rem;
+    line-height: 1.15;
+    border-radius: 10px;
+    white-space: nowrap;
+  }
+
+  .hero-actions .btn svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  /* Ascunde secțiunile redundante pe homepage mobil deoarece valorile sunt deja în Hero, Catalog și Calculator */
+  .stats-strip,
+  .tech-compare-section,
+  .why-section-home {
+    display: none !important;
+  }
+
+  /* Grile Carduri pe Mobil (2x2 Curate, Aerisite & Fără Trunchiere) */
+  .cards-grid,
+  .cards-grid.cards-grid-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 0.72rem !important;
+  }
+
+  .cards-grid > .service-card:nth-child(3):last-child {
+    grid-column: 1 / -1;
+  }
+
+  .why-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 0.45rem !important;
+  }
+
+  .portfolio-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem;
+  }
+
+  .portfolio-grid > .project-card:last-child:nth-child(odd),
+  .portfolio-grid > .project-card.project-card-odd-last {
+    grid-column: 1 / -1;
+  }
+
+  .why-card h3,
+  .project-title,
+  .service-card-header {
+    min-height: 0;
+  }
+
+  /* Carduri Why (De ce noi) Compacte 2x2 */
+  .why-card {
+    padding: 0.55rem 0.6rem;
+    border-radius: 10px;
+    text-align: left;
+  }
+
+  .why-icon {
+    width: 26px;
+    height: 26px;
+    margin: 0 0 0.25rem 0;
+  }
+
+  .why-icon svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .why-card h3 {
+    font-size: 0.75rem;
+    margin-bottom: 0.12rem;
+    line-height: 1.18;
+    justify-content: flex-start;
+  }
+
+  .why-card p {
+    font-size: 0.65rem;
+    line-height: 1.28;
+  }
+
+  /* Carduri Portofoliu / Galerie Compacte 2x3 */
+  .project-card {
+    border-radius: 10px;
+  }
+
+  .project-media {
+    height: 52px;
+  }
+
+  .project-media svg {
+    width: 24px !important;
+    height: 24px !important;
+  }
+
+  .project-badge {
+    top: 0.25rem;
+    left: 0.25rem;
+    font-size: 0.54rem;
+    padding: 0.08rem 0.35rem;
+  }
+
+  .project-content {
+    padding: 0.5rem 0.55rem;
+  }
+
+  .project-title {
+    font-size: 0.74rem;
+    margin-bottom: 0.15rem;
+    line-height: 1.18;
+  }
+
+  .project-scope {
+    font-size: 0.64rem;
+    line-height: 1.25;
+    margin-bottom: 0.3rem;
+  }
+
+  .project-meta {
+    padding-top: 0.25rem;
+    font-size: 0.58rem;
+    flex-wrap: wrap;
+    gap: 0.15rem;
+    white-space: normal;
+  }
+
+  /* SUMAL Notice Card Mobil Echilibrat (autorizatii.html) */
+  .sumal-notice-card {
+    padding: 0.65rem 0.75rem;
+    margin-bottom: 0.65rem;
+    border-radius: 10px;
+  }
+
+  .sumal-notice-inner {
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: left;
+    gap: 0.6rem;
+  }
+
+  .sumal-notice-inner img {
+    width: 36px !important;
+    height: 36px !important;
+    margin-top: 0.1rem;
+  }
+
+  .sumal-notice-inner h2,
+  .sumal-notice-title {
+    font-size: 0.82rem !important;
+    margin-bottom: 0.14rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .sumal-notice-inner p,
+  .sumal-notice-desc {
+    font-size: 0.66rem !important;
+    line-height: 1.28 !important;
+    margin-bottom: 0 !important;
+  }
+
+  .sumal-notice-badges {
+    gap: 0.25rem;
+    margin-top: 0.38rem;
+  }
+
+  .sumal-pill {
+    font-size: 0.57rem;
+    padding: 0.1rem 0.38rem;
+  }
+
+  /* Filtre Portofoliu Mobil: Bare de cipuri glisante orizontal */
+  .filter-tabs {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding-bottom: 0.15rem;
+    gap: 0.25rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    margin-bottom: 0.55rem;
+    padding-left: 0.05rem;
+  }
+
+  .filter-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* În servicii.html (4 categorii principale), încadrare 100% pe un singur rând 4-col fără tăiere */
+  .filter-tabs:has(a.filter-btn) {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.25rem;
+    overflow: visible;
+    padding: 0;
+  }
+
+  .filter-tabs:has(a.filter-btn) .filter-btn {
+    padding: 0.25rem 0.15rem;
+    font-size: 0.62rem;
+    text-align: center;
+    justify-content: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .filter-btn {
+    white-space: nowrap;
+    flex-shrink: 0;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.65rem;
+    min-height: 26px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  /* Carduri Produse & Servicii (.service-card) în Grid 2x2 Fără Trunchiere */
+  .service-card {
+    padding: 0.85rem 0.8rem;
+    border-radius: 14px;
+    border: 1px solid #e6dfd1;
+    border-top: 2.5px solid var(--color-timber-amber);
+    box-shadow: 0 4px 14px rgba(13, 42, 26, 0.04);
+  }
+
+  /* Pe cardurile de catalog cu listă de specificații (.service-card-list), ascundem iconița separată de sus și paragraful descriptiv pentru a începe direct cu Preț/Badge + Titlu */
+  .service-card:has(.service-card-list) .service-icon-box,
+  .service-card:has(.service-card-list) .service-card-desc {
+    display: none !important;
+  }
+
+  .service-icon-box {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 0.2rem;
+    border-radius: 6px;
+  }
+
+  .service-icon-box svg,
+  .service-icon-box img {
+    width: 14px !important;
+    height: 14px !important;
+  }
+
+  .service-card-header,
+  #produse .service-card-header {
+    margin-bottom: 0.45rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 0.26rem;
+  }
+
+  .service-card-header.auth-card-header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.35rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .service-card-header.auth-card-header .service-icon-box {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 0;
+  }
+
+  .service-card-header.auth-card-header .service-card-title {
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
+
+  .service-card-title {
+    font-size: 0.85rem;
+    font-weight: 800;
+    margin-bottom: 0;
+    line-height: 1.22;
+    min-width: 0;
+    overflow: visible;
+    text-overflow: clip;
+    white-space: normal;
+  }
+
+  .service-card-price {
+    font-size: 0.63rem;
+    font-weight: 800;
+    background: #fef8f0;
+    padding: 0.1rem 0.42rem;
+    border-radius: 5px;
+    border: 1px solid rgba(217, 119, 6, 0.22);
+  }
+
+  .service-card-badge {
+    font-size: 0.6rem;
+    font-weight: 700;
+    padding: 0.1rem 0.42rem;
+    border-radius: 5px;
+  }
+
+  .service-card-desc {
+    font-size: 0.68rem;
+    line-height: 1.3;
+    margin-bottom: 0.4rem;
+  }
+
+  .service-card-list {
+    font-size: 0.67rem;
+    gap: 0.28rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .service-card-list li {
+    gap: 0.28rem;
+    line-height: 1.28;
+  }
+
+  .service-card-list li svg {
+    width: 12px;
+    height: 12px;
+    margin-top: 0.1rem;
+  }
+
+  .service-card-footer {
+    padding-top: 0.45rem;
+    border-top: 1px solid #f0ebe1;
+  }
+
+  .service-card-footer > span {
+    font-size: 0.61rem !important;
+    gap: 0.22rem !important;
+    white-space: nowrap;
+  }
+
+  .service-card-footer > span svg {
+    width: 13px !important;
+    height: 13px !important;
+  }
+
+  .service-card-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
+    width: 100%;
+  }
+
+  /* Păstrează doar butonul principal de acțiune pe cardurile 2x2 pe mobil pentru un aspect curat */
+  .service-card-actions .btn:nth-child(2) {
+    display: none;
+  }
+
+  .service-card-actions .btn {
+    width: 100%;
+    min-height: 33px;
+    padding: 0.32rem 0.5rem;
+    font-size: 0.72rem;
+    line-height: 1.15;
+    border-radius: 8px;
+    white-space: nowrap;
+  }
+
+  /* Butoane de acțiune subtile & elegante în grila 2x2 de pe homepage pentru a nu concura vizual cu CTA-ul din Hero */
+  #produse .service-card-actions .btn-primary {
+    background: #f6f1e7;
+    color: #0d2a1a;
+    border: 1px solid #dfd5c1;
+    box-shadow: none;
+    font-weight: 700;
+  }
+
+  #produse .service-card-actions .btn-primary:active {
+    background: #ece3d2;
+  }
+
+  /* ========================================================================
+     Calculator Interactiv pe Mobil - Tipografie Clară & Spațiere Armonioasă
+     ======================================================================== */
+  #calculator.section-padding {
+    padding-top: 1.45rem !important;
+    padding-bottom: 1.55rem !important;
+  }
+
+  .calc-tabs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    max-width: 100%;
+    gap: 0.28rem;
+    padding: 0.28rem;
+    margin-bottom: 0.75rem;
+    border-radius: 12px;
+    background: #e6dfd1;
+    border: 1px solid #d5ccb8;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.04);
+  }
+
+  .calc-tab-btn {
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0.22rem;
+    padding: 0.38rem 0.16rem;
+    font-size: 0.69rem;
+    line-height: 1.1;
+    min-height: 37px;
+    text-align: center;
+    border-radius: 9px;
+    color: #143e26;
+    background: transparent;
+    white-space: nowrap;
+  }
+
+  .calc-tab-btn.active {
+    background: #0d2a1a;
+    color: #ffffff;
+    border-color: transparent;
+    box-shadow: 0 2px 8px rgba(13, 42, 26, 0.22);
+  }
+
+  .calc-tab-btn svg {
+    width: 13px;
+    height: 13px;
+  }
+
+  .calc-tab-text-desktop {
+    display: none;
+  }
+
+  .calc-tab-text-mobile {
+    display: inline;
+  }
+
+  .calc-wrapper {
+    padding: 1.15rem 1.05rem;
+    border-radius: 18px;
+  }
+
+  .calc-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  /* Ascunde eticheta suplimentară și bifele de jos din calculator pe mobil pentru un aspect aerisit */
+  .calc-panel-tag,
+  .calc-benefits-grid {
+    display: none !important;
+  }
+
+  .calc-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-bottom: 0.15rem;
+    padding-bottom: 0.45rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .calc-panel-title {
+    font-size: 1.02rem;
+    line-height: 1.2;
+    margin: 0;
+    white-space: nowrap;
+  }
+
+  #panelPaleti .calc-panel-header::after,
+  #panelGrinzi .calc-panel-header::after,
+  #panelPodele .calc-panel-header::after {
+    content: '950 LEI / palet';
+    font-size: 0.65rem;
+    font-weight: 800;
+    color: #f3b772;
+    background: rgba(243, 183, 114, 0.14);
+    border: 1px solid rgba(243, 183, 114, 0.32);
+    padding: 0.18rem 0.52rem;
+    border-radius: 999px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-bottom: 0;
+  }
+
+  #panelGrinzi .calc-panel-header::after {
+    content: '10–25 cm';
+  }
+
+  #panelPodele .calc-panel-header::after {
+    content: '20–40 mm';
+    color: #86efac;
+    background: rgba(134, 239, 172, 0.14);
+    border-color: rgba(134, 239, 172, 0.32);
+  }
+
+  .calc-inputs-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 0.68rem;
+    margin-top: 0.1rem;
+  }
+
+  .calc-inputs-grid .form-group,
+  .calc-inputs-grid .form-group-full {
+    grid-column: 1 / -1 !important;
+    min-width: 0;
+    gap: 0.28rem;
+  }
+
+  .calc-inputs-grid .form-group.form-group-half {
+    grid-column: span 1 !important;
+  }
+
+  .calc-unit-price-group {
+    display: none !important;
+  }
+
+  .calc-wrapper .form-label {
+    font-size: 0.74rem;
+    line-height: 1.2;
+    font-weight: 600;
+    color: #e2f8ec;
+  }
+
+  .calc-wrapper .form-control {
+    padding: 0.38rem 0.65rem;
+    min-height: 39px;
+    height: 39px;
+    font-size: 0.79rem !important;
+    border-radius: 9px;
+  }
+
+  .calc-stepper {
+    height: 39px;
+    min-height: 39px;
+    border-radius: 9px;
+  }
+
+  .calc-stepper .form-control {
+    height: 37px;
+    min-height: 37px;
+    padding: 0.2rem 0.3rem;
+    font-size: 0.96rem !important;
+  }
+
+  .stepper-btn {
+    width: 42px;
+    min-height: 37px;
+    height: 37px;
+    font-size: 1.15rem;
+  }
+
+  .quick-mp-wrapper {
+    display: grid !important;
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+    gap: 0.32rem !important;
+    margin-top: 0.36rem;
+    width: 100%;
+  }
+
+  .quick-mp-btn {
+    padding: 0.2rem 0.1rem;
+    min-height: 30px;
+    height: 30px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    border-radius: 7px;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    white-space: nowrap;
+  }
+
+  .quick-mp-label {
+    display: none !important;
+  }
+
+  .calc-result-box {
+    padding: 0.9rem 0.95rem;
+    margin-top: 0.1rem;
+    border-radius: 14px;
+    background: rgba(8, 28, 17, 0.9);
+    border: 1px solid rgba(243, 183, 114, 0.42);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.22);
+  }
+
+  .calc-result-top {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 0.25rem;
+    gap: 0.4rem;
+  }
+
+  .calc-result-eyebrow {
+    font-size: 0.62rem;
+    letter-spacing: 0.5px;
+    margin-bottom: 0;
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .calc-val-big {
+    font-size: clamp(1.55rem, 5.8vw, 1.8rem);
+    margin: 0.05rem 0 0.35rem;
+    display: block !important;
+    text-align: left;
+    line-height: 1.08;
+  }
+
+  .calc-val-currency {
+    font-size: 0.92rem;
+  }
+
+  .calc-val-unit {
+    font-size: 0.68rem;
+    display: inline-flex;
+    align-items: center;
+    background: rgba(167, 243, 208, 0.14);
+    padding: 0.16rem 0.58rem;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+
+  .calc-metrics {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.4rem;
+    margin-top: 0.4rem;
+    padding-top: 0.45rem;
+  }
+
+  .calc-metric-item {
+    padding: 0.38rem 0.45rem;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 0.1rem;
+    border-radius: 8px;
+  }
+
+  .calc-metric-label {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.25px;
+    color: #94b8a3;
+    text-align: center;
+    line-height: 1.1;
+  }
+
+  .calc-metric-val {
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: #ffffff;
+    text-align: center;
+    white-space: nowrap;
+    line-height: 1.15;
+  }
+
+  .calc-result-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 0.6rem;
+    gap: 0.4rem;
+  }
+
+  .calc-result-actions .btn {
+    width: 100%;
+    min-height: 34px;
+    padding: 0.32rem 0.25rem;
+    font-size: 0.71rem;
+    border-radius: 8px;
+    white-space: nowrap;
+  }
+
+  .calc-result-actions .btn-whatsapp {
+    grid-column: 1 / -1;
+    min-height: 39px;
+    font-size: 0.82rem;
+    border-radius: 9px;
+  }
+
+  /* Tabel Tehnic Comparativ Nativ pe Mobil (3 Coloane fără Scroll Orizontal) */
+  .table-mobile-hint {
+    display: none !important;
+  }
+
+  .table-container {
+    border-radius: var(--radius-sm);
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  .tech-table {
+    min-width: 100% !important;
+    width: 100% !important;
+    table-layout: fixed;
+  }
+
+  .tech-table th,
+  .tech-table td {
+    padding: 0.35rem 0.38rem;
+    font-size: 0.66rem;
+    line-height: 1.22;
+    white-space: normal;
+    word-break: break-word;
+  }
+
+  .tech-table th:nth-child(1),
+  .tech-table td:nth-child(1) {
+    width: 34%;
+  }
+
+  .tech-table th:nth-child(2),
+  .tech-table td:nth-child(2),
+  .tech-table th:nth-child(3),
+  .tech-table td:nth-child(3) {
+    width: 33%;
+  }
+
+  /* Ascunde a 4-a coloană narativă pe mobil pentru încadrare 100% pe ecran */
+  .tech-table th:nth-child(4),
+  .tech-table td:nth-child(4) {
+    display: none !important;
+  }
+
+  /* Detalii Servicii (servicii.html) & Despre Noi (despre-noi.html) Tip Fișă Produs E-Commerce */
+  .service-detail-box {
+    padding: 0.65rem 0.7rem !important;
+    border-radius: 10px;
+  }
+
+  .service-detail-grid,
+  .about-main-grid {
+    gap: 0.45rem !important;
+  }
+
+  /* În servicii.html ascundem paragraful lung de prezentare pe mobil; specificațiile sunt deja în grila 2x2 de mai jos */
+  .service-detail-main > p {
+    display: none !important;
+  }
+
+  .about-main-grid p {
+    font-size: 0.72rem !important;
+    line-height: 1.32 !important;
+    margin-bottom: 0.35rem !important;
+  }
+
+  /* Pe mobil ascundem al doilea paragraf narativ redundant din despre-noi.html deoarece datele de stoc și SUMAL 2.0 sunt deja în tabelul Date Fiscale de dedesubt */
+  .about-main-grid > div:first-child > p:nth-of-type(2) {
+    display: none !important;
+  }
+
+  .service-spec-bullets {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    font-size: 0.66rem;
+    gap: 0.28rem;
+    line-height: 1.22;
+    margin-top: 0.25rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .service-spec-bullets li {
+    padding: 0.3rem 0.4rem;
+    border-radius: 6px;
+    gap: 0.25rem;
+  }
+
+  .service-detail-cta {
+    width: 100%;
+    padding-top: 0.15rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+  }
+
+  .service-detail-cta .btn {
+    width: auto;
+    flex: 1 1 auto;
+    min-height: 30px;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.68rem;
+  }
+
+  /* Pe mobil ascundem caseta secundară redundantă din servicii.html deoarece specificațiile sunt deja în pilulele din cardul principal */
+  .service-detail-aside {
+    display: none !important;
+  }
+
+  .about-main-grid > div[style*="border-top"] {
+    padding: 0.65rem !important;
+    border-radius: 10px !important;
+  }
+
+  .about-main-grid > div[style*="border-top"] h3 {
+    font-size: 0.86rem !important;
+    margin-bottom: 0.35rem !important;
+    padding-bottom: 0.25rem !important;
+  }
+
+  .fiscal-spec-list {
+    font-size: 0.7rem;
+  }
+
+  .fiscal-spec-list li {
+    padding: 0.22rem 0;
+    gap: 0.35rem;
+  }
+
+  /* ========================================================================
+     Formular & Contact Mobil - Spațiere Aerisită & Fără Text Trunchiat
+     ======================================================================== */
+  .contact-section-grid {
+    gap: 0.55rem;
+  }
+
+  .contact-info-panel {
+    padding: 0.5rem;
+    border-radius: 10px;
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 0.35rem !important;
+    align-items: stretch;
+  }
+
+  /* Ascunde titlul duplicat din interiorul panoului pe pagina Contact și pe Homepage deoarece există deja antetul secțiunii */
+  .contact-info-header {
+    display: none !important;
+  }
+
+  .contact-info-panel > :not(.contact-card-item) {
+    grid-column: 1 / -1 !important;
+  }
+
+  .contact-card-item {
+    padding: 0.38rem 0.36rem;
+    gap: 0.26rem;
+    border-radius: 8px;
+    flex-direction: row !important;
+    align-items: center !important;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .contact-card-item > div:not(.contact-card-icon) {
+    min-width: 0;
+    flex: 1 1 0%;
+    overflow: hidden;
+  }
+
+  .contact-card-icon {
+    width: 22px;
+    height: 22px;
+    flex: 0 0 22px;
+    border-radius: 5px;
+    flex-shrink: 0;
+  }
+
+  .contact-card-icon svg {
+    width: 12px !important;
+    height: 12px !important;
+  }
+
+  .contact-card-title {
+    font-size: 0.52rem;
+    margin-bottom: 0.02rem;
+    line-height: 1.08;
+    white-space: nowrap;
+  }
+
+  .contact-card-val {
+    font-size: 0.6rem !important;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+    white-space: nowrap !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .contact-card-val a {
+    font-size: 0.7rem !important;
+  }
+
+  /* Ascunde subtextul descriptiv din cardurile de contact pe mobil pentru compactare */
+  .contact-card-sub {
+    display: none !important;
+  }
+
+  .quote-box {
+    padding: 0.85rem 0.9rem;
+    border-radius: 12px;
+    border-top: 3px solid var(--color-timber-amber);
+  }
+
+  .quote-box h3 {
+    font-size: 1.02rem !important;
+    margin-bottom: 0.12rem !important;
+  }
+
+  .quote-box > p {
+    font-size: 0.7rem !important;
+    margin-bottom: 0.65rem !important;
+  }
+
+  .form-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.48rem;
+    margin-bottom: 0.65rem;
+    align-items: end;
+  }
+
+  .form-row.form-row-product {
+    grid-template-columns: 1.3fr 0.7fr !important;
+  }
+
+  .quote-box .form-group {
+    gap: 0.18rem;
+  }
+
+  .form-row .form-label,
+  .quote-box .form-label {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.7rem !important;
+    font-weight: 700;
+    color: #0f172a !important;
+  }
+
+  .quote-box .form-group[style*="margin-bottom"] {
+    margin-bottom: 0.65rem !important;
+  }
+
+  .input-light {
+    padding: 0.38rem 0.55rem;
+    min-height: 37px;
+    height: 37px;
+    font-size: 0.75rem !important;
+    border-radius: 7px;
+    background-color: #ffffff;
+    border: 1.5px solid #cbd5e1;
+    color: #0f172a;
+  }
+
+  .input-light::placeholder {
+    font-size: 0.71rem;
+    color: #64748b;
+    font-weight: 400;
+  }
+
+  select.input-light {
+    padding-right: 1.2rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  textarea.input-light {
+    height: auto;
+    min-height: 50px;
+    max-height: 68px;
+    padding: 0.4rem 0.55rem;
+    line-height: 1.35;
+  }
+
+  .quote-box button[type="submit"] {
+    min-height: 38px;
+    font-size: 0.82rem;
+    border-radius: 8px;
+  }
+
+  .map-wrapper {
+    height: 150px !important;
+    border-radius: 10px !important;
+  }
+
+  /* Pre-Footer Callout Banner Card pe Mobil */
+  .cta-banner-section,
+  section.section-padding:has(.cta-banner-card) {
+    padding: 0.6rem 0 0.75rem !important;
+  }
+
+  .cta-banner-card {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+    padding: 0.7rem 0.8rem;
+    gap: 0.45rem;
+    border-radius: 10px;
+  }
+
+  .cta-banner-text h2,
+  .cta-banner-content h2 {
+    font-size: 0.9rem !important;
+    line-height: 1.22 !important;
+    margin-bottom: 0.15rem !important;
+  }
+
+  .cta-banner-text p,
+  .cta-banner-content p {
+    font-size: 0.68rem !important;
+    line-height: 1.3 !important;
+    margin-bottom: 0 !important;
+  }
+
+  .cta-banner-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.38rem;
+    width: 100%;
+  }
+
+  .cta-banner-actions .btn {
+    width: 100%;
+    min-height: 32px;
+    padding: 0.28rem 0.45rem;
+    font-size: 0.7rem;
+    border-radius: 7px;
+  }
+
+  /* Ascunde butonul WhatsApp flotant pe mobil pentru a face loc barei de acțiuni */
+  .floating-whatsapp {
+    display: none !important;
+  }
+
+  /* Mobile Bottom Bar Activ pe Mobil */
+  .mobile-bottom-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: calc(46px + env(safe-area-inset-bottom, 0px));
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    background: #092013;
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.35);
+    z-index: 9999;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .mobile-bar-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1px;
+    height: 100%;
+    color: #a7f3d0;
+    text-decoration: none;
+    font-size: 0.61rem;
+    font-weight: 700;
+    transition: background-color 0.15s ease;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .mobile-bar-item:active {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .mobile-bar-item.call-action {
+    color: #fde68a;
+  }
+
+  .mobile-bar-item.call-action .mobile-bar-icon {
+    color: #d97706;
+  }
+
+  .mobile-bar-item.wa-action {
+    color: #86efac;
+  }
+
+  .mobile-bar-item.wa-action .mobile-bar-icon {
+    color: #25d366;
+  }
+
+  .mobile-bar-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+  }
+
+  .mobile-bar-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* ========================================================================
+     Footer Mobil Reorganizat: Curat, Simetric & Fără Spații Goale
+     ======================================================================== */
+  .site-footer {
+    padding-top: 0.8rem;
+    padding-bottom: calc(0.45rem + 48px);
+  }
+
+  .footer-grid {
+    grid-template-columns: 0.84fr 1.16fr;
+    gap: 0.5rem 0.75rem;
+    margin-bottom: 0.45rem;
+    align-items: start;
+  }
+
+  .footer-col-about {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.35rem;
+    padding-bottom: 0.45rem;
+    margin-bottom: 0.05rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .footer-col-about img {
+    height: 27px;
+    width: auto;
+  }
+
+  /* Ascunde paragraful lung și a 3-a insignă redundantă de locație din antetul footerului */
+  .footer-col-about p,
+  .footer-brand-desc,
+  .footer-fiscal-badges .fiscal-badge:nth-child(3) {
+    display: none !important;
+  }
+
+  .footer-fiscal-badges {
+    gap: 0.25rem;
+    margin-top: 0;
+  }
+
+  .fiscal-badge {
+    font-size: 0.57rem;
+    padding: 0.1rem 0.34rem;
+  }
+
+  /* Ascunde a 3-a coloană redundantă din footer pe mobil pentru a lăsa Navigație + Contact în 2 coloane egale ca înălțime */
+  .footer-col:nth-child(3) {
+    display: none !important;
+  }
+
+  .footer-col:nth-child(4) {
+    grid-column: span 1;
+  }
+
+  .footer-col h4 {
+    font-size: 0.72rem;
+    margin-bottom: 0.28rem;
+    padding-bottom: 0.14rem;
+  }
+
+  .footer-col h4::after {
+    width: 18px;
+    height: 2px;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.14rem;
+    font-size: 0.67rem;
+    line-height: 1.2;
+  }
+
+  .footer-contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.24rem;
+    font-size: 0.67rem;
+    line-height: 1.22;
+  }
+
+  .footer-contact-item {
+    gap: 0.3rem;
+    align-items: center;
+  }
+
+  .footer-contact-item svg {
+    width: 13px;
+    height: 13px;
+    margin-top: 0;
+    flex-shrink: 0;
+  }
+
+  .footer-contact-item a[href^="tel:"] {
+    font-size: 0.78rem !important;
+  }
+
+  .footer-bottom {
+    padding: 0.38rem 0;
+    font-size: 0.6rem;
+  }
+
+  .footer-bottom-content {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .footer-bottom-links {
+    justify-content: flex-end;
+    gap: 0.5rem;
+    font-size: 0.62rem;
+  }
+}
+
+/* ==========================================================================
+   Telefoane Foarte Mici (sub 480px / iPhone SE / 360px)
+   ========================================================================== */
+@media (max-width: 480px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .section-padding,
+  section.section-padding[style] {
+    padding-top: 1.55rem !important;
+    padding-bottom: 1.55rem !important;
+  }
+
+  .hero-title {
+    font-size: clamp(1.38rem, 5.6vw, 1.6rem);
+  }
+
+  .brand-logo img {
+    height: 30px;
+    max-width: 152px;
+  }
+
+  .hero-price-card {
+    grid-template-columns: 72px 1fr;
+    gap: 0.75rem;
+    padding: 0.82rem 0.88rem;
+  }
+
+  .hero-price-thumb {
+    width: 72px;
+    height: 72px;
+  }
+
+  .calc-tabs {
+    gap: 0.25rem;
+    padding: 0.26rem;
+  }
+
+  .calc-tab-btn {
+    font-size: 0.68rem;
+    padding: 0.35rem 0.14rem;
+    min-height: 36px;
+  }
+
+  .calc-wrapper {
+    padding: 1.05rem 1rem;
+  }
+
+  .calc-val-big {
+    font-size: 1.65rem;
+  }
+
+  .quote-box {
+    padding: 0.95rem 1rem;
+  }
+
+  .contact-info-panel {
+    padding: 0.6rem 0.65rem;
+  }
+}
+
+/* ==========================================================================
+   Ecrane Ultra-Înguste (sub 350px / 320px / 280px)
+   ========================================================================== */
+@media (max-width: 350px) {
+  .container {
+    padding-left: 0.55rem;
+    padding-right: 0.55rem;
+  }
+
+  .hero-price-card {
+    grid-template-columns: 48px 1fr;
+    gap: 0.45rem;
+    padding: 0.48rem 0.55rem;
+  }
+
+  .hero-price-thumb {
+    width: 48px;
+    height: 48px;
+  }
+
+  .hero-price-digits {
+    font-size: 1.08rem;
+  }
+
+  .hero-price-unit {
+    font-size: 0.6rem;
+  }
+
+  .hero-price-subline {
+    font-size: 0.56rem;
+  }
+
+  .hero-actions .btn {
+    font-size: 0.68rem;
+    padding: 0.28rem 0.35rem;
+  }
+
+  .stat-number {
+    font-size: 0.65rem;
+  }
+
+  .stat-label {
+    font-size: 0.46rem;
+  }
+
+  .service-card {
+    padding: 0.68rem 0.62rem;
+  }
+
+  .service-card-list {
+    font-size: 0.59rem;
+  }
+
+  .service-card-list li span {
+    white-space: nowrap;
+  }
+
+  .calc-tab-btn {
+    font-size: 0.62rem;
+    padding: 0.32rem 0.1rem;
+    gap: 0.14rem;
+  }
+
+  .quick-mp-btn {
+    font-size: 0.6rem;
+    padding: 0.16rem 0.05rem;
+  }
+}
+
+
+
+

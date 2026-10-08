@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 90" width="100%" height="100%">
+  <defs>
+    <linearGradient id="goldGradW" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8ca68"/>
+      <stop offset="40%" stop-color="#d49b35"/>
+      <stop offset="100%" stop-color="#9d6912"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Circular Monogram "TS" Emblem -->
+  <g transform="translate(15, 10)">
+    <circle cx="35" cy="35" r="32" fill="none" stroke="url(#goldGradW)" stroke-width="2.5"/>
+    <circle cx="35" cy="35" r="28" fill="none" stroke="url(#goldGradW)" stroke-width="1" stroke-dasharray="8 3" opacity="0.6"/>
+
+    <!-- Letter T in Gold -->
+    <path d="M18 20 L52 20 L52 24 L38 24 L38 52 L32 52 L32 24 L18 24 Z" fill="url(#goldGradW)"/>
+    <path d="M29 51 L41 51 L41 53 L29 53 Z" fill="url(#goldGradW)"/>
+    <!-- Letter S in Gold -->
+    <path d="M43 27 C40 24 35 23 31 24 C26 25 24 28 25 31 C26 34 30 36 36 38 C44 40 48 44 46 49 C44 54 38 56 31 55 C25 54 21 51 19 47 L23 44 C25 47 28 49 32 50 C36 51 40 49 41 46 C42 43 39 41 33 39 C25 37 21 34 22 28 C23 23 29 20 35 20 C40 20 44 22 47 25 Z" fill="url(#goldGradW)" opacity="0.95"/>
+  </g>
+
+  <!-- Wordmark: TIMBER in White -->
+  <text x="105" y="46" font-family="'Cinzel', 'Playfair Display', 'Times New Roman', Georgia, serif" font-weight="800" font-size="34" letter-spacing="4" fill="#ffffff">
+    TIMBER
+  </text>
+
+  <!-- Subtitle: — SPECIALIST — in White -->
+  <line x1="108" y1="64" x2="155" y2="64" stroke="#d49b35" stroke-width="1.8"/>
+  <text x="215" y="68" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-weight="800" font-size="12" letter-spacing="4.5" fill="#f8ca68" text-anchor="middle">
+    SPECIALIST
+  </text>
+  <line x1="275" y1="64" x2="322" y2="64" stroke="#d49b35" stroke-width="1.8"/>
+</svg>

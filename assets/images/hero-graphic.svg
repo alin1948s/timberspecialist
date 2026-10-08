@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#143823" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#c2782e" stop-opacity="0.15"/>
+    </linearGradient>
+    <linearGradient id="beamGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#c2782e"/>
+      <stop offset="70%" stop-color="#d98c43"/>
+      <stop offset="100%" stop-color="#a8601c"/>
+    </linearGradient>
+    <linearGradient id="beamGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#df9e58"/>
+      <stop offset="50%" stop-color="#ebad6f"/>
+      <stop offset="100%" stop-color="#c87f32"/>
+    </linearGradient>
+    <linearGradient id="beamTop" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f5ce99"/>
+      <stop offset="100%" stop-color="#fae3c3"/>
+    </linearGradient>
+    <linearGradient id="steelBlade" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="40%" stop-color="#cbd5e1"/>
+      <stop offset="100%" stop-color="#64748b"/>
+    </linearGradient>
+    <filter id="shadow3d" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="4" dy="8" stdDeviation="6" flood-color="#0b2416" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <!-- Background Decorative Shield / Ring Grid -->
+  <rect x="20" y="20" width="560" height="460" rx="24" fill="url(#bgGrad)"/>
+  <circle cx="300" cy="250" r="210" fill="none" stroke="#2d6a4f" stroke-width="1.5" stroke-dasharray="6 6" opacity="0.25"/>
+  <circle cx="300" cy="250" r="160" fill="none" stroke="#c2782e" stroke-width="1" stroke-dasharray="4 4" opacity="0.3"/>
+
+  <!-- Compass / Precision Crosshair Grid -->
+  <line x1="300" y1="40" x2="300" y2="460" stroke="#2d6a4f" stroke-width="1" stroke-dasharray="3 3" opacity="0.2"/>
+  <line x1="40" y1="250" x2="560" y2="250" stroke="#2d6a4f" stroke-width="1" stroke-dasharray="3 3" opacity="0.2"/>
+
+  <!-- Stylized Sawblade Wheel behind beams -->
+  <g transform="translate(300, 210)" opacity="0.85">
+    <circle cx="0" cy="0" r="125" fill="none" stroke="url(#steelBlade)" stroke-width="12"/>
+    <circle cx="0" cy="0" r="115" fill="none" stroke="#94a3b8" stroke-width="2"/>
+    <!-- Sawblade teeth ring -->
+    <path d="M0 -125 L6 -135 L-2 -135 Z" fill="#64748b"/>
+    <path d="M62 -108 L72 -116 L65 -121 Z" fill="#64748b"/>
+    <path d="M108 -62 L121 -65 L116 -72 Z" fill="#64748b"/>
+    <path d="M125 0 L135 6 L135 -2 Z" fill="#64748b"/>
+    <path d="M108 62 L116 72 L121 65 Z" fill="#64748b"/>
+    <path d="M62 108 L65 121 L72 116 Z" fill="#64748b"/>
+    <path d="M0 125 L-2 135 L6 135 Z" fill="#64748b"/>
+    <path d="M-62 108 L-72 116 L-65 121 Z" fill="#64748b"/>
+    <path d="M-108 62 L-121 65 L-116 72 Z" fill="#64748b"/>
+    <path d="M-125 0 L-135 -2 L-135 6 Z" fill="#64748b"/>
+    <path d="M-108 -62 L-116 -72 L-121 -65 Z" fill="#64748b"/>
+    <path d="M-62 -108 L-65 -121 L-72 -116 Z" fill="#64748b"/>
+    <circle cx="0" cy="0" r="35" fill="#e2e8f0" stroke="#475569" stroke-width="3"/>
+    <circle cx="0" cy="0" r="14" fill="#1b4332"/>
+  </g>
+
+  <!-- Isometric Timber Beam Stack (Precision Processed Lumber) -->
+  <!-- Bottom Large Beam (15x15 cm representation) -->
+  <g filter="url(#shadow3d)">
+    <!-- Front Face -->
+    <polygon points="120,340 380,340 380,390 120,390" fill="url(#beamGrad1)"/>
+    <!-- Top Face -->
+    <polygon points="120,340 210,285 470,285 380,340" fill="url(#beamTop)"/>
+    <!-- Right Side Face (End Grain with Growth Rings) -->
+    <polygon points="380,340 470,285 470,335 380,390" fill="#8f4a10"/>
+    <!-- End grain circular arcs -->
+    <path d="M420,305 A 25 25 0 0 1 435,325" fill="none" stroke="#d98c43" stroke-width="1.8" opacity="0.6"/>
+    <path d="M410,300 A 40 40 0 0 1 445,335" fill="none" stroke="#d98c43" stroke-width="1.8" opacity="0.5"/>
+    <path d="M400,295 A 60 60 0 0 1 455,348" fill="none" stroke="#d98c43" stroke-width="1.5" opacity="0.4"/>
+    <!-- Heartwood center dot -->
+    <circle cx="430" cy="315" r="3" fill="#582a06"/>
+  </g>
+
+  <!-- Mid Left Stack Beam -->
+  <g filter="url(#shadow3d)">
+    <!-- Front Face -->
+    <polygon points="90,290 320,290 320,330 90,330" fill="url(#beamGrad2)"/>
+    <!-- Top Face -->
+    <polygon points="90,290 170,240 400,240 320,290" fill="url(#beamTop)"/>
+    <!-- Right Side Face -->
+    <polygon points="320,290 400,240 400,280 320,330" fill="#a8601c"/>
+    <path d="M355,260 A 20 20 0 0 1 370,275" fill="none" stroke="#fae3c3" stroke-width="1.5" opacity="0.7"/>
+  </g>
+
+  <!-- Top Precise Beam (Calibrated & Planed) -->
+  <g filter="url(#shadow3d)">
+    <!-- Front Face -->
+    <polygon points="150,230 350,230 350,265 150,265" fill="url(#beamGrad1)"/>
+    <!-- Top Face -->
+    <polygon points="150,230 220,185 420,185 350,230" fill="#fdedd6"/>
+    <!-- Right Side Face -->
+    <polygon points="350,230 420,185 420,220 350,265" fill="#965214"/>
+    <circle cx="385" cy="205" r="2.5" fill="#4d2407"/>
+  </g>
+
+  <!-- Technical Overlay Elements & Metric Badges -->
+  <!-- Precision Caliper / Ruler Indicator -->
+  <g transform="translate(70, 130)">
+    <rect x="0" y="0" width="160" height="42" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" filter="url(#shadow3d)"/>
+    <circle cx="22" cy="21" r="10" fill="#1b4332"/>
+    <path d="M17 21 L20 24 L27 17" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+    <text x="38" y="19" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#081c15">Toleranță Milimetrică</text>
+    <text x="38" y="32" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="10" fill="#2d6a4f">Gater Industrial CNC</text>
+  </g>
+
+  <g transform="translate(370, 70)">
+    <rect x="0" y="0" width="165" height="44" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" filter="url(#shadow3d)"/>
+    <circle cx="22" cy="22" r="10" fill="#c2782e"/>
+    <path d="M22 16 L22 28 M16 22 L28 22" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+    <text x="40" y="19" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#081c15">Umiditate Controlată</text>
+    <text x="40" y="33" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="10" fill="#c2782e">Uscare Convectivă 12%</text>
+  </g>
+
+  <g transform="translate(360, 395)">
+    <rect x="0" y="0" width="175" height="44" rx="8" fill="#143823" filter="url(#shadow3d)"/>
+    <circle cx="24" cy="22" r="10" fill="#d97706"/>
+    <text x="24" y="26" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#ffffff" text-anchor="middle">✓</text>
+    <text x="42" y="19" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#ffffff">Avizat SUMAL 2.0</text>
+    <text x="42" y="33" font-family="'Plus Jakarta Sans', sans-serif" font-weight="500" font-size="10" fill="#a7f3d0">100% Lemn Legal Sălaj</text>
+  </g>
+</svg>
