@@ -310,9 +310,9 @@
     scroll-padding-top: 56px;
   }
 
-  /* Spațiu sigur la baza paginii pentru Mobile Bottom Bar compact */
+  /* Footerul rezervă deja spațiu pentru bara fixă de acțiuni. */
   body {
-    padding-bottom: calc(52px + env(safe-area-inset-bottom, 0px)) !important;
+    padding-bottom: 0 !important;
     font-size: 0.85rem;
     line-height: 1.42;
   }
@@ -1747,7 +1747,7 @@
      ======================================================================== */
   .site-footer {
     padding-top: 0.8rem;
-    padding-bottom: calc(0.45rem + 48px);
+    padding-bottom: calc(0.45rem + 46px + env(safe-area-inset-bottom, 0px));
   }
 
   .footer-grid {

@@ -32,9 +32,14 @@ Website de prezentare și comandă pentru lemn de foc paletizat, grinzi și pode
   <img src="screenshots/order-mobile.png" alt="Formularul și câmpul mărit de livrare pe mobil" width="225">
 </p>
 
-### Footer pe mobil
+### Panou administrativ
 
-<img src="screenshots/footer-mobile.png" alt="Footerul paginii de contact pe mobil" width="300">
+Capturile de mai jos folosesc comenzi demonstrative cu date de contact fictive.
+
+<p>
+  <img src="screenshots/admin-desktop.png" alt="Panoul de administrare pe desktop, cu comenzi demonstrative" width="760">
+  <img src="screenshots/admin-mobile.png" alt="Panoul de administrare pe mobil, cu carduri adaptate ecranului" width="225">
+</p>
 
 ## Funcționalități
 
