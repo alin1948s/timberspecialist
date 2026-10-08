@@ -5,10 +5,33 @@
  */
 
 header('Content-Type: application/json; charset=UTF-8');
+header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
+header('X-Content-Type-Options: nosniff');
+
+require_once __DIR__ . '/cloudflare-runtime.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     echo json_encode(['status' => 'error', 'message' => 'Metodă nepermisă.']);
     exit;
+}
+
+function timberPostString($key, $default, $maxLength) {
+    if (!isset($_POST[$key]) || !is_string($_POST[$key])) {
+        return $default;
+    }
+    $value = trim(strip_tags($_POST[$key]));
+    $value = preg_replace('/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/u', '', $value);
+    if (!is_string($value)) {
+        return $default;
+    }
+    if (function_exists('mb_substr')) {
+        return mb_substr($value, 0, $maxLength, 'UTF-8');
+    }
+    $characters = preg_split('//u', $value, -1, PREG_SPLIT_NO_EMPTY);
+    if (is_array($characters)) {
+        return implode('', array_slice($characters, 0, $maxLength));
+    }
+    return substr($value, 0, $maxLength);
 }
 
 // Honeypot anti-spam check
@@ -17,28 +40,36 @@ if (!empty($_POST['website_hp'])) {
     exit;
 }
 
-$name = isset($_POST['name']) ? trim(strip_tags($_POST['name'])) : '';
-$phone = isset($_POST['phone']) ? trim(strip_tags($_POST['phone'])) : '';
-$email = isset($_POST['email']) ? filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL) : '';
-$product = isset($_POST['product']) ? trim(strip_tags($_POST['product'])) : 'General';
-$volume = isset($_POST['volume']) ? trim(strip_tags($_POST['volume'])) : '';
-$message = isset($_POST['message']) ? trim(strip_tags($_POST['message'])) : '';
+$name = timberPostString('name', '', 120);
+$phone = timberPostString('phone', '', 40);
+$email = isset($_POST['email']) && is_string($_POST['email']) ? filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL) : '';
+$email = is_string($email) && strlen($email) <= 254 && filter_var($email, FILTER_VALIDATE_EMAIL) ? $email : '';
+$product = timberPostString('product', 'General', 240);
+$volume = timberPostString('volume', '', 100);
+$message = timberPostString('message', '', 4000);
 
 if (empty($name) || strlen($name) < 3) {
+    http_response_code(400);
     echo json_encode(['status' => 'error', 'message' => 'Numele este obligatoriu.']);
     exit;
 }
 
-if (empty($phone) || strlen($phone) < 9) {
+if (empty($phone) || !preg_match('/^(?:0|\+40)?[0-9]{9,10}$/', preg_replace('/[\s\-\.\(\)]/', '', $phone))) {
+    http_response_code(400);
     echo json_encode(['status' => 'error', 'message' => 'Numărul de telefon este obligatoriu.']);
     exit;
 }
 
-$orderId = isset($_POST['id']) && !empty($_POST['id']) ? trim(strip_tags($_POST['id'])) : ('TS-' . date('Y') . '-' . rand(1050, 9999));
-$createdAt = isset($_POST['createdAt']) && !empty($_POST['createdAt']) ? trim(strip_tags($_POST['createdAt'])) : date('c');
-$category = isset($_POST['category']) && !empty($_POST['category']) ? trim(strip_tags($_POST['category'])) : 'Lemn de Foc Gorun Paletizat';
-$estimatedTotal = isset($_POST['estimatedTotal']) ? floatval($_POST['estimatedTotal']) : 0;
-$source = isset($_POST['source']) && !empty($_POST['source']) ? trim(strip_tags($_POST['source'])) : 'Pagina Contact (contact.html)';
+$orderId = 'TS-' . date('Y') . '-' . strtoupper(bin2hex(random_bytes(6)));
+$createdAt = date('c');
+$category = timberPostString('category', 'Lemn de Foc Gorun Paletizat', 160);
+$estimatedTotal = isset($_POST['estimatedTotal']) && is_numeric($_POST['estimatedTotal'])
+    ? min(10000000, max(0, (float)$_POST['estimatedTotal']))
+    : 0;
+$sourceValue = timberPostString('source', '', 80);
+$source = $sourceValue === 'Pagina Contact (contact.html)'
+    ? 'Pagina Contact (contact.html)'
+    : 'Prima Pagină (index.html)';
 
 $newOrder = [
     'id' => $orderId,
@@ -59,25 +90,47 @@ $newOrder = [
     'adminNotes' => ''
 ];
 
-// Salvare comandă în baza de date JSON (data/orders.json) pentru Panoul Admin
-$dataDir = __DIR__ . '/data';
-$ordersFile = $dataDir . '/orders.json';
-if (!is_dir($dataDir)) {
-    @mkdir($dataDir, 0755, true);
-}
-$orders = [];
-if (file_exists($ordersFile)) {
-    $raw = @file_get_contents($ordersFile);
-    $decoded = @json_decode($raw, true);
-    if (is_array($decoded)) {
-        $orders = $decoded;
+// Cloudflare uses persistent D1 storage; local PHP retains the private JSON file.
+if (timberCloudflareMode()) {
+    $saveResult = timberCloudflareRequest('POST', '/orders', [
+        'action' => 'create',
+        'order' => $newOrder
+    ]);
+    if (!isset($saveResult['status']) || $saveResult['status'] !== 'success') {
+        http_response_code(503);
+        echo json_encode([
+            'status' => 'error',
+            'message' => 'Solicitarea nu a putut fi salvată momentan. Vă rugăm să încercați din nou sau să ne sunați.'
+        ], JSON_UNESCAPED_UNICODE);
+        exit;
+    }
+} else {
+    $dataDir = __DIR__ . '/data';
+    $ordersFile = $dataDir . '/orders.json';
+    if (!is_dir($dataDir)) {
+        @mkdir($dataDir, 0755, true);
+    }
+    $orders = [];
+    if (file_exists($ordersFile)) {
+        $raw = @file_get_contents($ordersFile);
+        $decoded = @json_decode($raw, true);
+        if (is_array($decoded)) {
+            $orders = $decoded;
+        }
+    }
+    $orders = array_values(array_filter($orders, function($o) use ($orderId) {
+        return is_array($o) && (!isset($o['id']) || $o['id'] !== $orderId);
+    }));
+    array_unshift($orders, $newOrder);
+    if (@file_put_contents($ordersFile, json_encode($orders, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE), LOCK_EX) === false) {
+        http_response_code(503);
+        echo json_encode([
+            'status' => 'error',
+            'message' => 'Solicitarea nu a putut fi salvată momentan. Vă rugăm să încercați din nou sau să ne sunați.'
+        ], JSON_UNESCAPED_UNICODE);
+        exit;
     }
 }
-$orders = array_values(array_filter($orders, function($o) use ($orderId) {
-    return is_array($o) && (!isset($o['id']) || $o['id'] !== $orderId);
-}));
-array_unshift($orders, $newOrder);
-@file_put_contents($ordersFile, json_encode($orders, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE), LOCK_EX);
 
 $to = 'contact@timberspecialist.ro';
 $subject = "Comandă Nouă [{$orderId}] Lemn de Foc Cer/Gorun: {$name} - {$product}";
@@ -100,11 +153,22 @@ if (!empty($email) && filter_var($email, FILTER_VALIDATE_EMAIL)) {
 $headers .= "X-Mailer: PHP/" . phpversion();
 
 // Încercare trimitere mail (pe server compatibil PHP)
-@mail($to, $subject, $body, $headers);
+$notificationSent = false;
+if (timberCloudflareMode()) {
+    $emailResult = timberCloudflareRequest('POST', '/email', [
+        'subject' => $subject,
+        'text' => $body,
+        'replyTo' => !empty($email) && filter_var($email, FILTER_VALIDATE_EMAIL) ? $email : ''
+    ]);
+    $notificationSent = isset($emailResult['status']) && $emailResult['status'] === 'success';
+} else {
+    $notificationSent = @mail($to, $subject, $body, $headers);
+}
 
 echo json_encode([
     'status' => 'success',
     'order' => $newOrder,
+    'notificationSent' => $notificationSent,
     'message' => 'Solicitarea a fost recepționată cu succes de către Timber Specialist SRL!'
-]);
+], JSON_UNESCAPED_UNICODE);
 

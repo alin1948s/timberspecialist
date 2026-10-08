@@ -3,9 +3,6 @@
  * Sortare, Grupare Avansată, Filtrare, Anulare & Gestiune Comenzi Contact
  */
 
-const TIMBER_STORAGE_KEY = 'timber_specialist_orders_v1';
-const TIMBER_DELETED_IDS_KEY = 'timber_specialist_deleted_ids_v1';
-
 const STATUS_CONFIG = {
   noua: {
     label: 'Comandă Nouă',
@@ -36,6 +33,11 @@ const STATUS_CONFIG = {
     priority: 4
   }
 };
+
+function generateOrderId() {
+  const token = crypto.randomUUID().replace(/-/g, '').slice(0, 12).toUpperCase();
+  return `TS-${new Date().getFullYear()}-${token}`;
+}
 
 function classifyProductCategory(productStr) {
   const p = (productStr || '').toLowerCase();
@@ -117,7 +119,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     if (!authState.authenticated) {
       if (authState.setupRequired) {
-        setLoginMessage('Autentificarea este dezactivată. Configurează TIMBER_ADMIN_PASSWORD în mediul PHP al serverului.');
+        setLoginMessage('Autentificarea este dezactivată. Configurează secretul TIMBER_ADMIN_PASSWORD în Cloudflare.');
         if (loginPassword) loginPassword.disabled = true;
         if (loginSubmit) loginSubmit.disabled = true;
       } else if (loginForm) {
@@ -149,7 +151,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       return;
     }
   } catch (error) {
-    setLoginMessage('Panoul necesită PHP activ și o conexiune sigură la serviciul de autentificare.', true);
+    setLoginMessage('Panoul nu poate contacta serviciul de autentificare. Verifică conexiunea și încearcă din nou.', true);
     if (loginPassword) loginPassword.disabled = true;
     if (loginSubmit) loginSubmit.disabled = true;
     return;
@@ -175,6 +177,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   let orders = [];
+  let serverOrdersAvailable = false;
+  let pendingServerSaves = 0;
+  let serverSaveQueue = Promise.resolve();
   let state = {
     statusFilter: 'all',
     categoryFilter: 'all',
@@ -212,48 +217,12 @@ document.addEventListener('DOMContentLoaded', async () => {
   const editOrderForm = document.getElementById('editOrderForm');
   const editModalTitle = document.getElementById('editModalTitle');
 
-  function getDeletedIdsSet() {
-    try {
-      const raw = localStorage.getItem(TIMBER_DELETED_IDS_KEY);
-      if (raw) {
-        const parsed = JSON.parse(raw);
-        if (Array.isArray(parsed)) return new Set(parsed);
-      }
-    } catch (e) {}
-    return new Set();
-  }
-
-  function addDeletedId(id) {
-    try {
-      const s = getDeletedIdsSet();
-      s.add(id);
-      localStorage.setItem(TIMBER_DELETED_IDS_KEY, JSON.stringify(Array.from(s)));
-    } catch (e) {}
-  }
-
-  // 1. Încărcare & Sincronizare Comenzi
-  function loadOrdersFromStorage() {
-    try {
-      const raw = localStorage.getItem(TIMBER_STORAGE_KEY);
-      if (raw !== null) {
-        const parsed = JSON.parse(raw);
-        if (Array.isArray(parsed)) {
-          orders = parsed.map(normalizeOrder);
-          return;
-        }
-      }
-    } catch (e) {
-      console.warn('Eroare citire localStorage:', e);
-    }
-    orders = [];
-    saveOrdersToStorage(false);
-  }
-
+  // 1. Normalizare comenzi
   function normalizeOrder(o) {
     const prod = o.product || 'Lemn de foc Gorun paletizat ~2.5 mc (950 Lei/palet)';
     const vol = o.volume || '1 palet (~2.5 MC)';
     return {
-      id: o.id || ('TS-2026-' + Math.floor(1000 + Math.random() * 9000)),
+      id: o.id || generateOrderId(),
       createdAt: o.createdAt || new Date().toISOString(),
       updatedAt: o.updatedAt || o.createdAt || new Date().toISOString(),
       name: o.name || 'Client Nespecificat',
@@ -272,51 +241,55 @@ document.addEventListener('DOMContentLoaded', async () => {
     };
   }
 
-  function saveOrdersToStorage(syncServer = true) {
-    try {
-      localStorage.setItem(TIMBER_STORAGE_KEY, JSON.stringify(orders));
-    } catch (e) {
-      console.warn('Eroare salvare localStorage:', e);
-    }
-    if (syncServer) {
-      fetch('orders_api.php', {
+  function saveOrdersToServer() {
+    // Comenzile conțin date personale și rămân în baza serverului, nu în browser.
+    const snapshot = JSON.stringify({ action: 'sync_all', orders });
+    pendingServerSaves += 1;
+    serverSaveQueue = serverSaveQueue.then(async () => {
+      const response = await fetch('orders_api.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ action: 'sync_all', orders })
-      }).catch(() => {});
-    }
+        body: snapshot
+      });
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok || !result || result.status !== 'success') {
+        throw new Error(result.message || 'Comenzile nu au putut fi salvate în baza de date.');
+      }
+    }).catch(error => {
+      console.error('Eroare salvare comenzi pe server:', error);
+      showToast('⚠️ Modificarea nu a putut fi salvată pe server. Verifică conexiunea și reîncearcă.');
+    }).finally(() => {
+      pendingServerSaves = Math.max(0, pendingServerSaves - 1);
+    });
   }
 
   function syncWithServerApi() {
+    if (pendingServerSaves > 0) return;
     fetch('orders_api.php')
-      .then(res => res.json())
-      .then(data => {
-        if (data && data.status === 'success' && Array.isArray(data.orders) && data.orders.length > 0) {
-          const deletedSet = getDeletedIdsSet();
-          const mapById = new Map();
-          orders.forEach(o => {
-            if (!deletedSet.has(o.id)) {
-              mapById.set(o.id, normalizeOrder(o));
-            }
-          });
-          data.orders.forEach(srvOrd => {
-            const norm = normalizeOrder(srvOrd);
-            if (deletedSet.has(norm.id)) return;
-            if (!mapById.has(norm.id)) {
-              mapById.set(norm.id, norm);
-            } else {
-              const localOrd = mapById.get(norm.id);
-              if (new Date(norm.updatedAt) > new Date(localOrd.updatedAt)) {
-                mapById.set(norm.id, norm);
-              }
-            }
-          });
-          orders = Array.from(mapById.values());
-          saveOrdersToStorage(true);
-          renderAll();
+      .then(async response => {
+        const data = await response.json().catch(() => ({}));
+        if (!response.ok || !data || data.status !== 'success' || !Array.isArray(data.orders)) {
+          throw new Error(data.message || 'Nu am putut încărca comenzile de pe server.');
+        }
+        if (pendingServerSaves > 0) return;
+        const wasAlreadySynced = serverOrdersAvailable;
+        const knownOrderIds = new Set(orders.map(order => order.id));
+        const newOrders = data.orders.filter(order => order && !knownOrderIds.has(order.id));
+        serverOrdersAvailable = true;
+        orders = data.orders.map(normalizeOrder);
+        renderAll();
+        if (wasAlreadySynced && newOrders.length > 0) {
+          showToast(`🔔 ${newOrders.length === 1 ? 'A sosit o comandă nouă' : `Au sosit ${newOrders.length} comenzi noi`} pe site.`);
         }
       })
-      .catch(() => {});
+      .catch(error => {
+        console.warn('Sincronizarea comenzilor a eșuat:', error);
+        if (!serverOrdersAvailable) {
+          orders = [];
+          renderAll();
+          showToast('⚠️ Nu am putut încărca lista de comenzi de pe server.');
+        }
+      });
   }
 
   // 2. Formatare Date & Timp Relativ
@@ -1000,13 +973,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (action === 'confirm') {
       ord.status = 'confirmata';
       ord.updatedAt = new Date().toISOString();
-      saveOrdersToStorage(true);
+      saveOrdersToServer();
       renderAll();
       showToast(`✅ Comanda #${ord.id} (${ord.name}) a fost marcată ca CONFIRMATĂ.`);
     } else if (action === 'deliver') {
       ord.status = 'livrata';
       ord.updatedAt = new Date().toISOString();
-      saveOrdersToStorage(true);
+      saveOrdersToServer();
       renderAll();
       showToast(`🚚 Comanda #${ord.id} (${ord.name}) a fost marcată ca LIVRATĂ / FINALIZATĂ.`);
     } else if (action === 'open-cancel') {
@@ -1021,16 +994,15 @@ document.addEventListener('DOMContentLoaded', async () => {
       ord.canceledAt = null;
       ord.cancelReason = '';
       ord.updatedAt = new Date().toISOString();
-      saveOrdersToStorage(true);
+      saveOrdersToServer();
       renderAll();
       showToast(`🔄 Comanda #${ord.id} (${ord.name}) a fost REACTIVATĂ.`);
     } else if (action === 'edit') {
       openEditModal(ord);
     } else if (action === 'delete') {
       if (confirm(`Sigur doriți să ștergeți definitiv comanda #${ord.id} (${ord.name})?`)) {
-        addDeletedId(ord.id);
         orders = orders.filter(o => o.id !== ord.id);
-        saveOrdersToStorage(true);
+        saveOrdersToServer();
         renderAll();
         showToast(`🗑️ Comanda #${ord.id} a fost ștearsă definitiv.`);
       }
@@ -1055,7 +1027,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       ord.canceledAt = nowIso;
       ord.cancelReason = cancelReasonInput.value.trim() || 'Anulată din panoul de administrare';
       ord.updatedAt = nowIso;
-      saveOrdersToStorage(true);
+      saveOrdersToServer();
       renderAll();
       showToast(`🔴 Comanda #${ord.id} (${ord.name}) a fost ANULATĂ.`);
     }
@@ -1181,7 +1153,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       }
     } else {
       const newOrder = normalizeOrder({
-        id: 'TS-' + new Date().getFullYear() + '-' + String(Math.floor(1050 + Math.random() * 8900)),
+        id: generateOrderId(),
         createdAt: nowIso,
         updatedAt: nowIso,
         name: nameVal,
@@ -1202,7 +1174,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       showToast(`✅ Comanda nouă #${newOrder.id} (${newOrder.name}) a fost adăugată.`);
     }
 
-    saveOrdersToStorage(true);
+    saveOrdersToServer();
     editOrderModal.classList.remove('open');
     renderAll();
   });
@@ -1264,28 +1236,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     window.print();
   });
 
-  // 12. Sincronizare Live Multi-Tab când se trimite formularul din contact.html
-  window.addEventListener('storage', (e) => {
-    if (e.key === TIMBER_STORAGE_KEY) {
-      loadOrdersFromStorage();
-      renderAll();
-      showToast('🔔 Listă actualizată automat cu o comandă nouă din pagina Contact!');
-    }
-  });
-
-  if (typeof BroadcastChannel !== 'undefined') {
-    const bc = new BroadcastChannel('timber_orders_channel');
-    bc.onmessage = (event) => {
-      if (event.data && event.data.type === 'NEW_ORDER') {
-        loadOrdersFromStorage();
-        renderAll();
-        showToast(`🔔 Comandă nouă #${event.data.order.id} primită de la ${event.data.order.name}!`);
-      }
-    };
-  }
-
   // Pornire inițială
-  loadOrdersFromStorage();
   renderAll();
   syncWithServerApi();
+  window.setInterval(syncWithServerApi, 30000);
 });

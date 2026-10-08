@@ -1,0 +1,19 @@
+{
+  "name": "timberspecialist-cloudflare",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node cloudflare/build-static.mjs",
+    "dev": "npm run build && wrangler dev",
+    "deploy": "npm run build && wrangler deploy",
+    "cf:db:create": "wrangler d1 create timber-specialist-orders",
+    "cf:db:migrate:local": "wrangler d1 migrations apply timber-specialist-orders --local",
+    "cf:db:migrate:remote": "wrangler d1 migrations apply timber-specialist-orders --remote"
+  },
+  "dependencies": {
+    "@cloudflare/containers": "0.3.7"
+  },
+  "devDependencies": {
+    "wrangler": "4.148.0"
+  }
+}

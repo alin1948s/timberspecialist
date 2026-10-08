@@ -31,6 +31,19 @@ function timberAdminRespond($payload, $statusCode = 200) {
 }
 
 function timberAdminRequireAuth() {
+    require_once __DIR__ . '/cloudflare-runtime.php';
+    if (timberCloudflareMode()) {
+        // The public Worker verifies the signed session cookie and replaces this
+        // header before the request reaches the private PHP container.
+        if (isset($_SERVER['HTTP_X_TIMBER_WORKER_AUTHENTICATED']) && $_SERVER['HTTP_X_TIMBER_WORKER_AUTHENTICATED'] === '1') {
+            return;
+        }
+        timberAdminRespond([
+            'status' => 'error',
+            'message' => 'Autentificarea este necesară pentru această acțiune.'
+        ], 401);
+    }
+
     if (!timberAdminPasswordIsConfigured()) {
         timberAdminRespond([
             'status' => 'error',

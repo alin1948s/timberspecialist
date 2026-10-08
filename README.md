@@ -51,17 +51,17 @@ Capturile de mai jos folosesc comenzi demonstrative cu date de contact fictive.
 
 ## Tehnologii
 
-HTML, CSS și JavaScript fără framework pentru interfață; PHP pentru formulare, autentificare și API-ul comenzilor.
+HTML, CSS și JavaScript fără framework pentru interfață; PHP 8.3 pentru formular și API-ul comenzilor; Cloudflare Workers, Containers, D1 și Email Service pentru infrastructura de producție.
 
-## Rulare
+## Rulare locală
 
-Pagini HTML pot fi previzualizate cu orice server static. Pentru formulare, trimiterea emailurilor și panoul de administrare este necesar un server PHP 7.3+.
+Pagini HTML pot fi previzualizate cu orice server static. Formularele și panoul admin au nevoie de PHP activ; pentru infrastructura Cloudflare completă ai nevoie de Node.js, Wrangler și Docker Desktop.
 
-Configurează variabila de mediu `TIMBER_ADMIN_PASSWORD` pe server cu o parolă unică de cel puțin 16 caractere. Panoul rămâne blocat până când autentificarea este configurată. Pentru trimiterea emailurilor, serverul trebuie să aibă funcția PHP `mail()` configurată.
+Comenzile din modul PHP obișnuit sunt stocate în `data/orders.json`, fișier exclus din Git. Configurația Cloudflare folosește D1 persistent și nu expune fișierul local. Comenzile locale nu sunt importate la deploy.
 
-Folosește HTTPS în producție pentru a proteja sesiunea de administrare. Pentru o previzualizare doar a interfeței, pornește un server static din directorul proiectului; rutele PHP vor necesita în continuare un server PHP.
+## Deploy Cloudflare
 
-Comenzile sunt stocate în `data/orders.json`, care este exclus din Git. Apache refuză accesul direct la folderul `data` prin `.htaccess`; pe Nginx configurează aceeași regulă de blocare pentru acel folder.
+Configurația inițială, secretele necesare, baza D1, emailul, domeniul și comenzile de deploy sunt descrise în [ghidul Cloudflare](cloudflare/README.md).
 
 ## Capturile
 

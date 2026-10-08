@@ -1,0 +1,2 @@
+TIMBER_ADMIN_PASSWORD="seteaza-local-o-parola-unica-de-minimum-16-caractere"
+TIMBER_ADMIN_SESSION_KEY="seteaza-local-o-cheie-aleatoare-de-minimum-32-caractere"

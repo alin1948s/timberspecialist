@@ -9,6 +9,7 @@ header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
 header('X-Content-Type-Options: nosniff');
 
 require_once __DIR__ . '/admin-session.php';
+require_once __DIR__ . '/cloudflare-runtime.php';
 timberAdminRequireAuth();
 
 $dataDir = __DIR__ . '/data';
@@ -19,6 +20,14 @@ if (!is_dir($dataDir)) {
 }
 
 function loadOrders($ordersFile) {
+    if (timberCloudflareMode()) {
+        $result = timberCloudflareRequest('GET', '/orders');
+        if (!isset($result['status']) || $result['status'] !== 'success' || !isset($result['orders']) || !is_array($result['orders'])) {
+            timberAdminRespond(['status' => 'error', 'message' => 'Nu am putut încărca comenzile din Cloudflare D1.'], 503);
+        }
+        return $result['orders'];
+    }
+
     if (!file_exists($ordersFile)) {
         return [];
     }
@@ -36,7 +45,21 @@ function saveOrders($ordersFile, $orders) {
             $unique[] = $ord;
         }
     }
-    @file_put_contents($ordersFile, json_encode($unique, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE), LOCK_EX);
+    if (timberCloudflareMode()) {
+        $result = timberCloudflareRequest('POST', '/orders', [
+            'action' => 'sync_all',
+            'orders' => $unique
+        ]);
+        return isset($result['status']) && $result['status'] === 'success';
+    }
+
+    return @file_put_contents($ordersFile, json_encode($unique, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE), LOCK_EX) !== false;
+}
+
+function timberRequireSavedOrders($ordersFile, $orders) {
+    if (!saveOrders($ordersFile, $orders)) {
+        timberAdminRespond(['status' => 'error', 'message' => 'Comenzile nu au putut fi salvate. Încercați din nou.'], 503);
+    }
 }
 
 $method = $_SERVER['REQUEST_METHOD'];
@@ -61,14 +84,14 @@ if ($method === 'POST') {
     $now = date('c');
 
     if ($action === 'sync_all' && isset($input['orders']) && is_array($input['orders'])) {
-        saveOrders($ordersFile, $input['orders']);
+        timberRequireSavedOrders($ordersFile, $input['orders']);
         echo json_encode(['status' => 'success', 'orders' => $input['orders']]);
         exit;
     }
 
     if ($action === 'create' && isset($input['order']) && is_array($input['order'])) {
         array_unshift($orders, $input['order']);
-        saveOrders($ordersFile, $orders);
+        timberRequireSavedOrders($ordersFile, $orders);
         echo json_encode(['status' => 'success', 'order' => $input['order'], 'orders' => $orders]);
         exit;
     }
@@ -85,7 +108,7 @@ if ($method === 'POST') {
                 break;
             }
         }
-        saveOrders($ordersFile, $orders);
+        timberRequireSavedOrders($ordersFile, $orders);
         echo json_encode(['status' => 'success', 'orders' => $orders]);
         exit;
     }
@@ -107,7 +130,7 @@ if ($method === 'POST') {
                 break;
             }
         }
-        saveOrders($ordersFile, $orders);
+        timberRequireSavedOrders($ordersFile, $orders);
         echo json_encode(['status' => 'success', 'orders' => $orders]);
         exit;
     }
@@ -121,7 +144,7 @@ if ($method === 'POST') {
                 break;
             }
         }
-        saveOrders($ordersFile, $orders);
+        timberRequireSavedOrders($ordersFile, $orders);
         echo json_encode(['status' => 'success', 'orders' => $orders]);
         exit;
     }
@@ -131,7 +154,7 @@ if ($method === 'POST') {
         $orders = array_filter($orders, function($o) use ($id) {
             return $o['id'] !== $id;
         });
-        saveOrders($ordersFile, $orders);
+        timberRequireSavedOrders($ordersFile, $orders);
         echo json_encode(['status' => 'success', 'orders' => array_values($orders)]);
         exit;
     }
