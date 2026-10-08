@@ -60,7 +60,11 @@ npm run cf:db:migrate:local
 npm run dev
 ```
 
-Preview-ul local folosit anterior în proiect servește doar HTML/CSS/JavaScript. Rutele PHP au nevoie de Wrangler și Docker; PHP-ul din Docker nu este instalat pe calculatorul curent. În dezvoltarea locală Wrangler simulează D1 și emailul, iar bindingurile remote pentru email nu sunt activate implicit.
+`npm run dev` pornește Wrangler și containerul PHP prin Docker. Wrangler folosește o bază D1 locală simulată și bindinguri locale pentru email; comenzile create aici nu apar în D1 de producție. Bindingurile remote pentru email nu sunt activate implicit.
+
+Un server PHP simplu, pornit în afara Wrangler, funcționează în modul local obișnuit: comenzile se stochează în `data/orders.json`, iar notificarea folosește `mail()` din PHP. Un preview static, precum Live Server, servește numai HTML/CSS/JavaScript și nu poate procesa endpoint-urile PHP.
+
+Panoul admin încarcă comenzile la deschidere, apoi interoghează API-ul la fiecare 30 de secunde. În implementarea actuală, salvarea modifică lista completă în D1. Evită editările simultane din mai multe sesiuni admin până când API-ul este schimbat să salveze fiecare comandă separat.
 
 ## Ce se întâmplă la deploy
 
