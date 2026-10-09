@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="css/style.css?v=2026.10.9.10">
   <link rel="stylesheet" href="css/responsive.css?v=2026.10.9.10">
   <link rel="stylesheet" href="css/refinements.css?v=2026.10.9.10">
-  <link rel="stylesheet" href="css/design-system.css?v=2026.10.9.13">
+  <link rel="stylesheet" href="css/design-system.css?v=2026.10.9.16">
 </head>
 <body>
 
@@ -54,7 +54,6 @@
           <li><a href="despre-noi.html" class="nav-link">Despre Noi</a></li>
           <li><a href="autorizatii.html" class="nav-link">Legal &amp; SUMAL 2.0</a></li>
           <li><a href="contact.html" class="nav-link">Contact</a></li>
-          <li><a href="admin.html" class="nav-link" style="color: var(--color-timber-amber); font-weight: 700;">Panou Admin</a></li>
         </ul>
       </nav>
       <div class="nav-actions">
@@ -77,7 +76,7 @@
 
   <main>
     <!-- Header Pagină -->
-    <section class="section-padding bg-alt" style="padding-top: 2.5rem; padding-bottom: 2.5rem;">
+    <section class="page-intro page-intro-portfolio section-padding bg-alt" style="padding-top: 2.5rem; padding-bottom: 2.5rem;">
       <div class="container text-center">
         <span class="section-tag">Galerie &amp; Stocuri Depozit</span>
         <h1 class="section-title">Stocuri Paleți Lemn Gorun &amp; Cer</h1>
@@ -87,11 +86,25 @@
       </div>
     </section>
 
-    <!-- Secțiune Banner Foto Oficial -->
-    <section class="section-padding bg-main" style="padding-top: 1.5rem; padding-bottom: 1.5rem;">
+    <!-- Prezentare stoc cu imagine de produs și date lizibile pe orice ecran -->
+    <section class="section-padding bg-main portfolio-stock-section">
       <div class="container">
-        <div style="border-radius: var(--radius-xl); overflow: hidden; border: 2px solid #d49b35; box-shadow: var(--shadow-xl); background: #000;">
-          <img src="assets/images/banner-lemn-gorun.png" alt="Lemn de foc Gorun paletizat 2.5 mc la 950 lei Someș-Odorhei Sălaj" width="1024" height="426" style="width: 100%; height: auto; display: block;">
+        <div class="portfolio-stock-feature">
+          <div class="portfolio-stock-copy">
+            <span class="portfolio-stock-eyebrow">Stoc disponibil în Someș-Odorhei</span>
+            <h2 class="portfolio-stock-title">Paleți pregătiți pentru ridicare sau livrare</h2>
+            <p>Gorun și Cer paletizat, cu încărcare mecanizată la depozit. Livrarea cu descărcare se confirmă în funcție de localitate.</p>
+            <div class="portfolio-stock-facts" aria-label="Detalii despre paleți">
+              <span><strong>~2.5 MC</strong> per palet</span>
+              <span><strong>950 LEI</strong> la depozit</span>
+              <span><strong>~1.000 MC</strong> în stoc</span>
+            </div>
+            <a href="contact.html#harta" class="btn btn-primary">Vezi locația depozitului</a>
+          </div>
+          <div class="portfolio-stock-visual">
+            <img src="assets/images/palet-lemn-gorun.png" alt="Palet de lemn de foc Gorun, stivuit pentru ridicare din depozit" width="620" height="640" loading="lazy">
+            <span>Producție proprie • Someș-Odorhei</span>
+          </div>
         </div>
       </div>
     </section>
@@ -316,7 +329,6 @@
         <ul class="footer-bottom-links">
           <li><a href="autorizatii.html">SUMAL 2.0</a></li>
           <li><a href="contact.html">Contact</a></li>
-          <li><a href="admin.html" style="color: #f3b772; font-weight: 700;">Admin</a></li>
         </ul>
       </div>
     </div>
