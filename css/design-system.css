@@ -116,6 +116,71 @@ main > section:first-child:not(.hero-section) {
   line-height: 1.6;
 }
 
+.hero-order-flow {
+  margin-top: 1rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(20, 46, 29, 0.14);
+}
+
+.hero-order-flow-title {
+  color: var(--color-text-muted);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero-order-flow ol {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.55rem;
+  margin: 0.4rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hero-order-flow li {
+  min-width: 0;
+}
+
+.hero-order-flow a {
+  display: flex;
+  min-height: 40px;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--color-text-secondary);
+  font-size: 0.78rem;
+  font-weight: 650;
+  line-height: 1.25;
+}
+
+.hero-order-flow a:hover {
+  color: var(--color-brand-forest);
+}
+
+.hero-order-step-number {
+  display: grid;
+  flex: 0 0 25px;
+  width: 25px;
+  height: 25px;
+  place-items: center;
+  border: 1px solid #ead6b4;
+  border-radius: 50%;
+  background: #f7efe1;
+  color: #8e511f;
+  font-size: 0.62rem;
+  font-weight: 800;
+}
+
+.calc-result-note {
+  max-width: 36ch;
+  margin: 0.2rem auto 0.85rem;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 0.78rem;
+  line-height: 1.4;
+  text-align: center;
+}
+
 .section-header {
   margin-bottom: clamp(1.75rem, 3vw, 2.4rem);
 }
@@ -407,6 +472,36 @@ main > section:first-child:not(.hero-section) .section-title {
     letter-spacing: -0.04em !important;
   }
 
+  .hero-order-flow {
+    margin-top: 0.8rem;
+    padding-top: 0.65rem;
+  }
+
+  .hero-order-flow ol {
+    gap: 0.2rem;
+    margin-top: 0.3rem;
+  }
+
+  .hero-order-flow a {
+    min-height: 42px;
+    align-items: flex-start;
+    gap: 0.3rem;
+    padding-top: 0.1rem;
+    font-size: 0.68rem;
+    line-height: 1.25;
+  }
+
+  .hero-order-step-number {
+    flex-basis: 22px;
+    width: 22px;
+    height: 22px;
+    font-size: 0.58rem;
+  }
+
+  .calc-result-note {
+    font-size: 0.72rem;
+  }
+
   .section-header {
     margin-bottom: 1.6rem;
   }
@@ -636,6 +731,10 @@ main > section:first-child:not(.hero-section) .section-title {
 
   .hero-price-subline {
     font-size: 0.68rem !important;
+  }
+
+  .hero-order-flow a {
+    font-size: 0.62rem;
   }
 
   .hero-actions .btn {
