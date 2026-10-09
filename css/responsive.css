@@ -775,7 +775,7 @@
     white-space: normal;
   }
 
-  /* SUMAL Notice Card Mobil Echilibrat (autorizatii.html) */
+  /* SUMAL notice on the combined company and traceability page. */
   .sumal-notice-card {
     padding: 0.65rem 0.75rem;
     margin-bottom: 0.65rem;
@@ -1375,30 +1375,18 @@
     display: none !important;
   }
 
-  /* Detalii Servicii (servicii.html) & Despre Noi (despre-noi.html) Tip Fișă Produs E-Commerce */
+  /* Detalii servicii: compactează fișa fără să înghesuie conținutul. */
   .service-detail-box {
     padding: 0.65rem 0.7rem !important;
     border-radius: 10px;
   }
 
-  .service-detail-grid,
-  .about-main-grid {
+  .service-detail-grid {
     gap: 0.45rem !important;
   }
 
   /* În servicii.html ascundem paragraful lung de prezentare pe mobil; specificațiile sunt deja în grila 2x2 de mai jos */
   .service-detail-main > p {
-    display: none !important;
-  }
-
-  .about-main-grid p {
-    font-size: 0.72rem !important;
-    line-height: 1.32 !important;
-    margin-bottom: 0.35rem !important;
-  }
-
-  /* Pe mobil ascundem al doilea paragraf narativ redundant din despre-noi.html deoarece datele de stoc și SUMAL 2.0 sunt deja în tabelul Date Fiscale de dedesubt */
-  .about-main-grid > div:first-child > p:nth-of-type(2) {
     display: none !important;
   }
 
@@ -1437,17 +1425,6 @@
   /* Pe mobil ascundem caseta secundară redundantă din servicii.html deoarece specificațiile sunt deja în pilulele din cardul principal */
   .service-detail-aside {
     display: none !important;
-  }
-
-  .about-main-grid > div[style*="border-top"] {
-    padding: 0.65rem !important;
-    border-radius: 10px !important;
-  }
-
-  .about-main-grid > div[style*="border-top"] h3 {
-    font-size: 0.86rem !important;
-    margin-bottom: 0.35rem !important;
-    padding-bottom: 0.25rem !important;
   }
 
   .fiscal-spec-list {
@@ -1995,6 +1972,5 @@
     padding: 0.16rem 0.05rem;
   }
 }
-
 
 

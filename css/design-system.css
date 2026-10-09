@@ -1714,3 +1714,114 @@ main > section.section-padding:not(.page-intro):not(.portfolio-stock-section):no
   .cutting-specimen-range { gap: .35rem; }
   .cutting-specimen-range strong { font-size: .76rem; }
 }
+
+/* One destination for the company profile and SUMAL traceability information. */
+.page-intro-combined {
+  padding-block: clamp(3rem, 5vw, 4rem) !important;
+  background:
+    radial-gradient(ellipse at 82% 48%, rgba(190, 144, 83, .14), transparent 30%),
+    linear-gradient(120deg, #f7f3eb 0%, #fbfaf7 58%, #f2eee5 100%) !important;
+}
+.page-intro-combined .container { max-width: 900px; }
+.page-intro-combined .section-title {
+  max-width: 18ch;
+  margin: .45rem auto .75rem;
+  color: #173522;
+  font-size: clamp(2.35rem, 4.2vw, 3.35rem) !important;
+  line-height: 1.08 !important;
+}
+.page-intro-combined .section-subtitle { max-width: 62ch; margin-inline: auto; }
+.about-intro-actions { justify-content: center; }
+.about-intro-actions .btn { min-height: 46px; }
+.about-company-section { padding-block: clamp(3rem, 5vw, 4.3rem) !important; }
+.about-company-section .about-main-grid { gap: clamp(1.5rem, 4vw, 3.5rem); }
+.about-company-section .about-main-grid p { font-size: .96rem !important; line-height: 1.65 !important; }
+.about-company-section .about-main-grid > div:first-child > p:nth-of-type(2) { display: block !important; }
+.about-company-section .about-main-grid > div[style*="border-top"] { padding: clamp(1.2rem, 2.6vw, 1.75rem) !important; }
+.about-sumal-section {
+  scroll-margin-top: 100px;
+  padding-block: clamp(3rem, 5vw, 4.4rem) !important;
+  background: #f4f2ec;
+}
+.about-company-section { scroll-margin-top: 100px; }
+.about-sumal-header { max-width: 740px; margin: 0 auto 1.8rem; text-align: center; }
+.about-sumal-header .section-title { margin-bottom: .55rem; color: #173522; }
+.about-sumal-header .section-subtitle { margin-bottom: 0; }
+.about-sumal-section .sumal-notice-card {
+  max-width: 980px;
+  margin-bottom: 1.15rem;
+  padding: 1.3rem 1.5rem;
+  border-color: #cee2d2;
+  border-left-color: #35734b;
+  background: linear-gradient(130deg, #eef7ef, #e3f0e4);
+}
+.about-sumal-section .sumal-notice-inner { align-items: flex-start; }
+.about-sumal-section .sumal-notice-title { color: #173522; }
+.about-sumal-section .sumal-notice-desc { color: #455c4b; font-weight: 500; }
+.about-sumal-section .sumal-notice-inner > img { width: 48px; height: 48px; }
+.about-sumal-section .sumal-notice-badges { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .8rem; }
+.about-sumal-section .sumal-pill { padding: .28rem .6rem; border: 1px solid rgba(35, 91, 53, .14); border-radius: 999px; background: rgba(255, 255, 255, .68); color: #365544; font-size: .7rem; font-weight: 750; }
+.about-sumal-section .sumal-pill-green { background: #d6ead9; color: #245d38; }
+.about-sumal-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .9rem; }
+.about-compliance-card {
+  display: flex;
+  min-width: 0;
+  min-height: 228px;
+  flex-direction: column;
+  padding: 1.15rem !important;
+  border: 1px solid #e4e0d6 !important;
+  border-top: 3px solid #3c7750 !important;
+  border-radius: 17px !important;
+  background: #fff !important;
+  box-shadow: 0 8px 24px rgba(23, 42, 29, .045) !important;
+}
+.about-compliance-card:nth-child(3) { border-top-color: #b47838 !important; }
+.about-compliance-card:nth-child(4) { border-top-color: #55799b !important; }
+.about-compliance-card .service-card-header.auth-card-header { gap: .55rem; align-items: flex-start; }
+.about-compliance-icon { display: grid; width: 42px !important; height: 42px !important; flex: 0 0 42px; place-items: center; border: 1px solid #d7e6d9 !important; border-radius: 12px !important; background: #eff6ef !important; color: #356b47 !important; }
+.about-compliance-icon img,
+.about-compliance-icon svg { width: 22px !important; height: 22px !important; }
+.about-compliance-icon-amber { border-color: #eadcc9 !important; background: #f8f2e8 !important; color: #9b602b !important; }
+.about-compliance-icon-blue { border-color: #d9e2ee !important; background: #f0f4f9 !important; color: #49698a !important; }
+.about-compliance-card .service-card-title { color: #183523; font-size: 1rem; line-height: 1.3; }
+.about-compliance-card .service-card-desc { margin: .3rem 0 1rem; color: #59665e; font-size: .84rem; line-height: 1.52; }
+.about-compliance-card .service-card-footer { margin-top: auto; padding-top: .72rem; border-top: 1px solid #eee9df; }
+.about-compliance-card .service-card-footer > span { color: #48604f !important; font-size: .72rem !important; font-weight: 750 !important; line-height: 1.4; }
+.about-combined-cta { padding-block: clamp(2.2rem, 4vw, 3rem) !important; }
+.about-combined-cta .cta-banner-card { gap: 1.5rem; }
+
+@media (max-width: 900px) {
+  .about-sumal-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 768px) {
+  .page-intro-combined { padding-block: 2.5rem !important; }
+  .page-intro-combined .section-title { max-width: 17ch; font-size: clamp(2.1rem, 8vw, 2.75rem) !important; }
+  .about-company-section { padding-block: 2.5rem !important; }
+  .about-company-section .about-main-grid { grid-template-columns: 1fr; gap: 1.2rem !important; }
+  .about-company-section .about-main-grid p { font-size: .9rem !important; line-height: 1.58 !important; margin-bottom: .65rem !important; }
+  .about-company-section .about-main-grid > div:first-child > p:nth-of-type(2) { display: block !important; }
+  .about-sumal-section { padding-block: 2.65rem !important; }
+  .about-sumal-header { margin-bottom: 1.25rem; text-align: left; }
+  .about-sumal-header .section-title { font-size: clamp(1.65rem, 6.5vw, 2.15rem) !important; }
+  .about-sumal-section .sumal-notice-card { padding: 1rem; margin-bottom: .9rem; }
+  .about-sumal-section .sumal-notice-title { font-size: 1rem !important; }
+  .about-sumal-section .sumal-notice-desc { font-size: .8rem !important; line-height: 1.48 !important; }
+  .about-sumal-section .sumal-notice-badges { gap: .3rem; margin-top: .6rem; }
+  .about-sumal-section .sumal-pill { font-size: .63rem; }
+  .about-sumal-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .65rem; }
+  .about-compliance-card { min-height: 0; padding: .9rem !important; border-radius: 14px !important; }
+  .about-compliance-card .service-card-header.auth-card-header { flex-direction: column; gap: .5rem; }
+  .about-compliance-card .service-card-title { font-size: .91rem !important; }
+  .about-compliance-card .service-card-desc { font-size: .77rem; line-height: 1.45; }
+  .about-compliance-card .service-card-footer > span { font-size: .66rem !important; }
+  .about-combined-cta { padding-block: 2rem !important; }
+  .about-combined-cta .cta-banner-card { align-items: flex-start; }
+}
+@media (max-width: 420px) {
+  .about-intro-actions { flex-direction: column; }
+  .about-intro-actions .btn { width: 100%; flex: 0 0 auto; }
+  .about-sumal-grid { grid-template-columns: 1fr; }
+  .about-compliance-card { padding: 1rem !important; }
+  .about-compliance-card .service-card-header.auth-card-header { flex-direction: row; align-items: center; }
+  .about-compliance-card .service-card-title { font-size: .96rem !important; }
+}
