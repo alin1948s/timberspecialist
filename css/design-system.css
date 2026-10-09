@@ -1156,3 +1156,168 @@ main > section.section-padding:not(.page-intro):not(.portfolio-stock-section):no
   .hero-actions { grid-template-columns: 1fr !important; }
   .portfolio-stock-facts { grid-template-columns: 1fr; }
 }
+
+/* Authentic product and depot photography replaces decorative placeholders. */
+.hero-yard-photo {
+  isolation: isolate;
+  min-height: 0;
+  aspect-ratio: 1.32;
+  overflow: hidden;
+  border: 6px solid #fff;
+  border-radius: 24px;
+  background: #273629;
+  box-shadow: 0 22px 48px rgba(24, 38, 27, 0.18);
+}
+.hero-yard-photo::after {
+  position: absolute;
+  z-index: 0;
+  inset: 35% 0 0;
+  background: linear-gradient(180deg, transparent, rgba(8, 20, 12, 0.76));
+  content: "";
+  pointer-events: none;
+}
+.hero-yard-photo > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: center;
+}
+.hero-yard-photo > figcaption {
+  position: absolute;
+  z-index: 1;
+  right: 1rem;
+  bottom: 1rem;
+  left: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: #fff;
+}
+.hero-yard-photo figcaption > span:nth-child(2) { display: grid; gap: 0.1rem; }
+.hero-yard-photo figcaption strong { font-size: 0.95rem; line-height: 1.2; }
+.hero-yard-photo figcaption small { color: rgba(255,255,255,.82); font-size: 0.78rem; }
+.hero-yard-photo figcaption > a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-left: auto;
+  padding: 0.55rem 0.72rem;
+  border: 1px solid rgba(255,255,255,.45);
+  border-radius: 999px;
+  background: rgba(255,255,255,.12);
+  color: #fff;
+  font-size: 0.76rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+.hero-yard-photo figcaption > a:hover { background: rgba(255,255,255,.24); }
+.hero-yard-pin {
+  display: grid;
+  flex: 0 0 42px;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border: 1px solid rgba(255,255,255,.45);
+  border-radius: 50%;
+  background: rgba(255,255,255,.13);
+}
+.hero-yard-pin svg { width: 19px; height: 19px; }
+
+#produse .service-card-pallet .service-icon-box {
+  width: 62px;
+  height: 62px;
+  overflow: hidden;
+  border: 1px solid #e9e1d3;
+  border-radius: 13px;
+  background: #f8f5ef;
+}
+#produse .service-card-pallet .service-icon-box img {
+  width: 100% !important;
+  height: 100% !important;
+  padding: 2px;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .hero-yard-photo {
+    display: block !important;
+    width: min(100%, 540px);
+    min-height: 0;
+    margin: 0 auto;
+    aspect-ratio: 1.6;
+    border-width: 4px;
+    border-radius: 18px;
+  }
+  .hero-yard-photo > figcaption { right: 0.65rem; bottom: 0.65rem; left: 0.65rem; gap: 0.5rem; }
+  .hero-yard-pin { flex-basis: 34px; width: 34px; height: 34px; }
+  .hero-yard-photo figcaption strong { font-size: 0.82rem; }
+  .hero-yard-photo figcaption small { font-size: 0.7rem; }
+  .hero-yard-photo figcaption > a { padding: 0.45rem 0.58rem; font-size: 0.7rem; }
+  #produse .service-card-pallet .service-icon-box { width: 48px; height: 48px; border-radius: 11px; }
+}
+
+@media (max-width: 380px) {
+  .hero-yard-photo { aspect-ratio: 1.9; max-height: 152px; }
+  .hero-yard-photo figcaption > a { padding-inline: 0.45rem; }
+  #produse .service-card-pallet .service-icon-box { width: 42px; height: 42px; }
+}
+
+.project-media > .project-product-photo {
+  align-self: flex-end;
+  width: auto;
+  height: calc(100% - 54px);
+  max-height: 132px;
+  max-width: 78%;
+  object-fit: contain;
+  filter: drop-shadow(0 9px 10px rgba(30, 31, 23, .18));
+}
+@media (max-width: 768px) {
+  .project-media > .project-product-photo { height: calc(100% - 36px); max-height: 76px; max-width: 82%; }
+}
+@media (max-width: 380px) {
+  .project-media > .project-product-photo { height: calc(100% - 36px); max-height: 48px; }
+}
+
+.about-yard-photo {
+  position: relative;
+  isolation: isolate;
+  aspect-ratio: 1.8;
+  overflow: hidden;
+  margin-top: 1.2rem;
+  border: 1px solid #e7dfd2;
+  border-radius: 16px;
+  background: #25382b;
+  box-shadow: var(--shadow-sm);
+}
+.about-yard-photo::after {
+  position: absolute;
+  z-index: 0;
+  inset: 45% 0 0;
+  background: linear-gradient(180deg, transparent, rgba(8, 20, 12, .72));
+  content: "";
+}
+.about-yard-photo > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+}
+.about-yard-photo > figcaption {
+  position: absolute;
+  z-index: 1;
+  right: 0.8rem;
+  bottom: 0.65rem;
+  left: 0.8rem;
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 750;
+}
+@media (max-width: 768px) {
+  .about-yard-photo { aspect-ratio: 1.8; margin-top: 0.85rem; border-radius: 13px; }
+  .about-yard-photo > figcaption { font-size: 0.72rem; }
+}
