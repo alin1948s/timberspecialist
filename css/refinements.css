@@ -459,9 +459,9 @@ main > section:first-child:not(.hero-section) .section-tag {
     border-radius: 12px;
   }
 
-  .why-icon svg {
-    width: 20px;
-    height: 20px;
+  .why-icon .site-icon {
+    width: 24px;
+    height: 24px;
   }
 
   .why-card h3 {
@@ -485,9 +485,9 @@ main > section:first-child:not(.hero-section) .section-tag {
     height: 118px;
   }
 
-  .project-media svg {
-    width: 46px !important;
-    height: 46px !important;
+  .project-icon .site-icon {
+    width: 28px;
+    height: 28px;
   }
 
   .project-badge {
@@ -1323,5 +1323,89 @@ main > section:first-child:not(.hero-section) .section-tag {
   .quote-box textarea.delivery-notes-input {
     height: 210px;
     min-height: 210px;
+  }
+}
+
+/* Shared, consistent line icons for product and quality cards. */
+.site-icon {
+  display: block;
+  width: 26px;
+  height: 26px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.why-icon {
+  width: 52px;
+  height: 52px;
+  border: 1px solid #e6dccb;
+  border-radius: 15px !important;
+  background: #f5f0e6 !important;
+  color: #31583e !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.why-icon .site-icon {
+  width: 27px;
+  height: 27px;
+}
+
+.project-media {
+  background: #f5f1e8 !important;
+}
+
+.project-icon {
+  display: grid;
+  width: 60px;
+  height: 60px;
+  place-items: center;
+  transform: translateY(5px);
+  border: 1px solid #e6dccb;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.88);
+  color: #31583e;
+  box-shadow: 0 5px 14px rgba(23, 42, 29, 0.08);
+}
+
+.project-icon .site-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.project-badge {
+  background: #173c29 !important;
+  box-shadow: 0 2px 7px rgba(12, 35, 21, 0.12);
+}
+
+.project-badge-price {
+  background: #a96225 !important;
+}
+
+@media (max-width: 767px) {
+  .why-icon {
+    width: 46px;
+    height: 46px;
+    margin: 0 0 0.65rem;
+    border-radius: 13px !important;
+  }
+
+  .why-icon .site-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .project-icon {
+    width: 50px;
+    height: 50px;
+    transform: translateY(4px);
+    border-radius: 15px;
+  }
+
+  .project-icon .site-icon {
+    width: 28px;
+    height: 28px;
   }
 }
