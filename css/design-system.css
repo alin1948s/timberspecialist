@@ -1745,7 +1745,16 @@ main > section.section-padding:not(.page-intro):not(.portfolio-stock-section):no
 }
 .about-company-section { scroll-margin-top: 100px; }
 .about-sumal-header { max-width: 740px; margin: 0 auto 1.8rem; text-align: center; }
-.about-sumal-header .section-title { margin-bottom: .55rem; color: #173522; }
+.about-company-section .about-company-title,
+.about-sumal-header .section-title {
+  margin: .35rem 0 .75rem !important;
+  color: #173522 !important;
+  font-size: clamp(1.9rem, 2.8vw, 2.3rem) !important;
+  font-weight: 800 !important;
+  line-height: 1.16 !important;
+  letter-spacing: -.035em !important;
+}
+.about-sumal-header .section-title { margin-bottom: .55rem !important; }
 .about-sumal-header .section-subtitle { margin-bottom: 0; }
 .about-sumal-section .sumal-notice-card {
   max-width: 980px;
@@ -1798,11 +1807,12 @@ main > section.section-padding:not(.page-intro):not(.portfolio-stock-section):no
   .page-intro-combined .section-title { max-width: 17ch; font-size: clamp(2.1rem, 8vw, 2.75rem) !important; }
   .about-company-section { padding-block: 2.5rem !important; }
   .about-company-section .about-main-grid { grid-template-columns: 1fr; gap: 1.2rem !important; }
+  .about-company-section .about-company-title,
+  .about-sumal-header .section-title { font-size: clamp(1.65rem, 6.3vw, 2.05rem) !important; line-height: 1.15 !important; }
   .about-company-section .about-main-grid p { font-size: .9rem !important; line-height: 1.58 !important; margin-bottom: .65rem !important; }
   .about-company-section .about-main-grid > div:first-child > p:nth-of-type(2) { display: block !important; }
   .about-sumal-section { padding-block: 2.65rem !important; }
   .about-sumal-header { margin-bottom: 1.25rem; text-align: left; }
-  .about-sumal-header .section-title { font-size: clamp(1.65rem, 6.5vw, 2.15rem) !important; }
   .about-sumal-section .sumal-notice-card { padding: 1rem; margin-bottom: .9rem; }
   .about-sumal-section .sumal-notice-title { font-size: 1rem !important; }
   .about-sumal-section .sumal-notice-desc { font-size: .8rem !important; line-height: 1.48 !important; }
