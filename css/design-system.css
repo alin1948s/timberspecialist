@@ -1,0 +1,629 @@
+/* Shared visual system for every public page and the order dashboard. */
+:root {
+  --font-display: var(--font-main);
+  --color-brand-dark: #0a1d13;
+  --color-brand-forest: #123521;
+  --color-brand-spruce: #19472e;
+  --color-brand-green: #2c704b;
+  --color-brand-green-light: #3d8a5d;
+  --color-brand-green-bg: #eff8f1;
+  --color-timber-amber: #a96328;
+  --color-timber-amber-hover: #8e511f;
+  --color-timber-amber-light: #f8f0e4;
+  --color-timber-gold: #d9954e;
+  --color-timber-honey: #edbd7c;
+  --color-bg-main: #ffffff;
+  --color-bg-subtle: #fbfaf7;
+  --color-bg-alt: #f4f1e9;
+  --color-surface: #ffffff;
+  --color-border: #e6e1d7;
+  --color-border-hover: #d4cabc;
+  --color-text-primary: #17251b;
+  --color-text-secondary: #526158;
+  --color-text-muted: #6d7a71;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --shadow-sm: 0 2px 8px rgba(20, 39, 27, 0.045);
+  --shadow-md: 0 8px 22px rgba(20, 39, 27, 0.075);
+  --shadow-lg: 0 14px 32px rgba(20, 39, 27, 0.11);
+}
+
+html {
+  font-size: 16px;
+  scroll-padding-top: 96px;
+}
+
+body,
+button,
+input,
+select,
+textarea {
+  font-family: var(--font-main);
+}
+
+body {
+  color: var(--color-text-primary);
+  line-height: 1.62;
+}
+
+main h1,
+main h2,
+main h3,
+main h4,
+.hero-title,
+.section-title,
+.service-card-title,
+.project-title,
+.calc-panel-title,
+.why-card h3,
+.service-detail-aside-title,
+.contact-card-title,
+.sumal-notice-title,
+.quote-box h3,
+.cta-banner-text h2,
+.site-footer h4,
+.admin-page-body h1,
+.admin-page-body h2,
+.admin-page-body h3,
+.admin-page-body h4 {
+  font-family: var(--font-main) !important;
+  letter-spacing: -0.025em;
+}
+
+main h1,
+.admin-page-body h1 {
+  font-weight: 800;
+}
+
+main h2,
+.admin-page-body h2 {
+  font-weight: 750;
+}
+
+main h3,
+main h4,
+.site-footer h4,
+.admin-page-body h3,
+.admin-page-body h4 {
+  font-weight: 700;
+}
+
+main > section.section-padding:not([style]) {
+  padding-block: clamp(3.25rem, 5.4vw, 4.5rem) !important;
+}
+
+main > section:first-child:not(.hero-section) {
+  padding-block: clamp(2.7rem, 4vw, 3.55rem) !important;
+}
+
+.hero-section {
+  padding-block: clamp(2.75rem, 5vw, 4.25rem) !important;
+}
+
+.hero-title {
+  max-width: 17ch;
+  font-size: clamp(2.55rem, 4.2vw, 3.35rem) !important;
+  font-weight: 800 !important;
+  line-height: 1.08 !important;
+  letter-spacing: -0.045em !important;
+}
+
+.hero-subtitle,
+.section-subtitle {
+  max-width: 62ch;
+  line-height: 1.6;
+}
+
+.section-header {
+  margin-bottom: clamp(1.75rem, 3vw, 2.4rem);
+}
+
+.section-title {
+  font-size: clamp(1.9rem, 3.2vw, 2.55rem) !important;
+  font-weight: 800 !important;
+  line-height: 1.16 !important;
+  letter-spacing: -0.04em !important;
+}
+
+main > section:first-child:not(.hero-section) .section-title {
+  max-width: 24ch;
+  font-size: clamp(2rem, 3.8vw, 2.9rem) !important;
+  font-weight: 800 !important;
+  line-height: 1.12 !important;
+  letter-spacing: -0.04em !important;
+}
+
+.service-card,
+.project-card,
+.why-card,
+.service-detail-box,
+.service-detail-aside,
+.contact-info-panel,
+.contact-card-item,
+.quote-box,
+.sumal-notice-card {
+  border-radius: 18px;
+  border-color: var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.project-media {
+  height: 168px;
+}
+
+.service-card-title,
+.project-title,
+.calc-panel-title,
+.why-card h3,
+.service-detail-aside-title,
+.contact-card-title,
+.sumal-notice-title,
+.quote-box h3,
+.cta-banner-text h2 {
+  font-family: var(--font-main) !important;
+  font-weight: 750 !important;
+  letter-spacing: -0.025em !important;
+}
+
+.service-card-title,
+.project-title {
+  font-size: 1.2rem;
+  line-height: 1.28;
+}
+
+.why-card h3 {
+  font-size: 1.08rem;
+  line-height: 1.3;
+}
+
+.service-card:hover,
+.project-card:hover,
+.why-card:hover,
+.contact-card-item:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.section-tag,
+.hero-tag,
+.project-badge,
+.service-card-price,
+.service-card-badge,
+.sumal-pill,
+.fiscal-badge {
+  letter-spacing: 0.035em;
+}
+
+.btn {
+  min-height: 46px;
+  border-radius: 12px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.btn-lg {
+  min-height: 52px;
+}
+
+@media (min-width: 1025px) {
+  .header-sticky .navbar {
+    display: grid;
+    grid-template-columns: minmax(132px, 165px) minmax(0, 1fr) auto;
+    gap: clamp(0.5rem, 1vw, 0.9rem);
+  }
+
+  .header-sticky .brand-logo {
+    min-width: 0;
+  }
+
+  .header-sticky .brand-logo img {
+    width: 100%;
+    height: auto;
+    max-width: 165px;
+  }
+
+  .header-sticky nav {
+    min-width: 0;
+  }
+
+  .header-sticky .nav-menu {
+    justify-content: center;
+    gap: clamp(0.28rem, 0.52vw, 0.55rem);
+  }
+
+  .header-sticky .nav-link {
+    padding-inline: 0.05rem;
+    font-size: clamp(0.69rem, 0.74vw, 0.82rem);
+  }
+}
+
+.form-control,
+.input-light {
+  border-radius: 11px;
+  font-family: var(--font-main);
+}
+
+.form-label {
+  color: #26382d;
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+#calculator .calc-wrapper .form-label {
+  color: #e2ece4;
+}
+
+.form-control:focus,
+.input-light:focus {
+  border-color: #b5793f;
+  box-shadow: 0 0 0 3px rgba(169, 99, 40, 0.12);
+}
+
+.cta-banner-card {
+  border: 1px solid #e9d8ba;
+  border-left: 4px solid var(--color-timber-amber);
+  border-radius: 18px;
+  background: linear-gradient(130deg, #fbf7ef, #f5ecdb);
+  box-shadow: var(--shadow-sm);
+}
+
+.site-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+#calculator .calc-panel-title {
+  font-size: clamp(1.45rem, 2vw, 1.8rem);
+  font-weight: 800 !important;
+  line-height: 1.22;
+  white-space: normal;
+}
+
+#calculator .calc-grid {
+  min-height: 520px;
+  grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+}
+
+#calculator .calc-result-box {
+  min-height: 100%;
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .project-media {
+    height: 132px;
+  }
+}
+
+.admin-page-body {
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.admin-page-body .admin-login-card,
+.admin-page-body .admin-controls-panel,
+.admin-page-body .admin-kpi-card,
+.admin-page-body .order-group-section,
+.admin-page-body .order-card,
+.admin-page-body .admin-modal {
+  border-radius: 16px;
+}
+
+@media (max-width: 768px) {
+  html {
+    scroll-padding-top: 76px;
+  }
+
+  body {
+    font-size: 15.5px;
+    line-height: 1.58;
+  }
+
+  body:not(.admin-page-body) .container {
+    padding-inline: 1rem;
+  }
+
+  main > section.section-padding:not([style]) {
+    padding-block: 2.75rem !important;
+  }
+
+  main > section.section-padding[style]:not(:first-child) {
+    padding-block: 1.75rem !important;
+  }
+
+  #calculator.section-padding {
+    padding-block: 2.75rem !important;
+  }
+
+  main > section:first-child:not(.hero-section) {
+    padding-block: 2.3rem !important;
+  }
+
+  .hero-section {
+    padding-block: 1.9rem 2.1rem !important;
+  }
+
+  .hero-title {
+    max-width: none;
+    font-size: clamp(2rem, 7.2vw, 2.65rem) !important;
+    line-height: 1.1 !important;
+    letter-spacing: -0.04em !important;
+  }
+
+  .section-header {
+    margin-bottom: 1.6rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.75rem, 6vw, 2.2rem) !important;
+    line-height: 1.18 !important;
+  }
+
+  main > section:first-child:not(.hero-section) .section-title {
+    font-size: clamp(1.9rem, 6.5vw, 2.45rem) !important;
+  }
+
+  .service-card,
+  .project-card,
+  .why-card,
+  .service-detail-box,
+  .service-detail-aside,
+  .contact-info-panel,
+  .contact-card-item,
+  .quote-box,
+  .sumal-notice-card {
+    border-radius: 15px;
+  }
+
+  .project-media {
+    height: 118px;
+  }
+
+  .service-card-title,
+  .project-title {
+    font-size: 1.05rem !important;
+    line-height: 1.3 !important;
+  }
+
+  .why-card h3 {
+    font-size: 0.98rem !important;
+    line-height: 1.3 !important;
+  }
+
+  .why-card p,
+  .service-card-desc,
+  .service-card-list,
+  .project-scope {
+    font-size: 0.8rem !important;
+    line-height: 1.45 !important;
+  }
+
+  .service-card-footer > span,
+  .project-meta {
+    font-size: 0.72rem !important;
+  }
+
+  .filter-tabs:not(:has(a.filter-btn)) .filter-btn,
+  .sumal-pill {
+    font-size: 0.68rem;
+  }
+
+  .sumal-notice-inner p,
+  .sumal-notice-desc {
+    font-size: 0.76rem !important;
+    line-height: 1.4 !important;
+  }
+
+  #calculator .calc-grid {
+    min-height: 0;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  #calculator .calc-result-box {
+    min-height: 320px;
+  }
+
+  #calculator .calc-tab-btn {
+    min-height: 58px;
+    font-size: 0.75rem;
+  }
+
+  #calculator .calc-result-eyebrow {
+    font-size: 0.72rem;
+  }
+
+  #calculator .calc-metric-label {
+    font-size: 0.68rem;
+  }
+
+  #calculator .calc-metric-val {
+    font-size: 0.82rem;
+  }
+
+  .mobile-bar-item {
+    font-size: 0.7rem;
+  }
+
+  .footer-links,
+  .footer-contact-list {
+    font-size: 0.7rem;
+  }
+
+  .admin-page-body {
+    font-size: 14px;
+  }
+
+  .admin-page-body .admin-kpi-label {
+    font-size: 0.66rem;
+  }
+
+  .admin-page-body .control-label,
+  .admin-page-body .admin-col-label {
+    font-size: 0.68rem;
+  }
+
+  .admin-page-body .order-info-block {
+    font-size: 0.82rem;
+  }
+
+  .admin-page-body .admin-orders-table td::before {
+    font-size: 0.62rem;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 15px;
+    line-height: 1.58;
+  }
+
+  main > section.section-padding:not([style]) {
+    padding-block: 2.35rem !important;
+  }
+
+  main > section.section-padding[style]:not(:first-child) {
+    padding-block: 1.6rem !important;
+  }
+
+  #calculator.section-padding {
+    padding-block: 2.35rem !important;
+  }
+
+  main > section:first-child:not(.hero-section) {
+    padding-block: 2rem !important;
+  }
+
+  .hero-section {
+    padding-block: 1.5rem 1.75rem !important;
+  }
+
+  .hero-title {
+    font-size: clamp(1.9rem, 8vw, 2.25rem) !important;
+  }
+
+  .service-card-title,
+  .project-title {
+    font-size: 1.08rem !important;
+  }
+
+  .project-media {
+    height: 96px;
+  }
+
+  #calculator .calc-tabs {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: 100%;
+    max-width: none;
+  }
+
+  #calculator .calc-tab-btn {
+    min-width: 0;
+    min-height: 62px;
+    padding-inline: 0.25rem;
+    font-size: 0.7rem;
+    overflow-wrap: anywhere;
+  }
+
+  #calculator .calc-result-box {
+    min-height: 310px;
+  }
+
+  .quote-box textarea.delivery-notes-input {
+    min-height: 220px;
+    height: 220px;
+  }
+
+  .admin-page-body .admin-kpi-label {
+    font-size: 0.7rem;
+  }
+
+  .admin-page-body .control-label,
+  .admin-page-body .admin-col-label,
+  .admin-page-body .admin-orders-table td::before {
+    font-size: 0.66rem;
+  }
+
+  .admin-page-body .order-card-actions .btn-order-act {
+    min-height: 40px;
+    font-size: 0.68rem;
+  }
+
+  .admin-page-body .admin-modal .form-label {
+    font-size: 0.76rem !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .project-media {
+    height: 84px;
+  }
+}
+
+@media (max-width: 350px) {
+  body:not(.admin-page-body) .container {
+    padding-inline: 0.75rem;
+  }
+
+  .hero-price-digits {
+    font-size: 1.35rem !important;
+  }
+
+  .project-media {
+    height: 84px;
+  }
+
+  .hero-price-unit {
+    font-size: 0.72rem !important;
+  }
+
+  .hero-price-subline {
+    font-size: 0.68rem !important;
+  }
+
+  .hero-actions .btn {
+    min-height: 44px;
+    padding-inline: 0.45rem;
+    font-size: 0.72rem !important;
+  }
+
+  .stat-number {
+    min-height: 0;
+    font-size: 0.9rem !important;
+  }
+
+  .stat-label {
+    font-size: 0.7rem !important;
+    line-height: 1.25;
+  }
+
+  .service-card-list,
+  .service-card-desc {
+    font-size: 0.75rem !important;
+    line-height: 1.4;
+  }
+
+  #calculator .calc-result-box {
+    min-height: 310px;
+  }
+
+  #calculator .calc-tab-btn,
+  #calculator .quick-mp-btn {
+    font-size: 0.7rem !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

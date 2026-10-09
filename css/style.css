@@ -4,8 +4,6 @@
    CUI: 32954515 • J31/440/2016
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap');
-
 :root {
   /* Paletă Cromatică Forest & Timber */
   --color-brand-dark: #07190f;
@@ -2377,5 +2375,4 @@ body.drawer-open .mobile-bottom-bar {
   color: #ffffff;
   border-color: #166534;
 }
-
 

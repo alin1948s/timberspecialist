@@ -1,7 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap');
-
 :root {
-  --font-display: 'DM Serif Display', Georgia, serif;
+  --font-display: var(--font-main);
   --color-bg-subtle: #f8f6f0;
   --color-bg-alt: #f1eee5;
   --color-timber-amber: #ad6729;
