@@ -1,4 +1,4 @@
-Lucide icon shapes used in assets/icons.svg
+Lucide icon shapes used inline in index.html, despre-noi.html, and portofoliu.html
 Source: https://github.com/lucide-icons/lucide
 
 ISC License
