@@ -1400,12 +1400,33 @@ main > section:first-child:not(.hero-section) .section-tag {
   .project-icon {
     width: 50px;
     height: 50px;
-    transform: translateY(4px);
+    position: absolute;
+    left: 50%;
+    bottom: 9px;
+    transform: translateX(-50%);
     border-radius: 15px;
   }
 
   .project-icon .site-icon {
     width: 28px;
     height: 28px;
+  }
+}
+
+@media (max-width: 380px) {
+  .project-media {
+    height: 84px;
+  }
+
+  .project-icon {
+    width: 40px;
+    height: 40px;
+    bottom: 7px;
+    border-radius: 13px;
+  }
+
+  .project-icon .site-icon {
+    width: 24px;
+    height: 24px;
   }
 }
