@@ -1586,3 +1586,131 @@ main > section.section-padding:not(.page-intro):not(.portfolio-stock-section):no
   .stock-status-details p { font-size: .68rem; }
   .stock-availability-badge { font-size: .62rem; }
 }
+
+/* The cutting page is a technical service guide, separate from current inventory. */
+.page-intro-cutting {
+  padding-block: clamp(3rem, 5vw, 4.3rem) !important;
+  background:
+    radial-gradient(ellipse at 83% 50%, rgba(190, 144, 83, .15), transparent 28%),
+    linear-gradient(120deg, #f7f2e9 0%, #fbfaf7 62%, #f4eee4 100%) !important;
+}
+.page-intro-cutting .container {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(310px, .75fr);
+  align-items: center;
+  gap: clamp(2rem, 5vw, 4.5rem);
+}
+.cutting-hero-copy { min-width: 0; }
+.cutting-hero-copy .section-title {
+  max-width: 15ch;
+  margin-bottom: .9rem !important;
+  font-size: clamp(2.5rem, 4.2vw, 3.4rem) !important;
+  line-height: 1.08 !important;
+}
+.cutting-hero-copy .section-subtitle { max-width: 58ch; }
+.cutting-hero-copy .page-intro-actions { margin-top: 1.3rem; }
+.cutting-hero-copy .page-intro-actions .btn { flex: 0 0 auto; }
+.cutting-hero-note { display: flex; align-items: center; gap: .5rem; margin-top: 1.2rem; color: #59685e; font-size: .82rem; font-weight: 700; }
+.cutting-hero-note > span { display: grid; width: 20px; height: 20px; place-items: center; border-radius: 50%; background: #e6efe6; color: #315d3d; font-size: .72rem; }
+.cutting-hero-specimen {
+  min-width: 0;
+  margin: 0;
+  padding: 1.05rem 1.2rem .85rem;
+  border: 1px solid #e4d7c2;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, .88);
+  box-shadow: 0 18px 40px rgba(38, 39, 29, .09);
+}
+.cutting-specimen-top { display: flex; justify-content: space-between; gap: .5rem; color: #887357; font-size: .65rem; font-weight: 800; letter-spacing: .11em; }
+.cutting-hero-specimen > svg { display: block; width: min(100%, 410px); height: auto; margin: .15rem auto 0; }
+.cutting-specimen-caption { display: grid; gap: .12rem; text-align: center; }
+.cutting-specimen-caption strong { color: #20392a; font-size: 1rem; }
+.cutting-specimen-caption span { color: #6f796f; font-size: .75rem; }
+.cutting-specimen-range { display: grid; grid-template-columns: 1fr 1fr; gap: .7rem; margin-top: .85rem; padding-top: .8rem; border-top: 1px solid #ece5da; }
+.cutting-specimen-range span { display: grid; gap: .08rem; color: #778078; font-size: .7rem; text-align: center; }
+.cutting-specimen-range strong { color: #405347; font-size: .83rem; }
+
+.cutting-services-section { padding-block: clamp(3rem, 5vw, 4.5rem) !important; }
+.cutting-services-header { max-width: 700px; }
+.cutting-services-header .section-title,
+.cutting-process-header .section-title { margin-bottom: .5rem; color: #173522; }
+.cutting-services-header .section-subtitle,
+.cutting-process-header .section-subtitle { margin-bottom: 0; }
+.cutting-services-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.cutting-service-card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  padding: clamp(1.2rem, 2vw, 1.55rem);
+  border: 1px solid #e7dfd2;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(23, 42, 29, .05);
+}
+.cutting-service-card-featured { border-color: #173522; background: #173522; color: #fff; }
+.cutting-service-card-warm { background: #f8f4eb; }
+.cutting-service-heading { display: flex; align-items: center; justify-content: space-between; gap: .5rem; }
+.cutting-service-heading > span:first-child { color: #a0784d; font-size: .72rem; font-weight: 800; letter-spacing: .12em; }
+.cutting-service-card-featured .cutting-service-heading > span:first-child { color: #e6bf8c; }
+.cutting-service-label { padding: .3rem .55rem; border-radius: 999px; background: #f5eee2; color: #875020; font-size: .64rem; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; }
+.cutting-service-card-featured .cutting-service-label { background: rgba(255, 255, 255, .1); color: #f3d9b4; }
+.cutting-service-card h3 { margin: 1.05rem 0 .5rem; color: #183523; font-size: 1.28rem; line-height: 1.22; }
+.cutting-service-card-featured h3 { color: #fff; }
+.cutting-service-card p { margin: 0 0 1rem; color: #59665e; font-size: .9rem; line-height: 1.58; }
+.cutting-service-card-featured p { color: #d6e0d8; }
+.cutting-spec-list { display: grid; gap: .45rem; margin: 0 0 1.2rem; padding: .85rem 0 0; border-top: 1px solid #ebe5da; list-style: none; }
+.cutting-spec-list li { color: #46564b; font-size: .8rem; line-height: 1.4; }
+.cutting-service-card-featured .cutting-spec-list { border-color: rgba(255, 255, 255, .17); }
+.cutting-service-card-featured .cutting-spec-list li { color: #e6eee8; }
+.cutting-service-link { display: inline-flex; align-items: center; gap: .4rem; margin-top: auto; color: #875020; font-size: .8rem; font-weight: 800; }
+.cutting-service-card-featured .cutting-service-link { color: #f1c78d; }
+.cutting-service-link span { font-size: 1.1rem; transition: transform .18s ease; }
+.cutting-service-link:hover span { transform: translateX(3px); }
+
+.cutting-process-section { padding-block: clamp(3rem, 5vw, 4.5rem) !important; }
+.cutting-process-header { max-width: 680px; }
+.cutting-process-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin: 0; padding: 0; list-style: none; counter-reset: process; }
+.cutting-process-grid > li { min-width: 0; padding: 1.2rem 1.25rem; border: 1px solid #e7dfd2; border-radius: 17px; background: rgba(255, 255, 255, .78); }
+.cutting-step-number { display: grid; width: 34px; height: 34px; place-items: center; border: 1px solid #e3cda9; border-radius: 50%; background: #f8f1e5; color: #805020; font-size: .7rem; font-weight: 850; }
+.cutting-process-grid h3 { margin: .8rem 0 .35rem; color: #20392a; font-size: 1rem; line-height: 1.3; }
+.cutting-process-grid p { margin: 0; color: #59665e; font-size: .84rem; line-height: 1.55; }
+.cutting-cta-section { padding-block: clamp(2.5rem, 4vw, 3.5rem) !important; }
+
+@media (max-width: 900px) {
+  .page-intro-cutting .container { grid-template-columns: minmax(0, 1fr) minmax(270px, .8fr); gap: 1.6rem; }
+  .cutting-hero-copy .section-title { font-size: clamp(2.2rem, 5vw, 3rem) !important; }
+  .cutting-services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cutting-service-card:last-child { grid-column: 1 / -1; }
+}
+@media (max-width: 768px) {
+  .page-intro-cutting { padding-block: 2.2rem !important; }
+  .page-intro-cutting .container { grid-template-columns: 1fr; gap: 1.5rem; }
+  .cutting-hero-copy .section-title { max-width: 18ch; font-size: clamp(2rem, 8vw, 2.65rem) !important; }
+  .cutting-hero-copy .section-subtitle { max-width: 55ch; }
+  .cutting-hero-copy .page-intro-actions { gap: .55rem; }
+  .cutting-hero-copy .page-intro-actions .btn { flex: 1 1 10rem; min-height: 46px; }
+  .cutting-hero-note { margin-top: .85rem; font-size: .76rem; }
+  .cutting-hero-specimen { width: min(100%, 500px); justify-self: center; padding: .85rem .95rem .75rem; border-radius: 18px; }
+  .cutting-hero-specimen > svg { max-height: 200px; }
+  .cutting-services-section,
+  .cutting-process-section { padding-block: 2.7rem !important; }
+  .cutting-services-grid { grid-template-columns: 1fr; gap: .8rem; }
+  .cutting-service-card:last-child { grid-column: auto; }
+  .cutting-service-card { padding: 1.15rem; border-radius: 17px; }
+  .cutting-service-card h3 { margin-top: .8rem; font-size: 1.15rem; }
+  .cutting-service-card p { font-size: .88rem; }
+  .cutting-spec-list { gap: .38rem; }
+  .cutting-spec-list li { font-size: .78rem; }
+  .cutting-process-grid { grid-template-columns: 1fr; gap: .65rem; }
+  .cutting-process-grid > li { display: grid; grid-template-columns: 36px minmax(0, 1fr); align-items: start; gap: 0 .65rem; padding: .85rem; }
+  .cutting-step-number { grid-row: 1 / span 2; }
+  .cutting-process-grid h3 { margin: .1rem 0 .2rem; font-size: .92rem; }
+  .cutting-process-grid p { font-size: .78rem; }
+  .cutting-cta-section { padding-block: 2rem !important; }
+}
+@media (max-width: 380px) {
+  .cutting-hero-specimen { padding-inline: .65rem; }
+  .cutting-specimen-top { font-size: .58rem; }
+  .cutting-specimen-range { gap: .35rem; }
+  .cutting-specimen-range strong { font-size: .76rem; }
+}

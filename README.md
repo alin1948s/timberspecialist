@@ -43,7 +43,7 @@ Capturile de mai jos folosesc comenzi demonstrative cu date de contact fictive.
 
 ## Funcționalități
 
-- Catalog de produse și servicii, galerie de stocuri și pagini de conformitate SUMAL 2.0.
+- „Stoc & Galerie” prezintă fotografiile și disponibilitatea depozitului; „Debitări la comandă” explică lucrările gaterului și pașii pentru ofertă.
 - Calculatoare separate pentru paleți, grinzi și podele, cu estimări de volum și preț.
 - Formulare de comandă, linkuri directe pentru telefon și WhatsApp, hartă și navigare către depozit.
 - Panou intern pentru administrarea comenzilor, disponibil după autentificare.
