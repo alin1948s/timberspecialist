@@ -1758,7 +1758,7 @@ main > section.section-padding:not(.page-intro):not(.portfolio-stock-section):no
 .about-sumal-header .section-subtitle { margin-bottom: 0; }
 .about-sumal-section .sumal-notice-card {
   max-width: 980px;
-  margin-bottom: 1.15rem;
+  margin: 1.5rem auto 0;
   padding: 1.3rem 1.5rem;
   border-color: #cee2d2;
   border-left-color: #35734b;
@@ -1813,7 +1813,7 @@ main > section.section-padding:not(.page-intro):not(.portfolio-stock-section):no
   .about-company-section .about-main-grid > div:first-child > p:nth-of-type(2) { display: block !important; }
   .about-sumal-section { padding-block: 2.65rem !important; }
   .about-sumal-header { margin-bottom: 1.25rem; text-align: left; }
-  .about-sumal-section .sumal-notice-card { padding: 1rem; margin-bottom: .9rem; }
+  .about-sumal-section .sumal-notice-card { padding: 1rem; margin-top: 1.15rem; }
   .about-sumal-section .sumal-notice-title { font-size: 1rem !important; }
   .about-sumal-section .sumal-notice-desc { font-size: .8rem !important; line-height: 1.48 !important; }
   .about-sumal-section .sumal-notice-badges { gap: .3rem; margin-top: .6rem; }
