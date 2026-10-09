@@ -207,6 +207,35 @@ main > section:first-child:not(.hero-section) .section-title {
   min-height: 52px;
 }
 
+.service-jump-tabs .filter-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  background: #fbfaf7;
+  border: 1px solid #e6e1d7;
+  color: #3e5045;
+  box-shadow: 0 2px 7px rgba(4, 18, 10, 0.12);
+}
+
+.service-jump-tabs .filter-btn.active {
+  background: #f3dfbd;
+  border-color: #dfb572;
+  color: #193522;
+  box-shadow: 0 4px 12px rgba(4, 18, 10, 0.2);
+}
+
+.service-jump-tabs .filter-btn:hover {
+  background: #ffffff;
+  border-color: #d4cabc;
+  color: var(--color-brand-forest);
+  transform: translateY(-1px);
+}
+
+.service-jump-tabs .filter-btn.active:hover {
+  background: #ecd2a6;
+}
+
 @media (min-width: 1025px) {
   .header-sticky .navbar {
     display: grid;
