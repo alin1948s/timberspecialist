@@ -1744,7 +1744,7 @@ main > section.section-padding:not(.page-intro):not(.portfolio-stock-section):no
   background: #f4f2ec;
 }
 .about-company-section { scroll-margin-top: 100px; }
-.about-sumal-header { max-width: 740px; margin: 0 auto 1.8rem; text-align: center; }
+.about-sumal-header { max-width: 740px; margin: 0 0 1.8rem; text-align: left; }
 .about-company-section .about-company-title,
 .about-sumal-header .section-title {
   margin: .35rem 0 .75rem !important;
