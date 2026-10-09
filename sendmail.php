@@ -42,6 +42,7 @@ if (!empty($_POST['website_hp'])) {
 
 $name = timberPostString('name', '', 120);
 $phone = timberPostString('phone', '', 40);
+$address = timberPostString('address', '', 300);
 $email = isset($_POST['email']) && is_string($_POST['email']) ? filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL) : '';
 $email = is_string($email) && strlen($email) <= 254 && filter_var($email, FILTER_VALIDATE_EMAIL) ? $email : '';
 $product = timberPostString('product', 'General', 240);
@@ -77,6 +78,7 @@ $newOrder = [
     'updatedAt' => $createdAt,
     'name' => $name,
     'phone' => $phone,
+    'address' => $address,
     'email' => $email,
     'product' => $product,
     'category' => $category,
@@ -143,7 +145,7 @@ $body .= "Telefon: {$phone}\n";
 $body .= "Email: " . (!empty($email) ? $email : "Nespecificat") . "\n";
 $body .= "Produs Solicitat: {$product}\n";
 $body .= "Cantitate / Volum: " . (!empty($volume) ? $volume : "Nespecificat") . "\n";
-$body .= "Detalii / Adresă Livrare / Mesaj:\n{$message}\n\n";
+$body .= "Localitate / Mențiuni suplimentare:\n{$message}\n\n";
 $body .= "---\nMesaj expediat automat de pe https://timberspecialist.ro la " . date('d.m.Y H:i:s');
 
 $headers = "From: webmaster@timberspecialist.ro\r\n";
@@ -171,4 +173,3 @@ echo json_encode([
     'notificationSent' => $notificationSent,
     'message' => 'Solicitarea a fost recepționată cu succes de către Timber Specialist SRL!'
 ], JSON_UNESCAPED_UNICODE);
-

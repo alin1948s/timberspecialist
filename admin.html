@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="css/responsive.css?v=2026.10.9.10">
   <link rel="stylesheet" href="css/admin.css?v=2026.10.9.10">
   <link rel="stylesheet" href="css/admin-refresh.css?v=2026.10.9.10">
-  <link rel="stylesheet" href="css/design-system.css?v=2026.10.9.10">
+  <link rel="stylesheet" href="css/design-system.css?v=2026.10.9.11">
 </head>
 <body class="admin-page-body">
 
@@ -361,8 +361,13 @@
           </div>
 
           <div class="form-group" style="margin-bottom: 0.9rem;">
-            <label class="form-label" for="editMessage" style="font-size:0.82rem; font-weight:700;">Localitate Livrare / Adresă / Mențiuni Client</label>
-            <textarea id="editMessage" class="input-light" rows="2" placeholder="Adresa de livrare sau detalii dimensiuni..."></textarea>
+            <label class="form-label" for="editAddress" style="font-size:0.82rem; font-weight:700;">Adresă de livrare</label>
+            <input type="text" id="editAddress" class="input-light" autocomplete="street-address" maxlength="300" placeholder="Stradă, număr, localitate, județ">
+          </div>
+
+          <div class="form-group" style="margin-bottom: 0.9rem;">
+            <label class="form-label" for="editMessage" style="font-size:0.82rem; font-weight:700;">Localitate &amp; Mențiuni Client</label>
+            <textarea id="editMessage" class="input-light" rows="2" placeholder="Localitatea, indicații de acces sau alte detalii..."></textarea>
           </div>
 
           <div class="form-group" style="margin-bottom: 0.9rem;">
@@ -404,6 +409,6 @@
   </div>
 
   <script src="js/main.js?v=2026.9"></script>
-  <script src="js/admin.js?v=2026.10.4"></script>
+  <script src="js/admin.js?v=2026.10.9.11"></script>
 </body>
 </html>

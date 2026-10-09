@@ -58,6 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const nameInput = form.querySelector('[name="name"]');
       const phoneInput = form.querySelector('[name="phone"]');
       const emailInput = form.querySelector('[name="email"]');
+      const addressInput = form.querySelector('[name="address"]');
       const productInput = form.querySelector('[name="product"]');
       const volumeInput = form.querySelector('[name="volume"]');
       const messageInput = form.querySelector('[name="message"]');
@@ -103,6 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const nameVal = nameInput.value.trim();
       const phoneVal = phoneInput.value.trim();
       const emailVal = emailInput ? emailInput.value.trim() : '';
+      const addressVal = addressInput ? addressInput.value.trim() : '';
       const prodVal = productInput ? productInput.value : 'Lemn de foc Gorun paletizat ~2.5 mc (950 Lei/palet)';
       const volRaw = volumeInput && volumeInput.value.trim() ? volumeInput.value.trim() : '1 palet (~2.5 MC)';
       const msgVal = messageInput ? messageInput.value.trim() : '';
@@ -115,6 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
       formData.append('name', nameVal);
       formData.append('phone', phoneVal);
       formData.append('email', emailVal);
+      formData.append('address', addressVal);
       formData.append('product', prodVal);
       formData.append('category', categoryVal);
       formData.append('volume', volRaw);

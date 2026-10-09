@@ -27,7 +27,7 @@
   <link rel="stylesheet" href="css/style.css?v=2026.10.9.10">
   <link rel="stylesheet" href="css/responsive.css?v=2026.10.9.10">
   <link rel="stylesheet" href="css/refinements.css?v=2026.10.9.10">
-  <link rel="stylesheet" href="css/design-system.css?v=2026.10.9.10">
+  <link rel="stylesheet" href="css/design-system.css?v=2026.10.9.11">
 
   <!-- Schema.org Date Structurate -->
   <script type="application/ld+json">
@@ -990,8 +990,13 @@
             </div>
 
             <div class="form-group" style="margin-bottom: 1rem;">
-              <label class="form-label" style="color: #121f16;" for="qAddress">Localitate Livrare &amp; Mențiuni</label>
-              <textarea id="qAddress" name="message" class="input-light delivery-notes-input" rows="2" placeholder="Localitatea de livrare (ex: Someș-Odorhei, Jibou, Zalău)..."></textarea>
+              <label class="form-label" style="color: #121f16;" for="qDeliveryAddress">Adresă de livrare (opțional)</label>
+              <input type="text" id="qDeliveryAddress" name="address" class="input-light" autocomplete="street-address" maxlength="300" placeholder="Stradă, număr, localitate, județ">
+            </div>
+
+            <div class="form-group" style="margin-bottom: 1rem;">
+              <label class="form-label" style="color: #121f16;" for="qAddress">Localitate &amp; Mențiuni suplimentare</label>
+              <textarea id="qAddress" name="message" class="input-light delivery-notes-input" rows="2" placeholder="Localitatea, indicații de acces sau alte detalii..."></textarea>
             </div>
 
             <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
@@ -1087,6 +1092,6 @@
 
   <!-- Scripturi JS -->
   <script src="js/main.js?v=2026.9"></script>
-  <script src="js/contact.js?v=2026.10.4"></script>
+  <script src="js/contact.js?v=2026.10.9.11"></script>
 </body>
 </html>

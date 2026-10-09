@@ -64,6 +64,8 @@ Locul în care sunt salvate comenzile depinde de modul de rulare:
 | `npm run dev` cu Wrangler și Docker | D1 locală simulată de Wrangler | Rulează Worker-ul și containerul PHP local; baza locală este separată de baza D1 din Cloudflare. |
 | Site publicat pe Cloudflare | D1 din contul Cloudflare | Formularul salvează comenzile în D1, iar panoul admin le citește și salvează modificările tot acolo. Emailurile folosesc Cloudflare Email Service. |
 
+Comenzile includ câmpul opțional `address` pentru adresa de livrare. Acesta se salvează în același fișier JSON local sau în obiectul `payload` din D1, se afișează în panoul admin și se include în exportul CSV. Structura D1 existentă nu necesită o migrare; comenzile vechi fără adresă rămân compatibile.
+
 În panoul admin, lista se încarcă la deschiderea paginii și apoi se sincronizează automat la fiecare 30 de secunde. Modificările făcute în panou se salvează pe server. În implementarea actuală, salvarea trimite lista completă de comenzi; dacă două sesiuni admin modifică simultan lista, una poate suprascrie schimbările celeilalte. Până la trecerea la salvare per comandă, folosește o singură sesiune admin pentru modificări.
 
 Datele din `data/orders.json` și baza locală Wrangler nu se copiază automat în D1 de producție. La prima publicare, baza D1 pornește goală.

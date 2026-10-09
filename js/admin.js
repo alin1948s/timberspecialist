@@ -84,7 +84,7 @@ function estimateOrderValue(productStr, volumeStr) {
 }
 
 function detectLocality(order) {
-  const text = ((order.message || '') + ' ' + (order.name || '')).toLowerCase();
+  const text = ((order.address || '') + ' ' + (order.message || '') + ' ' + (order.name || '')).toLowerCase();
   if (text.includes('someș-odorhei') || text.includes('somes-odorhei') || text.includes('odorhei')) return 'Someș-Odorhei (Depozit / Local)';
   if (text.includes('jibou')) return 'Jibou, jud. Sălaj';
   if (text.includes('zalău') || text.includes('zalau') || text.includes('ortelec')) return 'Zalău, jud. Sălaj';
@@ -228,6 +228,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       name: o.name || 'Client Nespecificat',
       phone: o.phone || '',
       email: o.email || '',
+      address: typeof o.address === 'string' ? o.address : '',
       product: prod,
       category: o.category || classifyProductCategory(prod),
       volume: vol,
@@ -409,6 +410,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           ord.name,
           ord.phone,
           ord.email,
+          ord.address,
           ord.product,
           ord.category,
           ord.volume,
@@ -633,6 +635,7 @@ document.addEventListener('DOMContentLoaded', async () => {
               <a href="tel:${escapeHTML(cleanPhone)}" class="order-client-phone">${escapeHTML(ord.phone)}</a>
               ${ord.email ? `<div class="order-client-email">${escapeHTML(ord.email)}</div>` : ''}
             </div>
+            ${ord.address ? `<div class="order-delivery-address"><span aria-hidden="true">📍</span><span><strong>Adresă de livrare</strong><br>${escapeHTML(ord.address)}</span></div>` : ''}
             <div class="order-client-locality">
               <span aria-hidden="true">⌖</span> ${escapeHTML(detectLocality(ord))}
             </div>
@@ -720,6 +723,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           </td>
           <td data-label="Produs & Adresă Livrare" class="td-product-col">
             <div style="font-weight: 700; color: var(--color-brand-forest);">${escapeHTML(ord.product)}</div>
+            ${ord.address ? `<div class="order-table-address"><strong>Adresă:</strong> ${escapeHTML(ord.address)}</div>` : ''}
             <div style="font-size: 0.78rem; color: var(--color-text-muted);">${escapeHTML(ord.message)}</div>
             ${ord.adminNotes ? `<div style="font-size: 0.76rem; color: #1e40af; font-weight: 600;">📌 Notă: ${escapeHTML(ord.adminNotes)}</div>` : ''}
             ${ord.status === 'anulata' ? `<div style="font-size: 0.76rem; color: #b91c1c; font-weight: 700;">🔴 Anulată la ${escapeHTML(cancelDt)}${ord.cancelReason ? ` — Motiv: ${escapeHTML(ord.cancelReason)}` : ''}</div>` : ''}
@@ -1055,6 +1059,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       document.getElementById('editClientName').value = ord.name;
       document.getElementById('editClientPhone').value = ord.phone;
       if (editClientEmailInput) editClientEmailInput.value = ord.email || '';
+      document.getElementById('editAddress').value = ord.address || '';
 
       if (prodSelect && ord.product) {
         const hasOption = Array.from(prodSelect.options).some(opt => opt.value === ord.product);
@@ -1080,6 +1085,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       document.getElementById('editClientName').value = '';
       document.getElementById('editClientPhone').value = '';
       if (editClientEmailInput) editClientEmailInput.value = '';
+      document.getElementById('editAddress').value = '';
       if (prodSelect) prodSelect.selectedIndex = 0;
       document.getElementById('editStatus').value = 'noua';
       document.getElementById('editVolume').value = '2 paleți (~5 MC)';
@@ -1114,6 +1120,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const nameVal = document.getElementById('editClientName').value.trim();
     const phoneVal = document.getElementById('editClientPhone').value.trim();
     const emailVal = editClientEmailInput ? editClientEmailInput.value.trim() : '';
+    const addressVal = document.getElementById('editAddress').value.trim();
     const prodVal = document.getElementById('editProduct').value;
     const statusVal = document.getElementById('editStatus').value;
     const volVal = document.getElementById('editVolume').value.trim() || '1 palet';
@@ -1134,6 +1141,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         existing.name = nameVal;
         existing.phone = phoneVal;
         existing.email = emailVal;
+        existing.address = addressVal;
         existing.product = prodVal;
         existing.category = classifyProductCategory(prodVal);
         existing.status = statusVal;
@@ -1159,6 +1167,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         name: nameVal,
         phone: phoneVal,
         email: emailVal,
+        address: addressVal,
         product: prodVal,
         category: classifyProductCategory(prodVal),
         volume: volVal,
@@ -1197,7 +1206,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   // 11. Export CSV, Print & Reset Demo
   document.getElementById('btnExportCsv').addEventListener('click', () => {
     const list = getFilteredAndSortedOrders();
-    const headers = ['Cod Comanda', 'Data Comenzii', 'Ora Comenzii', 'Status', 'Client / Societate', 'Telefon', 'Categorie Produs', 'Produs Solicitat', 'Cantitate', 'Valoare Estimata (Lei)', 'Localitate / Adresa / Mentiuni', 'Notite Admin', 'Motiv Anulare'];
+    const headers = ['Cod Comanda', 'Data Comenzii', 'Ora Comenzii', 'Status', 'Client / Societate', 'Telefon', 'Categorie Produs', 'Produs Solicitat', 'Cantitate', 'Valoare Estimata (Lei)', 'Adresa de livrare', 'Localitate / Mentiuni', 'Notite Admin', 'Motiv Anulare'];
 
     const rows = list.map(o => {
       const dt = formatFullDateTime(o.createdAt);
@@ -1213,6 +1222,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         o.product,
         o.volume,
         o.estimatedTotal || 0,
+        (o.address || '').replace(/\r?\n/g, ' '),
         (o.message || '').replace(/\r?\n/g, ' '),
         (o.adminNotes || '').replace(/\r?\n/g, ' '),
         (o.cancelReason || '').replace(/\r?\n/g, ' ')
