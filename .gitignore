@@ -11,8 +11,7 @@
 .wrangler/
 /worker-configuration.d.ts
 
-# Fișiere de verificare locală, nefolosite în README
-/screenshots/footer-desktop.png
+# Capturi temporare de verificare, nefolosite în README
 /screenshots/try.png
 
 # Fișiere locale ale sistemului și editorului

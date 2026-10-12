@@ -4,42 +4,102 @@ Website de prezentare și comandă pentru lemn de foc paletizat, grinzi și pode
 
 ## Capturi de pe site
 
-### Pagina principală
+Capturile arată varianta desktop (1440 px) și cea mobilă (390 px). Pentru calculator și formular, cadrul mobil este mai înalt, astfel încât să se vadă complet componentele importante.
+
+### Acasă — prezentare
 
 <p>
   <img src="screenshots/home-desktop.png" alt="Pagina principală pe desktop" width="760">
   <img src="screenshots/home-mobile.png" alt="Pagina principală pe mobil" width="225">
 </p>
 
-### Calculator de volum și preț
+### Acasă — catalogul de produse
+
+<p>
+  <img src="screenshots/catalog-desktop.png" alt="Catalogul de produse pe desktop" width="760">
+  <img src="screenshots/catalog-mobile.png" alt="Catalogul de produse pe mobil" width="225">
+</p>
+
+### Acasă — calculator de volum și preț
 
 <p>
   <img src="screenshots/calculator-desktop.png" alt="Calculatorul pe desktop" width="760">
   <img src="screenshots/calculator-mobile.png" alt="Calculatorul pe mobil" width="225">
 </p>
 
-### Contact și comandă
+### Acasă — comandă rapidă
 
 <p>
-  <img src="screenshots/contact-desktop.png" alt="Pagina de contact pe desktop" width="760">
-  <img src="screenshots/contact-mobile.png" alt="Pagina de contact pe mobil" width="225">
+  <img src="screenshots/order-desktop.png" alt="Datele depozitului și formularul de comandă pe desktop" width="760">
+  <img src="screenshots/order-mobile.png" alt="Formularul complet de comandă rapidă pe mobil" width="225">
 </p>
 
-### Formularul Comandă Rapidă Online
+### Debitări la comandă
 
 <p>
-  <img src="screenshots/order-desktop.png" alt="Formularul de comandă rapidă pe desktop" width="760">
-  <img src="screenshots/order-mobile.png" alt="Formularul și câmpul mărit de livrare pe mobil" width="225">
+  <img src="screenshots/services-desktop.png" alt="Pagina de servicii și debitări pe desktop" width="760">
+  <img src="screenshots/services-mobile.png" alt="Pagina de servicii și debitări pe mobil" width="225">
+</p>
+
+### Stoc & Galerie
+
+<p>
+  <img src="screenshots/stock-desktop.png" alt="Stocul și galeria pe desktop" width="760">
+  <img src="screenshots/stock-mobile.png" alt="Stocul și galeria pe mobil" width="225">
+</p>
+
+### Despre noi & companie
+
+<p>
+  <img src="screenshots/about-desktop.png" alt="Prezentarea companiei și datele fiscale pe desktop" width="760">
+  <img src="screenshots/about-mobile.png" alt="Prezentarea companiei pe mobil" width="225">
+</p>
+
+### Despre noi & SUMAL 2.0
+
+<p>
+  <img src="screenshots/sumal-desktop.png" alt="Informațiile despre SUMAL 2.0 pe desktop" width="760">
+  <img src="screenshots/sumal-mobile.png" alt="Informațiile despre SUMAL 2.0 pe mobil" width="225">
+</p>
+
+### Contact și formular
+
+<p>
+  <img src="screenshots/contact-desktop.png" alt="Datele de contact și formularul pe desktop" width="760">
+  <img src="screenshots/contact-mobile.png" alt="Datele de contact și formularul pe mobil" width="225">
+</p>
+
+### Hartă și locația depozitului
+
+<p>
+  <img src="screenshots/map-desktop.png" alt="Harta depozitului cu pinul locației pe desktop" width="760">
+  <img src="screenshots/map-mobile.png" alt="Harta depozitului cu pinul locației pe mobil" width="225">
 </p>
 
 ### Panou administrativ
 
-Capturile de mai jos folosesc comenzi demonstrative cu date de contact fictive.
+Capturile admin folosesc exclusiv comenzi demonstrative și date de contact fictive.
 
 <p>
-  <img src="screenshots/admin-desktop.png" alt="Panoul de administrare pe desktop, cu comenzi demonstrative" width="760">
-  <img src="screenshots/admin-mobile.png" alt="Panoul de administrare pe mobil, cu carduri adaptate ecranului" width="225">
+  <img src="screenshots/admin-desktop.png" alt="Panoul administrativ pe desktop, cu date demonstrative" width="760">
+  <img src="screenshots/admin-mobile.png" alt="Panoul administrativ pe mobil, cu date demonstrative" width="225">
 </p>
+
+### Panou administrativ — carduri de comandă
+
+<p>
+  <img src="screenshots/admin-orders-desktop.png" alt="Carduri de comandă demonstrative în admin pe desktop" width="760">
+  <img src="screenshots/admin-orders-mobile.png" alt="Card de comandă demonstrativ în admin pe mobil" width="225">
+</p>
+
+### Footer și navigare mobilă
+
+<p>
+  <img src="screenshots/footer-desktop.png" alt="Footer-ul site-ului pe desktop" width="760">
+  <img src="screenshots/footer-mobile.png" alt="Footer-ul și bara fixă de navigare pe mobil" width="225">
+</p>
+
+`autorizatii.html` este o adresă veche care redirecționează către secțiunea SUMAL 2.0; capturile ei sunt incluse la „Despre noi & SUMAL 2.0”.
 
 ## Funcționalități
 
@@ -103,6 +163,6 @@ Wrangler rulează site-ul, Worker-ul și containerul PHP; comenzile ajung în ba
 
 Configurația inițială, secretele necesare, baza D1, emailul, domeniul și comenzile de deploy sunt descrise în [ghidul Cloudflare](cloudflare/README.md).
 
-## Capturile
+## Proveniența capturilor
 
-Imaginile din `screenshots/` au fost capturate din versiunea locală a site-ului, la viewport-uri de desktop și mobil.
+Imaginile din `screenshots/` au fost regenerate din versiunea locală. În admin au fost folosite trei comenzi fictive printr-un răspuns API simulat; datele reale din fișierul local sau din D1 nu au fost accesate ori modificate.
